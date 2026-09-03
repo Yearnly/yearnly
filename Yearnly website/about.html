@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Yearnly</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .about-page {
+            max-width: 1200px;
+            margin: auto;
+            padding: 55px 45px 80px;
+        }
+
+        .about-section {
+            margin-bottom: 85px;
+        }
+
+        .about-eyebrow {
+            color: #777;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+        }
+
+        .about-title {
+            font-size: clamp(42px, 6vw, 76px);
+            letter-spacing: -4px;
+            line-height: .95;
+            max-width: 850px;
+            margin-bottom: 25px;
+        }
+
+        .about-intro {
+            color: #999;
+            font-size: 15px;
+            line-height: 1.8;
+            max-width: 700px;
+        }
+
+        .about-card {
+            border: 1px solid #252525;
+            background: #0c0c0c;
+            border-radius: 16px;
+            padding: 38px;
+        }
+
+        .about-card h2 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .about-card p {
+            color: #919191;
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 780px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid #252525;
+            border-bottom: 1px solid #252525;
+        }
+
+        .about-item {
+            padding: 28px 22px;
+            border-right: 1px solid #252525;
+        }
+
+        .about-item:last-child {
+            border-right: none;
+        }
+
+        .about-number {
+            color: #666;
+            font-size: 11px;
+            margin-bottom: 30px;
+        }
+
+        .about-item h3 {
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+        .about-item p {
+            color: #858585;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .about-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .about-button {
+            text-decoration: none;
+            padding: 13px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .about-button-primary {
+            background: white;
+            color: black;
+        }
+
+        .about-button-secondary {
+            color: white;
+            border: 1px solid #383838;
+        }
+
+        @media (max-width: 800px) {
+
+            .about-page {
+                padding: 35px 22px 60px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-item {
+                border-right: none;
+                border-bottom: 1px solid #252525;
+            }
+
+            .about-item:last-child {
+                border-bottom: none;
+            }
+
+            .about-card {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .about-title {
+                font-size: 48px;
+            }
+
+            .about-buttons {
+                flex-direction: column;
+            }
+
+            .about-button {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-name">Yearnly</div>
+        </div>
+
+        <nav class="nav-section">
+
+            <a href="index.html" class="nav-link">
+                <span class="nav-icon">⌂</span>
+                Home
+            </a>
+
+            <a href="browse.html" class="nav-link">
+                <span class="nav-icon">⌕</span>
+                Browse Opportunities
+            </a>
+
+            <a href="students.html" class="nav-link">
+                <span class="nav-icon">♙</span>
+                For Students
+            </a>
+
+            <a href="business.html" class="nav-link">
+                <span class="nav-icon">▣</span>
+                For Businesses
+            </a>
+
+        </nav>
+
+        <div class="nav-divider"></div>
+
+        <nav class="nav-section">
+
+            <a href="about.html" class="nav-link active">
+                <span class="nav-icon">ⓘ</span>
+                About Us
+            </a>
+
+            <a href="contact.html" class="nav-link">
+                <span class="nav-icon">✉</span>
+                Contact
+            </a>
+
+        </nav>
+
+        <div class="account-area">
+
+            <div class="account-menu" id="accountMenu">
+
+                <a href="account.html">
+                    Account Settings
+                </a>
+
+                <a href="login.html">
+                    Log out
+                </a>
+
+            </div>
+
+            <button
+                class="account-button"
+                onclick="toggleAccountMenu()"
+            >
+
+                <div class="avatar">
+                    VM
+                </div>
+
+                <div class="account-info">
+
+                    <span class="account-name">
+                        Vartika Manjhani
+                    </span>
+
+                    <span class="account-email">
+                        yearnly.in@gmail.com
+                    </span>
+
+                </div>
+
+                <span class="account-arrow">
+                    ⌃
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MOBILE HEADER -->
+
+    <header class="mobile-header">
+
+        <div class="mobile-brand">
+            Yearnly
+        </div>
+
+        <button
+            class="menu-button"
+            onclick="toggleMobileMenu()"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+    <div class="mobile-menu" id="mobileMenu">
+
+        <a href="index.html">Home</a>
+        <a href="browse.html">Browse Opportunities</a>
+        <a href="students.html">For Students</a>
+        <a href="business.html">For Businesses</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html">Account Settings</a>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="about-page">
+
+            <!-- INTRO -->
+
+            <section class="about-section">
+
+                <div class="about-eyebrow">
+                    ABOUT YEARNLY
+                </div>
+
+                <h1 class="about-title">
+                    Don't Yearn.<br>
+                    Just Earn.
+                </h1>
+
+                <p class="about-intro">
+                    Yearnly is a platform built to connect students
+                    with meaningful opportunities and businesses
+                    with motivated young talent.
+                </p>
+
+            </section>
+
+
+            <!-- WHAT IS YEARNLY -->
+
+            <section class="about-section">
+
+                <div class="about-card">
+
+                    <h2>
+                        Built for the next generation.
+                    </h2>
+
+                    <p>
+                        Finding your first opportunity shouldn't feel
+                        impossible. Yearnly brings students and
+                        businesses together in one simple platform,
+                        making it easier to discover jobs, internships,
+                        freelance opportunities, volunteering roles
+                        and other experiences.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Whether you're looking to gain experience,
+                        earn, build your skills or find young talent
+                        for your business, Yearnly is designed to
+                        make that connection easier.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- PURPOSE -->
+
+            <section class="about-section">
+
+                <div class="about-eyebrow">
+                    OUR PURPOSE
+                </div>
+
+                <h2 class="about-title">
+                    Opportunities should<br>
+                    be easier to find.
+                </h2>
+
+                <div class="about-grid">
+
+                    <article class="about-item">
+
+                        <div class="about-number">
+                            01
+                        </div>
+
+                        <h3>
+                            For Students
+                        </h3>
+
+                        <p>
+                            Discover opportunities that help you
+                            gain experience, develop skills and
+                            take your first steps into the working world.
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-item">
+
+                        <div class="about-number">
+                            02
+                        </div>
+
+                        <h3>
+                            For Businesses
+                        </h3>
+
+                        <p>
+                            Connect with motivated students and
+                            find people who can bring fresh ideas,
+                            energy and skills to your business.
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-item">
+
+                        <div class="about-number">
+                            03
+                        </div>
+
+                        <h3>
+                            For Everyone
+                        </h3>
+
+                        <p>
+                            Create a simpler and more accessible
+                            way for students and businesses to
+                            connect across India.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- CTA -->
+
+            <section class="about-section">
+
+                <div class="about-card">
+
+                    <div class="about-eyebrow">
+                        GET STARTED
+                    </div>
+
+                    <h2>
+                        Ready to find your next opportunity?
+                    </h2>
+
+                    <p>
+                        Explore opportunities or get in touch
+                        with the Yearnly team.
+                    </p>
+
+                    <div class="about-buttons">
+
+                        <a
+                            href="browse.html"
+                            class="about-button about-button-primary"
+                        >
+                            Browse Opportunities
+                        </a>
+
+                        <a
+                            href="contact.html"
+                            class="about-button about-button-secondary"
+                        >
+                            Contact Us
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <footer class="footer">
+
+                © 2026 Yearnly. Don't Yearn. Just Earn.
+
+            </footer>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        function toggleAccountMenu() {
+
+            document
+                .getElementById("accountMenu")
+                .classList.toggle("show");
+
+        }
+
+        function toggleMobileMenu() {
+
+            document
+                .getElementById("mobileMenu")
+                .classList.toggle("show");
+
+        }
+
+    </script>
+
+</body>
+
+</html>

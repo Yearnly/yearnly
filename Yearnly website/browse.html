@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Browse Opportunities | Yearnly</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        /* ================================
+           PAGE
+        ================================= */
+
+        .browse-page {
+
+            max-width: 1500px;
+
+            margin: 0 auto;
+
+            padding: 55px 60px 70px;
+
+        }
+
+
+        .browse-eyebrow {
+
+            color: #777;
+
+            font-size: 11px;
+
+            letter-spacing: 1.7px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .browse-title {
+
+            font-size: clamp(
+                48px,
+                5vw,
+                72px
+            );
+
+            line-height: 1;
+
+            letter-spacing: -4px;
+
+            margin: 0 0 18px;
+
+        }
+
+
+        .browse-subtitle {
+
+            color: #888;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            margin: 0;
+
+        }
+
+
+        /* ================================
+           FILTERS
+        ================================= */
+
+        .filters-container {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-top: 38px;
+
+            padding: 10px;
+
+            border: 1px solid #282828;
+
+            border-radius: 16px;
+
+            background: #080808;
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .filter-input,
+        .filter-select {
+
+            height: 48px;
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            background: #101010;
+
+            border: 1px solid #303030;
+
+            border-radius: 9px;
+
+            color: #fff;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            outline: none;
+
+        }
+
+
+        .filter-input {
+
+            flex: 1;
+
+            min-width: 180px;
+
+            padding: 0 15px;
+
+        }
+
+
+        .filter-select {
+
+            min-width: 170px;
+
+            padding: 0 35px 0 13px;
+
+        }
+
+
+        .filter-input::placeholder {
+
+            color: #666;
+
+        }
+
+
+        .filter-input:focus,
+        .filter-select:focus {
+
+            border-color: #555;
+
+        }
+
+
+        /* ================================
+           RESULTS HEADER
+        ================================= */
+
+        .results-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin: 34px 0 20px;
+
+        }
+
+
+        #resultsCount {
+
+            color: #888;
+
+            font-size: 13px;
+
+        }
+
+
+        .clear-filters {
+
+            border: none;
+
+            background: transparent;
+
+            color: #888;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            cursor: pointer;
+
+            padding: 5px;
+
+        }
+
+
+        .clear-filters:hover {
+
+            color: #fff;
+
+        }
+
+
+        /* ================================
+           OPPORTUNITY GRID
+        ================================= */
+
+        .opportunity-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 18px;
+
+        }
+
+
+        /* ================================
+           CARD
+        ================================= */
+
+        .opportunity-card {
+
+            background: #0b0b0b;
+
+            border: 1px solid #292929;
+
+            border-radius: 16px;
+
+            padding: 26px;
+
+            min-width: 0;
+
+        }
+
+
+        .opportunity-top {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 17px;
+
+        }
+
+
+        .opportunity-image {
+
+            width: 64px;
+
+            height: 64px;
+
+            flex: 0 0 64px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #fff;
+
+            color: #000;
+
+            border-radius: 12px;
+
+            font-size: 23px;
+
+            font-weight: 700;
+
+        }
+
+
+        .opportunity-title {
+
+            margin: 0 0 7px;
+
+            color: #fff;
+
+            font-size: 21px;
+
+            line-height: 1.2;
+
+        }
+
+
+        .opportunity-business {
+
+            color: #777;
+
+            font-size: 13px;
+
+        }
+
+
+        .opportunity-description {
+
+            color: #8d8d8d;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin: 25px 0 18px;
+
+        }
+
+
+        .opportunity-tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+        }
+
+
+        .opportunity-tag {
+
+            border: 1px solid #353535;
+
+            border-radius: 20px;
+
+            padding: 7px 11px;
+
+            color: #ddd;
+
+            font-size: 11px;
+
+        }
+
+
+        .opportunity-details {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+
+            margin-top: 22px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #292929;
+
+        }
+
+
+        .detail-label {
+
+            color: #666;
+
+            font-size: 11px;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .detail-value {
+
+            color: #eee;
+
+            font-size: 13px;
+
+        }
+
+
+        .opportunity-actions {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+
+            margin-top: 24px;
+
+        }
+
+
+        .apply-button,
+        .message-button {
+
+            height: 46px;
+
+            border-radius: 9px;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+        }
+
+
+        .apply-button {
+
+            background: #fff;
+
+            color: #000;
+
+            border: 1px solid #fff;
+
+        }
+
+
+        .message-button {
+
+            background: transparent;
+
+            color: #fff;
+
+            border: 1px solid #383838;
+
+        }
+
+
+        .apply-button:hover {
+
+            background: #ddd;
+
+        }
+
+
+        .message-button:hover {
+
+            border-color: #666;
+
+        }
+
+
+        /* ================================
+           EMPTY STATE
+        ================================= */
+
+        .empty-state {
+
+            display: none;
+
+            padding: 70px 20px;
+
+            text-align: center;
+
+            border: 1px solid #292929;
+
+            border-radius: 15px;
+
+            color: #777;
+
+            font-size: 14px;
+
+        }
+
+
+        /* ================================
+           MOBILE HEADER
+        ================================= */
+
+        .mobile-header {
+
+            display: none;
+
+        }
+
+
+        .mobile-menu {
+
+            display: none;
+
+        }
+
+
+        /* ================================
+           TABLET
+        ================================= */
+
+        @media (max-width: 1050px) {
+
+            .browse-page {
+
+                padding-left: 35px;
+
+                padding-right: 35px;
+
+            }
+
+
+            .filters-container {
+
+                flex-wrap: wrap;
+
+            }
+
+
+            .filter-input {
+
+                flex: 1 1 100%;
+
+            }
+
+
+            .filter-select {
+
+                flex: 1;
+
+                min-width: 140px;
+
+            }
+
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+
+                display: none;
+
+            }
+
+
+            .main {
+
+                margin-left: 0;
+
+            }
+
+
+            .mobile-header {
+
+                display: flex;
+
+                align-items: center;
+
+                justify-content: space-between;
+
+                padding: 17px 20px;
+
+                background: #050505;
+
+                border-bottom: 1px solid #252525;
+
+            }
+
+
+            .mobile-brand {
+
+                color: #fff;
+
+                font-size: 21px;
+
+                font-weight: 700;
+
+                letter-spacing: -1px;
+
+            }
+
+
+            .menu-button {
+
+                border: 1px solid #333;
+
+                background: transparent;
+
+                color: #fff;
+
+                border-radius: 7px;
+
+                padding: 7px 10px;
+
+                font-size: 18px;
+
+                cursor: pointer;
+
+            }
+
+
+            .mobile-menu.show {
+
+                display: flex;
+
+                flex-direction: column;
+
+                background: #080808;
+
+                border-bottom: 1px solid #252525;
+
+            }
+
+
+            .mobile-menu a {
+
+                color: #ccc;
+
+                text-decoration: none;
+
+                padding: 14px 20px;
+
+                border-bottom: 1px solid #1e1e1e;
+
+                font-size: 13px;
+
+            }
+
+
+            .mobile-menu a:hover {
+
+                color: #fff;
+
+                background: #111;
+
+            }
+
+
+            .browse-page {
+
+                padding: 35px 18px 55px;
+
+            }
+
+
+            .browse-title {
+
+                letter-spacing: -2.5px;
+
+            }
+
+
+            .filters-container {
+
+                padding: 9px;
+
+                gap: 8px;
+
+            }
+
+
+            .filter-input,
+            .filter-select {
+
+                width: 100%;
+
+                flex: 1 1 100%;
+
+            }
+
+
+            .opportunity-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        /* ================================
+           SMALL MOBILE
+        ================================= */
+
+        @media (max-width: 480px) {
+
+            .opportunity-card {
+
+                padding: 20px;
+
+            }
+
+
+            .opportunity-title {
+
+                font-size: 18px;
+
+            }
+
+
+            .opportunity-image {
+
+                width: 55px;
+
+                height: 55px;
+
+                flex-basis: 55px;
+
+            }
+
+
+            .opportunity-details {
+
+                gap: 16px;
+
+            }
+
+
+            .opportunity-actions {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         DESKTOP SIDEBAR
+    ================================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-name">
+                Yearnly
+            </div>
+
+        </div>
+
+
+        <nav class="nav-section">
+
+            <a
+                href="index.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">⌂</span>
+                Home
+            </a>
+
+
+            <a
+                href="dashboard.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">▦</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="browse.html"
+                class="nav-link active"
+            >
+                <span class="nav-icon">⌕</span>
+                Browse Opportunities
+            </a>
+
+
+            <a
+                href="students.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">♙</span>
+                For Students
+            </a>
+
+
+            <a
+                href="business.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">▣</span>
+                For Businesses
+            </a>
+
+        </nav>
+
+
+        <div class="nav-divider"></div>
+
+
+        <nav class="nav-section">
+
+            <a
+                href="about.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">ⓘ</span>
+                About Us
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">✉</span>
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div class="account-area">
+
+            <button
+                class="account-button"
+                type="button"
+                onclick="window.location.href='account.html'"
+            >
+
+                <div class="avatar">
+                    VM
+                </div>
+
+
+                <div class="account-info">
+
+                    <span class="account-name">
+                        Vartika Manjhani
+                    </span>
+
+                    <span class="account-email">
+                        yearnly.in@gmail.com
+                    </span>
+
+                </div>
+
+
+                <span class="account-arrow">
+                    ⌃
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================================
+         MOBILE HEADER
+    ================================= -->
+
+    <header class="mobile-header">
+
+        <div class="mobile-brand">
+            Yearnly
+        </div>
+
+
+        <button
+            type="button"
+            class="menu-button"
+            onclick="toggleMobileMenu()"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+    <!-- ================================
+         MOBILE MENU
+    ================================= -->
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <a href="index.html">
+            Home
+        </a>
+
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+
+        <a href="browse.html">
+            Browse Opportunities
+        </a>
+
+
+        <a href="students.html">
+            For Students
+        </a>
+
+
+        <a href="business.html">
+            For Businesses
+        </a>
+
+
+        <a href="about.html">
+            About Us
+        </a>
+
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+
+        <a href="account.html">
+            Account Settings
+        </a>
+
+    </div>
+
+
+    <!-- ================================
+         MAIN
+    ================================= -->
+
+    <main class="main">
+
+        <div class="browse-page">
+
+
+            <div class="browse-eyebrow">
+                YEARNLY
+            </div>
+
+
+            <h1 class="browse-title">
+                Browse Opportunities
+            </h1>
+
+
+            <p class="browse-subtitle">
+                Find jobs, internships, freelance work and other
+                opportunities that fit you.
+            </p>
+
+
+            <!-- FILTERS -->
+
+            <div class="filters-container">
+
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    class="filter-input"
+                    placeholder="Search opportunities..."
+                >
+
+
+                <input
+                    type="text"
+                    id="cityFilter"
+                    class="filter-input"
+                    placeholder="Search by city..."
+                >
+
+
+                <select
+                    id="typeFilter"
+                    class="filter-select"
+                >
+
+                    <option value="">
+                        All opportunity types
+                    </option>
+
+                    <option value="Part-time">
+                        Part-time
+                    </option>
+
+                    <option value="Internship">
+                        Internship
+                    </option>
+
+                    <option value="Freelance">
+                        Freelance
+                    </option>
+
+                    <option value="Volunteer">
+                        Volunteer
+                    </option>
+
+                    <option value="Campus Ambassador">
+                        Campus Ambassador
+                    </option>
+
+                </select>
+
+
+                <select
+                    id="categoryFilter"
+                    class="filter-select"
+                >
+
+                    <option value="">
+                        All categories
+                    </option>
+
+                    <option value="Marketing">
+                        Marketing
+                    </option>
+
+                    <option value="Design">
+                        Design
+                    </option>
+
+                    <option value="Technology">
+                        Technology
+                    </option>
+
+                    <option value="Writing">
+                        Writing
+                    </option>
+
+                    <option value="Business">
+                        Business
+                    </option>
+
+                    <option value="Education">
+                        Education
+                    </option>
+
+                    <option value="Events">
+                        Events
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+
+                <select
+                    id="modeFilter"
+                    class="filter-select"
+                >
+
+                    <option value="">
+                        All work modes
+                    </option>
+
+                    <option value="On-site">
+                        On-site
+                    </option>
+
+                    <option value="Remote">
+                        Remote
+                    </option>
+
+                    <option value="Hybrid">
+                        Hybrid
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- RESULTS HEADER -->
+
+            <div class="results-header">
+
+                <span id="resultsCount">
+                    Loading opportunities...
+                </span>
+
+
+                <button
+                    type="button"
+                    class="clear-filters"
+                    onclick="clearFilters()"
+                >
+                    Clear filters
+                </button>
+
+            </div>
+
+
+            <!-- OPPORTUNITIES -->
+
+            <div
+                class="opportunity-grid"
+                id="opportunityGrid"
+            >
+            </div>
+
+
+            <!-- EMPTY -->
+
+            <div
+                class="empty-state"
+                id="emptyState"
+            >
+                No opportunities found.
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ================================
+         FIREBASE SCRIPT
+    ================================= -->
+
+    <script type="module">
+
+        import {
+            database
+        } from "./js/firebase-init.js";
+
+
+        import {
+            ref,
+            onValue
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        const cityFilter =
+            document.getElementById(
+                "cityFilter"
+            );
+
+
+        const typeFilter =
+            document.getElementById(
+                "typeFilter"
+            );
+
+
+        const categoryFilter =
+            document.getElementById(
+                "categoryFilter"
+            );
+
+
+        const modeFilter =
+            document.getElementById(
+                "modeFilter"
+            );
+
+
+        const opportunityGrid =
+            document.getElementById(
+                "opportunityGrid"
+            );
+
+
+        const resultsCount =
+            document.getElementById(
+                "resultsCount"
+            );
+
+
+        const emptyState =
+            document.getElementById(
+                "emptyState"
+            );
+
+
+        let opportunities = [];
+
+
+        /* ================================
+           MOBILE MENU
+        ================================= */
+
+        window.toggleMobileMenu =
+            function() {
+
+                document
+                    .getElementById(
+                        "mobileMenu"
+                    )
+                    .classList
+                    .toggle("show");
+
+            };
+
+
+        /* ================================
+           FIREBASE DATA
+        ================================= */
+
+        const opportunitiesRef =
+            ref(
+                database,
+                "opportunities"
+            );
+
+
+        onValue(
+            opportunitiesRef,
+            function(snapshot) {
+
+                const data =
+                    snapshot.val();
+
+
+                opportunities = [];
+
+
+                if (data) {
+
+                    Object.keys(data)
+                        .forEach(
+                            function(id) {
+
+                                opportunities.push({
+
+                                    id: id,
+
+                                    ...data[id]
+
+                                });
+
+                            }
+                        );
+
+                }
+
+
+                renderOpportunities();
+
+            },
+            function(error) {
+
+                console.error(
+                    "Firebase error:",
+                    error
+                );
+
+
+                opportunityGrid.innerHTML =
+                    "";
+
+
+                resultsCount.textContent =
+                    "Unable to load opportunities";
+
+
+                emptyState.textContent =
+                    "Something went wrong while loading opportunities.";
+
+
+                emptyState.style.display =
+                    "block";
+
+            }
+        );
+
+
+        /* ================================
+           OPEN / DEADLINE CHECK
+        ================================= */
+
+        function isOpportunityOpen(
+            opportunity
+        ) {
+
+            const status =
+                (
+                    opportunity.status ||
+                    ""
+                )
+                    .toLowerCase();
+
+
+            if (
+                status !== "open"
+            ) {
+
+                return false;
+
+            }
+
+
+            if (
+                opportunity.deadline
+            ) {
+
+                const today =
+                    new Date();
+
+
+                today.setHours(
+                    0,
+                    0,
+                    0,
+                    0
+                );
+
+
+                const deadline =
+                    new Date(
+                        opportunity.deadline +
+                        "T23:59:59"
+                    );
+
+
+                if (
+                    deadline < today
+                ) {
+
+                    return false;
+
+                }
+
+            }
+
+
+            return true;
+
+        }
+
+
+        /* ================================
+           RENDER
+        ================================= */
+
+        function renderOpportunities() {
+
+            opportunityGrid.innerHTML =
+                "";
+
+
+            const search =
+                searchInput
+                    .value
+                    .toLowerCase()
+                    .trim();
+
+
+            const city =
+                cityFilter
+                    .value
+                    .toLowerCase()
+                    .trim();
+
+
+            const type =
+                typeFilter.value;
+
+
+            const category =
+                categoryFilter.value;
+
+
+            const mode =
+                modeFilter.value;
+
+
+            let visible = 0;
+
+
+            opportunities.forEach(
+                function(opportunity) {
+
+                    if (
+                        !isOpportunityOpen(
+                            opportunity
+                        )
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const title =
+                        (
+                            opportunity.title ||
+                            ""
+                        )
+                            .toLowerCase();
+
+
+                    const business =
+                        (
+                            opportunity.companyName ||
+                            ""
+                        )
+                            .toLowerCase();
+
+
+                    const cardCity =
+                        (
+                            opportunity.city ||
+                            ""
+                        )
+                            .toLowerCase();
+
+
+                    const cardType =
+                        opportunity.type ||
+                        "";
+
+
+                    const cardCategory =
+                        opportunity.category ||
+                        "";
+
+
+                    const cardMode =
+                        opportunity.workMode ||
+                        "";
+
+
+                    const matchesSearch =
+                        !search ||
+                        title.includes(search) ||
+                        business.includes(search) ||
+                        cardCategory
+                            .toLowerCase()
+                            .includes(search);
+
+
+                    const matchesCity =
+                        !city ||
+                        cardCity.includes(city);
+
+
+                    const matchesType =
+                        !type ||
+                        cardType === type;
+
+
+                    const matchesCategory =
+                        !category ||
+                        cardCategory === category;
+
+
+                    const matchesMode =
+                        !mode ||
+                        cardMode === mode;
+
+
+                    if (
+                        matchesSearch &&
+                        matchesCity &&
+                        matchesType &&
+                        matchesCategory &&
+                        matchesMode
+                    ) {
+
+                        createOpportunityCard(
+                            opportunity
+                        );
+
+                        visible++;
+
+                    }
+
+                }
+            );
+
+
+            resultsCount.textContent =
+                visible +
+                (
+                    visible === 1
+                        ? " opportunity"
+                        : " opportunities"
+                );
+
+
+            emptyState.style.display =
+                visible === 0
+                    ? "block"
+                    : "none";
+
+        }
+
+
+        /* ================================
+           CREATE CARD
+        ================================= */
+
+        function createOpportunityCard(
+            opportunity
+        ) {
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "opportunity-card";
+
+
+            const companyName =
+                opportunity.companyName ||
+                "Business";
+
+
+            const title =
+                opportunity.title ||
+                "Opportunity";
+
+
+            const city =
+                opportunity.city ||
+                "Not specified";
+
+
+            const pay =
+                opportunity.pay ||
+                "Not specified";
+
+
+            const duration =
+                opportunity.duration ||
+                "Not specified";
+
+
+            const deadline =
+                opportunity.deadline
+                    ? formatDate(
+                        opportunity.deadline
+                    )
+                    : "Not specified";
+
+
+            const type =
+                opportunity.type ||
+                "Opportunity";
+
+
+            const category =
+                opportunity.category ||
+                "Other";
+
+
+            const mode =
+                opportunity.workMode ||
+                "Not specified";
+
+
+            const description =
+                opportunity.description ||
+                "No description provided.";
+
+
+            const initial =
+                companyName
+                    .charAt(0)
+                    .toUpperCase();
+
+
+            card.innerHTML = `
+
+                <div class="opportunity-top">
+
+                    <div class="opportunity-image">
+                        ${escapeHTML(initial)}
+                    </div>
+
+
+                    <div>
+
+                        <h2 class="opportunity-title">
+                            ${escapeHTML(title)}
+                        </h2>
+
+
+                        <div class="opportunity-business">
+                            ${escapeHTML(companyName)}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <p class="opportunity-description">
+                    ${escapeHTML(description)}
+                </p>
+
+
+                <div class="opportunity-tags">
+
+                    <span class="opportunity-tag">
+                        ${escapeHTML(type)}
+                    </span>
+
+
+                    <span class="opportunity-tag">
+                        ${escapeHTML(category)}
+                    </span>
+
+
+                    <span class="opportunity-tag">
+                        ${escapeHTML(mode)}
+                    </span>
+
+                </div>
+
+
+                <div class="opportunity-details">
+
+                    <div>
+
+                        <div class="detail-label">
+                            Location
+                        </div>
+
+
+                        <div class="detail-value">
+                            ${escapeHTML(city)}
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="detail-label">
+                            Pay
+                        </div>
+
+
+                        <div class="detail-value">
+                            ${escapeHTML(pay)}
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="detail-label">
+                            Duration
+                        </div>
+
+
+                        <div class="detail-label">
+                            ${escapeHTML(duration)}
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="detail-label">
+                            Deadline
+                        </div>
+
+
+                        <div class="detail-value">
+                            ${escapeHTML(deadline)}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="opportunity-actions">
+
+                    <button
+                        type="button"
+                        class="apply-button"
+                        data-opportunity-id="${escapeHTML(opportunity.id)}"
+                    >
+                        Apply
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="message-button"
+                        data-opportunity-id="${escapeHTML(opportunity.id)}"
+                    >
+                        Message
+                    </button>
+
+                </div>
+
+            `;
+
+
+            const applyButton =
+                card.querySelector(
+                    ".apply-button"
+                );
+
+
+            const messageButton =
+                card.querySelector(
+                    ".message-button"
+                );
+
+
+            applyButton.addEventListener(
+                "click",
+                function() {
+
+                    applyOpportunity(
+                        opportunity.id
+                    );
+
+                }
+            );
+
+
+            messageButton.addEventListener(
+                "click",
+                function() {
+
+                    messageBusiness(
+                        opportunity.id
+                    );
+
+                }
+            );
+
+
+            opportunityGrid.appendChild(
+                card
+            );
+
+        }
+
+
+        /* ================================
+           DATE
+        ================================= */
+
+        function formatDate(
+            dateString
+        ) {
+
+            const date =
+                new Date(
+                    dateString +
+                    "T00:00:00"
+                );
+
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+
+                return dateString;
+
+            }
+
+
+            return date.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+        }
+
+
+        /* ================================
+           HTML ESCAPE
+        ================================= */
+
+        function escapeHTML(
+            value
+        ) {
+
+            return String(value)
+
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+
+        /* ================================
+           FILTERS
+        ================================= */
+
+        searchInput.addEventListener(
+            "input",
+            renderOpportunities
+        );
+
+
+        cityFilter.addEventListener(
+            "input",
+            renderOpportunities
+        );
+
+
+        typeFilter.addEventListener(
+            "change",
+            renderOpportunities
+        );
+
+
+        categoryFilter.addEventListener(
+            "change",
+            renderOpportunities
+        );
+
+
+        modeFilter.addEventListener(
+            "change",
+            renderOpportunities
+        );
+
+
+        window.clearFilters =
+            function() {
+
+                searchInput.value =
+                    "";
+
+                cityFilter.value =
+                    "";
+
+                typeFilter.value =
+                    "";
+
+                categoryFilter.value =
+                    "";
+
+                modeFilter.value =
+                    "";
+
+                renderOpportunities();
+
+            };
+
+
+        /* ================================
+           APPLY
+        ================================= */
+
+        function applyOpportunity(
+            opportunityId
+        ) {
+
+            alert(
+                "Application system is coming next."
+            );
+
+        }
+
+
+        /* ================================
+           MESSAGE
+        ================================= */
+
+        function messageBusiness(
+            opportunityId
+        ) {
+
+            alert(
+                "Messaging system is coming soon."
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

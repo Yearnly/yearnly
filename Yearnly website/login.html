@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Log In | Yearnly</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .auth-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 430px;
+            background: #0c0c0c;
+            border: 1px solid #252525;
+            border-radius: 16px;
+            padding: 38px;
+        }
+
+        .auth-brand {
+            font-size: 25px;
+            font-weight: 700;
+            margin-bottom: 45px;
+            letter-spacing: -1px;
+        }
+
+        .auth-eyebrow {
+            color: #777;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .auth-card h1 {
+            font-size: 34px;
+            letter-spacing: -1.8px;
+            margin-bottom: 10px;
+        }
+
+        .auth-description {
+            color: #858585;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 19px;
+        }
+
+        .auth-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .auth-group label {
+            color: #ddd;
+            font-size: 13px;
+        }
+
+        .auth-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #303030;
+            border-radius: 8px;
+            background: #111;
+            color: white;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .auth-group input:focus {
+            border-color: #666;
+        }
+
+        .password-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .forgot-password {
+            color: #888;
+            font-size: 11px;
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            color: white;
+        }
+
+        .login-button {
+            width: 100%;
+            margin-top: 5px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+            color: black;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #555;
+            font-size: 11px;
+            margin: 25px 0;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: "";
+            height: 1px;
+            background: #292929;
+            flex: 1;
+        }
+
+        .signup-text {
+            text-align: center;
+            color: #777;
+            font-size: 12px;
+        }
+
+        .signup-text a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-message {
+            display: none;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #aaa;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 500px) {
+
+            .auth-card {
+                padding: 28px 22px;
+            }
+
+            .auth-card h1 {
+                font-size: 30px;
+            }
+        }
+
+        .password-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-wrapper input {
+            padding-right: 78px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 9px;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            color: #8d8d8d;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 7px 6px;
+            border-radius: 6px;
+        }
+
+        .password-toggle:hover {
+            color: white;
+            background: #1a1a1a;
+        }
+
+        .password-toggle:focus-visible {
+            outline: 1px solid #666;
+            outline-offset: 2px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <section class="auth-card">
+
+            <div class="auth-brand">
+                Yearnly
+            </div>
+
+            <div class="auth-eyebrow">
+                WELCOME BACK
+            </div>
+
+            <h1>
+                Log in
+            </h1>
+
+            <p class="auth-description">
+                Log in to your Yearnly account to continue.
+            </p>
+
+
+            <form
+                class="auth-form"
+                id="loginForm"
+            >
+
+                <div class="auth-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="auth-group">
+
+                    <div class="password-row">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <a
+                            href="#"
+                            class="forgot-password"
+                            onclick="forgotPassword(event)"
+                        >
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="passwordToggle"
+                            aria-label="Show password"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    Log In
+                </button>
+
+
+                <div
+                    class="login-message"
+                    id="loginMessage"
+                >
+                    Login functionality will be connected to your
+                    Yearnly account system.
+                </div>
+
+            </form>
+
+
+            <div class="auth-divider">
+                OR
+            </div>
+
+
+            <div class="signup-text">
+
+                Don't have an account?
+
+                <a href="signup.html">
+                    Sign Up
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script type="module">
+
+    import {
+        auth
+    } from "./js/firebase-init.js";
+
+    import {
+        signInWithEmailAndPassword,
+        sendPasswordResetEmail
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+
+    const passwordInput =
+        document.getElementById(
+            "password"
+        );
+
+    const passwordToggle =
+        document.getElementById(
+            "passwordToggle"
+        );
+
+    passwordToggle.addEventListener(
+        "click",
+        function() {
+
+            const showing =
+                passwordInput.type === "text";
+
+            passwordInput.type =
+                showing
+                    ? "password"
+                    : "text";
+
+            passwordToggle.textContent =
+                showing
+                    ? "Show"
+                    : "Hide";
+
+            passwordToggle.setAttribute(
+                "aria-label",
+                showing
+                    ? "Show password"
+                    : "Hide password"
+            );
+
+        }
+    );
+
+
+    // LOGIN
+
+    document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+
+            const loginMessage =
+                document.getElementById("loginMessage");
+
+
+            try {
+
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+                loginMessage.textContent =
+                    "Login successful!";
+
+                loginMessage.style.display =
+                    "block";
+
+
+                setTimeout(function() {
+
+                    window.location.href =
+                        "dashboard.html";
+
+                }, 500);
+
+
+            } catch (error) {
+
+                console.error(
+                    "Login error:",
+                    error
+                );
+
+
+                if (
+                    error.code ===
+                    "auth/invalid-credential"
+                ) {
+
+                    loginMessage.textContent =
+                        "Incorrect email or password.";
+
+                } else if (
+                    error.code ===
+                    "auth/user-not-found"
+                ) {
+
+                    loginMessage.textContent =
+                        "No account exists with this email.";
+
+                } else if (
+                    error.code ===
+                    "auth/wrong-password"
+                ) {
+
+                    loginMessage.textContent =
+                        "Incorrect password.";
+
+                } else if (
+                    error.code ===
+                    "auth/invalid-email"
+                ) {
+
+                    loginMessage.textContent =
+                        "Please enter a valid email address.";
+
+                } else {
+
+                    loginMessage.textContent =
+                        "Something went wrong. Please try again.";
+
+                }
+
+
+                loginMessage.style.display =
+                    "block";
+
+            }
+
+        });
+
+
+    // FORGOT PASSWORD
+
+    window.forgotPassword = async function(event) {
+
+        event.preventDefault();
+
+
+        const email =
+            document.getElementById("email").value.trim();
+
+
+        if (!email) {
+
+            alert(
+                "Please enter your email address first."
+            );
+
+            document
+                .getElementById("email")
+                .focus();
+
+            return;
+
+        }
+
+
+        try {
+
+            await sendPasswordResetEmail(
+                auth,
+                email
+            );
+
+
+            alert(
+                "Password reset email sent. Please check your inbox."
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Password reset error:",
+                error
+            );
+
+
+            if (
+                error.code ===
+                "auth/user-not-found"
+            ) {
+
+                alert(
+                    "No account exists with this email."
+                );
+
+            } else if (
+                error.code ===
+                "auth/invalid-email"
+            ) {
+
+                alert(
+                    "Please enter a valid email address."
+                );
+
+            } else {
+
+                alert(
+                    "Unable to send the password reset email. Please try again."
+                );
+
+            }
+
+        }
+
+    };
+
+</script>
+
+</body>
+
+</html>

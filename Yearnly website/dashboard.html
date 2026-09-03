@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Yearnly</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .dashboard-page {
+            max-width: 1100px;
+            margin: auto;
+            padding: 55px 40px 80px;
+        }
+
+        .dashboard-header {
+            margin-bottom: 40px;
+        }
+
+        .dashboard-eyebrow {
+            color: #777;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .dashboard-header h1 {
+            font-size: clamp(42px, 6vw, 65px);
+            letter-spacing: -4px;
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .dashboard-header p {
+            color: #888;
+            font-size: 14px;
+            max-width: 550px;
+            line-height: 1.6;
+        }
+
+        /* CHOICES */
+
+        .dashboard-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .dashboard-option {
+            background: #0c0c0c;
+            border: 1px solid #292929;
+            border-radius: 16px;
+            padding: 30px;
+            text-decoration: none;
+            color: white;
+            transition: .2s ease;
+        }
+
+        .dashboard-option:hover {
+            border-color: #666;
+            transform: translateY(-2px);
+        }
+
+        .option-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        .dashboard-option h2 {
+            font-size: 24px;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-option p {
+            color: #777;
+            font-size: 12px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .option-link {
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* INFO */
+
+        .dashboard-info {
+            border: 1px solid #252525;
+            border-radius: 14px;
+            padding: 24px;
+            color: #777;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .dashboard-info strong {
+            color: #ddd;
+        }
+
+        /* MOBILE HEADER */
+
+        .mobile-header {
+            display: none;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .mobile-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 17px 20px;
+                border-bottom: 1px solid #252525;
+                background: #050505;
+            }
+
+            .mobile-brand {
+                font-size: 20px;
+                font-weight: 700;
+                letter-spacing: -1px;
+            }
+
+            .menu-button {
+                background: transparent;
+                color: white;
+                border: 1px solid #333;
+                border-radius: 7px;
+                padding: 7px 10px;
+                font-size: 18px;
+                cursor: pointer;
+            }
+
+            .mobile-menu.show {
+                display: flex;
+                flex-direction: column;
+                background: #080808;
+                border-bottom: 1px solid #252525;
+            }
+
+            .mobile-menu a {
+                color: #ccc;
+                text-decoration: none;
+                padding: 14px 20px;
+                border-bottom: 1px solid #1e1e1e;
+                font-size: 13px;
+            }
+
+            .mobile-menu a:hover {
+                color: white;
+                background: #111;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .dashboard-page {
+                padding: 40px 20px 60px;
+            }
+
+            .dashboard-options {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-option {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- DESKTOP SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-name">
+                Yearnly
+            </div>
+        </div>
+
+
+        <nav class="nav-section">
+
+            <a href="index.html" class="nav-link">
+                <span class="nav-icon">⌂</span>
+                Home
+            </a>
+
+            <a href="dashboard.html" class="nav-link active">
+                <span class="nav-icon">▦</span>
+                Dashboard
+            </a>
+
+            <a href="browse.html" class="nav-link">
+                <span class="nav-icon">⌕</span>
+                Browse Opportunities
+            </a>
+
+            <a href="students.html" class="nav-link">
+                <span class="nav-icon">♙</span>
+                For Students
+            </a>
+
+            <a href="business.html" class="nav-link">
+                <span class="nav-icon">▣</span>
+                For Businesses
+            </a>
+
+        </nav>
+
+
+        <div class="nav-divider"></div>
+
+
+        <nav class="nav-section">
+
+            <a href="about.html" class="nav-link">
+                <span class="nav-icon">ⓘ</span>
+                About Us
+            </a>
+
+            <a href="contact.html" class="nav-link">
+                <span class="nav-icon">✉</span>
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div class="account-area">
+
+            <button
+                class="account-button"
+                onclick="window.location.href='account.html'"
+            >
+
+                <div class="avatar">
+                    VM
+                </div>
+
+                <div class="account-info">
+
+                    <span class="account-name">
+                        Vartika Manjhani
+                    </span>
+
+                    <span class="account-email">
+                        yearnly.in@gmail.com
+                    </span>
+
+                </div>
+
+                <span class="account-arrow">
+                    ⌃
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MOBILE HEADER -->
+
+    <header class="mobile-header">
+
+        <div class="mobile-brand">
+            Yearnly
+        </div>
+
+        <button
+            class="menu-button"
+            onclick="toggleMobileMenu()"
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+    <!-- MOBILE MENU -->
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="browse.html">
+            Browse Opportunities
+        </a>
+
+        <a href="students.html">
+            For Students
+        </a>
+
+        <a href="business.html">
+            For Businesses
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <a href="account.html">
+            Account Settings
+        </a>
+
+        <button
+    type="button"
+    class="logout-button"
+    onclick="logoutUser()"
+>
+    Log Out
+</button>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="dashboard-page">
+
+
+            <!-- HEADER -->
+
+            <header class="dashboard-header">
+
+                <div class="dashboard-eyebrow">
+                    YEARNLY DASHBOARD
+                </div>
+
+                <h1>
+                    Your Yearnly.
+                </h1>
+
+                <p>
+                    Choose what you want to do today. You can find
+                    opportunities, hire students, or do both.
+                </p>
+
+            </header>
+
+
+            <!-- DASHBOARD OPTIONS -->
+
+            <section class="dashboard-options">
+
+
+                <!-- STUDENT -->
+
+                <a
+                    href="student-dashboard.html"
+                    class="dashboard-option"
+                >
+
+                    <div class="option-icon">
+                        🎓
+                    </div>
+
+                    <h2>
+                        Find Opportunities
+                    </h2>
+
+                    <p>
+                        Browse jobs, internships, freelance work,
+                        volunteering opportunities and more.
+                        Apply to opportunities and manage your
+                        applications.
+                    </p>
+
+                    <span class="option-link">
+                        Go to Student Dashboard →
+                    </span>
+
+                </a>
+
+
+                <!-- BUSINESS -->
+
+                <a
+                    href="business-dashboard.html"
+                    class="dashboard-option"
+                >
+
+                    <div class="option-icon">
+                        🏢
+                    </div>
+
+                    <h2>
+                        Hire Students
+                    </h2>
+
+                    <p>
+                        Post opportunities, find students,
+                        manage applications and connect with
+                        people who want to work with you.
+                    </p>
+
+                    <span class="option-link">
+                        Go to Business Dashboard →
+                    </span>
+
+                </a>
+
+
+            </section>
+
+
+            <!-- INFO -->
+
+            <div class="dashboard-info">
+
+                <strong>
+                    You don't have to choose just one.
+                </strong>
+
+                <br>
+
+                Yearnly lets you use both sides of the platform.
+                You can apply for opportunities as a student and
+                hire students as a business using the same account.
+
+            </div>
+
+
+            <footer class="footer">
+
+                © 2026 Yearnly. Don't Yearn. Just Earn.
+
+            </footer>
+
+        </div>
+
+    </main>
+
+<script type="module">
+
+    import {
+        auth,
+        database
+    } from "./js/firebase-init.js";
+
+    import {
+        onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+    import {
+        ref,
+        get
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+    // MOBILE MENU
+
+    window.toggleMobileMenu = function() {
+
+        document
+            .getElementById("mobileMenu")
+            .classList.toggle("show");
+
+    };
+
+
+    // CHECK LOGGED-IN USER
+
+    onAuthStateChanged(auth, async function(user) {
+
+        // If nobody is logged in
+        if (!user) {
+
+            window.location.href = "login.html";
+
+            return;
+
+        }
+
+
+        try {
+
+            // Get the user's Yearnly profile
+            const userRef =
+                ref(database, "users/" + user.uid);
+
+            const snapshot =
+                await get(userRef);
+
+
+            if (!snapshot.exists()) {
+
+                console.error(
+                    "Yearnly profile not found."
+                );
+
+                return;
+
+            }
+
+
+            const userData =
+                snapshot.val();
+
+            const uses =
+                userData.uses || {};
+
+
+            const findOpportunities =
+                uses.findOpportunities === true;
+
+            const hireStudents =
+                uses.hireStudents === true;
+
+
+            // STUDENT ONLY
+
+            if (
+                findOpportunities &&
+                !hireStudents
+            ) {
+
+                window.location.href =
+                    "student-dashboard.html";
+
+                return;
+
+            }
+
+
+            // BUSINESS ONLY
+
+            if (
+                hireStudents &&
+                !findOpportunities
+            ) {
+
+                window.location.href =
+                    "business-dashboard.html";
+
+                return;
+
+            }
+
+
+            // BOTH
+
+            if (
+                findOpportunities &&
+                hireStudents
+            ) {
+
+                // Stay on dashboard.html
+                // so the user can choose.
+                return;
+
+            }
+
+
+            // No valid selection
+
+            console.error(
+                "No Yearnly account type selected."
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Dashboard error:",
+                error
+            );
+
+        }
+
+    });
+
+</script> 
+   
+</body>
+
+</html>

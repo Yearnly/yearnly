@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For Students | Yearnly</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================
+           STUDENTS PAGE
+        ========================== */
+
+        .students-page {
+            max-width: 1250px;
+            margin: auto;
+            padding: 50px 45px 80px;
+        }
+
+        .student-section {
+            margin-bottom: 90px;
+        }
+
+        .student-eyebrow {
+            color: #777;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 13px;
+        }
+
+        .student-heading {
+            font-size: clamp(32px, 4vw, 54px);
+            letter-spacing: -2.5px;
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .student-subheading {
+            color: #969696;
+            font-size: 14px;
+            line-height: 1.7;
+            max-width: 650px;
+        }
+
+
+        /* =========================
+           PROFILE FORM
+        ========================== */
+
+        .profile-section {
+            max-width: 900px;
+        }
+
+        .profile-form-card {
+            background: #0c0c0c;
+            border: 1px solid #252525;
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 32px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            color: #ddd;
+        }
+
+        .required {
+            color: #fff;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: #111;
+            border: 1px solid #303030;
+            border-radius: 8px;
+            padding: 13px 14px;
+            color: white;
+            outline: none;
+            font-family: inherit;
+            font-size: 13px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #666;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .upload-box {
+            border: 1px dashed #414141;
+            border-radius: 9px;
+            padding: 18px;
+            background: #111;
+        }
+
+        .upload-box input[type="file"] {
+            border: none;
+            padding: 0;
+            background: transparent;
+        }
+
+        .upload-help {
+            color: #666;
+            font-size: 11px;
+            margin-top: 7px;
+        }
+
+        .create-profile-button {
+            margin-top: 25px;
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            padding: 13px 21px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .student-hero {
+            min-height: 470px;
+            border: 1px solid #252525;
+            border-radius: 17px;
+            background:
+                radial-gradient(
+                    circle at 82% 45%,
+                    #1d1d1d 0,
+                    transparent 34%
+                ),
+                #0b0b0b;
+            padding: 65px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .student-hero-content {
+            width: 58%;
+        }
+
+        .student-hero h1 {
+            font-size: clamp(43px, 5.5vw, 75px);
+            letter-spacing: -4px;
+            line-height: .98;
+            margin-bottom: 25px;
+        }
+
+        .student-hero p {
+            color: #9c9c9c;
+            font-size: 15px;
+            line-height: 1.75;
+            max-width: 600px;
+            margin-bottom: 28px;
+        }
+
+        .student-hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .student-btn {
+            text-decoration: none;
+            padding: 13px 19px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .student-btn-white {
+            background: white;
+            color: black;
+        }
+
+        .student-btn-dark {
+            border: 1px solid #3b3b3b;
+            color: white;
+        }
+
+
+        /* =========================
+           HOW IT WORKS
+        ========================== */
+
+        .student-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border-top: 1px solid #252525;
+            border-bottom: 1px solid #252525;
+        }
+
+        .student-step {
+            padding: 25px 20px;
+            border-right: 1px solid #252525;
+        }
+
+        .student-step:last-child {
+            border-right: none;
+        }
+
+        .student-step-number {
+            color: #666;
+            font-size: 11px;
+            margin-bottom: 28px;
+        }
+
+        .student-step h3 {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .student-step p {
+            color: #818181;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           TRUST & SAFETY
+        ========================== */
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .trust-card {
+            border: 1px solid #252525;
+            background: #0c0c0c;
+            border-radius: 12px;
+            padding: 27px;
+        }
+
+        .trust-number {
+            color: #666;
+            font-size: 11px;
+            margin-bottom: 30px;
+        }
+
+        .trust-card h3 {
+            font-size: 17px;
+            margin-bottom: 9px;
+        }
+
+        .trust-card p {
+            color: #858585;
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+
+        /* =========================
+           FAQ
+        ========================== */
+
+        .student-faq-list {
+            border-top: 1px solid #252525;
+        }
+
+        .student-faq {
+            border-bottom: 1px solid #252525;
+        }
+
+        .student-faq button {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 21px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .student-faq-icon {
+            color: #777;
+            font-size: 20px;
+        }
+
+        .student-faq-answer {
+            display: none;
+            color: #858585;
+            font-size: 13px;
+            line-height: 1.7;
+            padding: 0 45px 22px 0;
+        }
+
+        .student-faq.open .student-faq-answer {
+            display: block;
+        }
+
+
+        /* =========================
+           FORM MESSAGE
+        ========================== */
+
+        .profile-message {
+            display: none;
+            margin-top: 18px;
+            padding: 12px 14px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================== */
+
+        @media (max-width: 1000px) {
+
+            .students-page {
+                padding: 40px 30px 70px;
+            }
+
+            .student-hero {
+                padding: 45px;
+            }
+
+            .student-hero-content {
+                width: 70%;
+            }
+
+            .student-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .student-step:nth-child(2n) {
+                border-right: none;
+            }
+
+            .student-step {
+                border-bottom: 1px solid #252525;
+            }
+
+        }
+
+
+        /* =========================
+           PHONE
+        ========================== */
+
+        @media (max-width: 720px) {
+
+            .students-page {
+                padding: 32px 18px 60px;
+            }
+
+            .student-section {
+                margin-bottom: 60px;
+            }
+
+            .profile-form-card {
+                padding: 22px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .student-hero {
+                min-height: auto;
+                padding: 32px 24px;
+            }
+
+            .student-hero-content {
+                width: 100%;
+            }
+
+            .student-hero h1 {
+                font-size: 48px;
+                letter-spacing: -3px;
+            }
+
+            .student-hero-buttons {
+                flex-direction: column;
+            }
+
+            .student-btn {
+                width: 100%;
+            }
+
+            .student-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .student-step {
+                border-right: none;
+                border-bottom: 1px solid #252525;
+            }
+
+            .student-step:last-child {
+                border-bottom: none;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-name">Yearnly</div>
+        </div>
+
+        <nav class="nav-section">
+
+            <a href="index.html" class="nav-link">
+                <span class="nav-icon">⌂</span>
+                Home
+            </a>
+
+            <a href="dashboard.html" class="nav-link">
+    <span class="nav-icon">▦</span>
+    Dashboard
+</a>
+
+            <a href="browse.html" class="nav-link">
+                <span class="nav-icon">⌕</span>
+                Browse Opportunities
+            </a>
+
+            <a href="students.html" class="nav-link active">
+                <span class="nav-icon">♙</span>
+                For Students
+            </a>
+
+            <a href="business.html" class="nav-link">
+                <span class="nav-icon">▣</span>
+                For Businesses
+            </a>
+
+        </nav>
+
+        <div class="nav-divider"></div>
+
+        <nav class="nav-section">
+
+            <a href="about.html" class="nav-link">
+                <span class="nav-icon">ⓘ</span>
+                About Us
+            </a>
+
+            <a href="contact.html" class="nav-link">
+                <span class="nav-icon">✉</span>
+                Contact
+            </a>
+
+        </nav>
+
+
+        <!-- ACCOUNT -->
+
+        <div class="account-area">
+
+            <div class="account-menu" id="accountMenu">
+
+                <a href="account.html">
+                    Account Settings
+                </a>
+
+                <a href="login.html">
+                    Log out
+                </a>
+
+            </div>
+
+            <button
+                class="account-button"
+                onclick="toggleAccountMenu()"
+            >
+
+                <div class="avatar">
+                    VM
+                </div>
+
+                <div class="account-info">
+
+                    <span class="account-name">
+                        Vartika Manjhani
+                    </span>
+
+                    <span class="account-email">
+                        yearnly.in@gmail.com
+                    </span>
+
+                </div>
+
+                <span class="account-arrow">
+                    ⌃
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MOBILE HEADER
+    ========================== -->
+
+    <header class="mobile-header">
+
+        <div class="mobile-brand">
+            Yearnly
+        </div>
+
+        <button
+            class="menu-button"
+            onclick="toggleMobileMenu()"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">
+        Dashboard
+    </a>
+        <a href="browse.html">Browse Opportunities</a>
+        <a href="students.html">For Students</a>
+        <a href="business.html">For Businesses</a>
+
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="account.html">Account Settings</a>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+        <div class="students-page">
+
+
+            <!-- =========================
+                 1. CREATE PROFILE
+            ========================== -->
+
+            <section class="student-section profile-section">
+
+                <div class="student-eyebrow">
+                    STUDENTS
+                </div>
+
+                <h1 class="student-heading">
+                    Create your student profile
+                </h1>
+
+                <p class="student-subheading">
+                    Build your profile once and let verified
+                    businesses discover your skills and experience.
+                </p>
+
+
+                <div class="profile-form-card">
+
+                    <form id="studentProfileForm">
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Full Name<span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="studentName"
+                                    placeholder="Enter your full name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Email Address<span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="studentEmail"
+                                    placeholder="Enter your email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Phone Number<span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="studentPhone"
+                                    placeholder="+91 XXXXX XXXXX"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Profile Picture
+                                </label>
+
+                                <div class="upload-box">
+
+                                    <input
+                                        type="file"
+                                        id="profilePicture"
+                                        accept="image/*"
+                                    
+                                    >
+
+                                    <div class="upload-help">
+                                        Upload a profile photo
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+
+    <label>
+        Resume
+    </label>
+
+    <div class="upload-box">
+
+        <input
+            type="file"
+            id="studentResume"
+            accept=".pdf,.doc,.docx"
+        >
+
+        <div class="upload-help">
+            Upload your resume
+        </div>
+
+    </div>
+
+</div>
+                            </div>
+                         
+
+                            <div class="form-group full">
+
+                                <label>
+                                    Description
+                                </label>
+
+                                <textarea
+                                    id="studentDescription"
+                                    placeholder="Tell businesses a little about yourself, your skills and interests..."
+                                ></textarea>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="create-profile-button"
+                        >
+                            Create Profile
+                        </button>
+
+
+                        <div
+                            class="profile-message"
+                            id="profileMessage"
+                        >
+                            Your profile information has been submitted.
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 2. HERO
+            ========================== -->
+
+            <section class="student-section">
+
+                <div class="student-hero">
+
+                    <div class="student-hero-content">
+
+                        <div class="student-eyebrow">
+                            STUDENTS — VERIFIED OPPORTUNITIES ACROSS INDIA
+                        </div>
+
+                        <h1>
+                            Everything you need to land your next opportunity
+                        </h1>
+
+                        <p>
+                            Discover verified part-time jobs, internships,
+                            freelance gigs, volunteer roles and campus
+                            ambassador opportunities that fit your goals.
+                        </p>
+
+
+                        <div class="student-hero-buttons">
+
+                            <a
+                                href="browse.html"
+                                class="student-btn student-btn-white"
+                            >
+                                Browse opportunities
+                            </a>
+
+                            <a
+                                href="contact.html"
+                                class="student-btn student-btn-dark"
+                            >
+                                Contact support
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 3. HOW IT WORKS
+            ========================== -->
+
+            <section class="student-section">
+
+                <div class="student-eyebrow">
+                    HOW IT WORKS
+                </div>
+
+                <h2 class="student-heading">
+                    A student-first experience, end to end
+                </h2>
+
+                <p class="student-subheading">
+                    Everything you need to move from creating your
+                    profile to connecting with the right opportunity.
+                </p>
+
+
+                <div class="student-steps">
+
+
+                    <article class="student-step">
+
+                        <div class="student-step-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Create Profile
+                        </h3>
+
+                        <p>
+                            Build your profile with your skills,
+                            interests and experience.
+                        </p>
+
+                    </article>
+
+
+                    <article class="student-step">
+
+                        <div class="student-step-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Upload Resume
+                        </h3>
+
+                        <p>
+                            Add your resume so businesses can
+                            understand your background.
+                        </p>
+
+                    </article>
+
+
+                    <article class="student-step">
+
+                        <div class="student-step-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Apply for Jobs
+                        </h3>
+
+                        <p>
+                            Find opportunities that match your
+                            interests and apply directly.
+                        </p>
+
+                    </article>
+
+
+                    <article class="student-step">
+
+                        <div class="student-step-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Track Applications
+                        </h3>
+
+                        <p>
+                            Keep track of the opportunities
+                            you've applied for.
+                        </p>
+
+                    </article>
+
+
+                    <article class="student-step">
+
+                        <div class="student-step-number">
+                            05
+                        </div>
+
+                        <h3>
+                            Save Opportunities
+                        </h3>
+
+                        <p>
+                            Keep interesting opportunities
+                            easy to find later.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 4. TRUST & SAFETY
+            ========================== -->
+
+            <section class="student-section">
+
+                <div class="student-eyebrow">
+                    TRUST & SAFETY
+                </div>
+
+                <h2 class="student-heading">
+                    Trust & safety, built in.
+                </h2>
+
+                <p class="student-subheading">
+                    We're building Yearnly to make discovering
+                    opportunities simpler and more trustworthy.
+                </p>
+
+
+                <div class="trust-grid">
+
+
+                    <article class="trust-card">
+
+                        <div class="trust-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Verified businesses only
+                        </h3>
+
+                        <p>
+                            Discover opportunities from businesses
+                            that are reviewed through Yearnly.
+                        </p>
+
+                    </article>
+
+
+                    <article class="trust-card">
+
+                        <div class="trust-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Privacy-first profiles
+                        </h3>
+
+                        <p>
+                            Your profile is designed to share
+                            relevant information while respecting
+                            your privacy.
+                        </p>
+
+                    </article>
+
+
+                    <article class="trust-card">
+
+                        <div class="trust-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Fast applications
+                        </h3>
+
+                        <p>
+                            Clear requirements and straightforward
+                            applications help you spend less time searching.
+                        </p>
+
+                    </article>
+
+
+                    <article class="trust-card">
+
+                        <div class="trust-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Mobile-first experience
+                        </h3>
+
+                        <p>
+                            Yearnly is designed to work smoothly
+                            across phones, tablets and laptops.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 5. FAQ
+            ========================== -->
+
+            <section class="student-section">
+
+                <div class="student-eyebrow">
+                    STUDENT FAQS
+                </div>
+
+                <h2 class="student-heading">
+                    Questions, answered.
+                </h2>
+
+
+                <div class="student-faq-list">
+
+
+                    <div class="student-faq">
+
+                        <button onclick="toggleStudentFAQ(this)">
+
+                            <span>
+                                How do I create my profile?
+                            </span>
+
+                            <span class="student-faq-icon">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="student-faq-answer">
+                            Enter your basic information, upload your
+                            profile picture and add a short description
+                            about yourself and your skills.
+                        </div>
+
+                    </div>
+
+
+                    <div class="student-faq">
+
+                        <button onclick="toggleStudentFAQ(this)">
+
+                            <span>
+                                How do I find opportunities?
+                            </span>
+
+                            <span class="student-faq-icon">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="student-faq-answer">
+                            Go to Browse Opportunities and search using
+                            the opportunity type, category or city/location
+                            you're interested in.
+                        </div>
+
+                    </div>
+
+
+                    <div class="student-faq">
+
+                        <button onclick="toggleStudentFAQ(this)">
+
+                            <span>
+                                Can businesses see my profile?
+                            </span>
+
+                            <span class="student-faq-icon">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="student-faq-answer">
+                            Businesses can view relevant student profile
+                            information when using Yearnly to find
+                            candidates for their opportunities.
+                        </div>
+
+                    </div>
+
+
+                    <div class="student-faq">
+
+                        <button onclick="toggleStudentFAQ(this)">
+
+                            <span>
+                                What happens after I apply?
+                            </span>
+
+                            <span class="student-faq-icon">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="student-faq-answer">
+                            Your application will appear in your dashboard.
+                            If a business accepts your application, the
+                            opportunity will appear as an accepted opportunity
+                            and you'll have a Message option to communicate
+                            with the business.
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="footer">
+
+                © 2026 Yearnly. Don't Yearn. Just Earn.
+
+            </footer>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        function toggleAccountMenu() {
+
+            const menu =
+                document.getElementById("accountMenu");
+
+            menu.classList.toggle("show");
+
+        }
+
+
+        function toggleMobileMenu() {
+
+            const menu =
+                document.getElementById("mobileMenu");
+
+            menu.classList.toggle("show");
+
+        }
+
+
+        function toggleStudentFAQ(button) {
+
+            const item =
+                button.parentElement;
+
+            item.classList.toggle("open");
+
+            const icon =
+                button.querySelector(".student-faq-icon");
+
+            icon.textContent =
+                item.classList.contains("open")
+                    ? "−"
+                    : "+";
+
+        }
+
+
+        document
+            .getElementById("studentProfileForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const message =
+                    document.getElementById("profileMessage");
+
+                message.style.display = "block";
+
+            });
+
+    </script>
+
+</body>
+
+</html>

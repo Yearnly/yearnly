@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Yearnly — Don't Yearn. Just Earn.</title>
+
+    <link rel="stylesheet" href="style.css">
+
+        <style>
+            .hero-title .hero-line {
+                display: block;
+                opacity: 0;
+                transform: translateX(-110px);
+                filter: blur(2.5px);
+            }
+
+            .hero-title .hero-line-one {
+                animation:
+                    heroLineIn
+                    2.0s
+                    cubic-bezier(.16,1,.3,1)
+                    .15s
+                    both;
+            }
+
+            .hero-title .hero-line-two {
+                animation:
+                    heroLineIn
+                    2.0s
+                    cubic-bezier(.16,1,.3,1)
+                    1.15s
+                    both;
+            }
+
+            @keyframes heroLineIn {
+                from {
+                    opacity: 0;
+                    transform: translateX(-110px);
+                    filter: blur(2.5px);
+                }
+
+                68% {
+                    opacity: .94;
+                    filter: blur(.6px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                    filter: blur(0);
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .hero-title .hero-line {
+                    opacity: 1 !important;
+                    transform: none !important;
+                    filter: none !important;
+                    animation: none !important;
+                }
+            }
+        </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         DESKTOP SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-name">Yearnly</div>
+        </div>
+
+        <nav class="nav-section">
+
+            <a href="index.html" class="nav-link active">
+                <span class="nav-icon">⌂</span>
+                Home
+            </a>
+
+            <a href="dashboard.html" class="nav-link">
+    <span class="nav-icon">▦</span>
+    Dashboard
+</a>
+
+            <a href="browse.html" class="nav-link">
+                <span class="nav-icon">⌕</span>
+                Browse Opportunities
+            </a>
+
+            <a href="students.html" class="nav-link">
+                <span class="nav-icon">♙</span>
+                For Students
+            </a>
+
+            <a href="business.html" class="nav-link">
+                <span class="nav-icon">▣</span>
+                For Businesses
+            </a>
+
+        </nav>
+
+        <div class="nav-divider"></div>
+
+        <nav class="nav-section">
+
+            <a href="about.html" class="nav-link">
+                <span class="nav-icon">ⓘ</span>
+                About Us
+            </a>
+
+            <a href="contact.html" class="nav-link">
+                <span class="nav-icon">✉</span>
+                Contact
+            </a>
+
+        </nav>
+
+        <!-- ACCOUNT -->
+
+        <div class="account-area">
+
+            <div class="account-menu" id="accountMenu">
+
+                <a href="account.html">
+                    Account Settings
+                </a>
+
+                <a href="login.html">
+                    Log out
+                </a>
+
+            </div>
+
+            <button
+                class="account-button"
+                onclick="toggleAccountMenu()"
+            >
+
+                <div class="avatar">
+                    Y
+                </div>
+
+                <div class="account-info">
+
+                    <span class="account-name">
+                        Yearnly
+                    </span>
+
+                    <span class="account-email">
+                        Welcome
+                    </span>
+
+                </div>
+
+                <span class="account-arrow">
+                    ⌃
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MOBILE HEADER
+    ========================== -->
+
+    <header class="mobile-header">
+
+        <div class="mobile-brand">
+            Yearnly
+        </div>
+
+        <button
+            class="menu-button"
+            onclick="toggleMobileMenu()"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+    <!-- MOBILE MENU -->
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="dashboard.html">Dashboard</a>
+
+        <a href="browse.html">
+            Browse Opportunities
+        </a>
+
+        <a href="students.html">
+            For Students
+        </a>
+
+        <a href="business.html">
+            For Businesses
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <a href="account.html">
+            Account Settings
+        </a>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main">
+
+        <div class="page">
+
+
+            <!-- =========================
+                 WELCOME
+            ========================== -->
+
+            <section class="welcome">
+
+                <h2>
+                    Great to see you
+                </h2>
+
+                <p>
+                    Discover verified opportunities and connect
+                    with trusted businesses.
+                </p>
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        placeholder="Search opportunities..."
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 HERO
+            ========================== -->
+
+            <section class="hero-card">
+
+                <div class="hero-content">
+
+                    <div class="verified">
+
+                        <span class="verified-dot"></span>
+
+                        Verified opportunities for students
+                        across India
+
+                    </div>
+
+
+                    <h1 class="hero-title">
+
+                        <span class="hero-line hero-line-one">
+                            Don't Yearn.
+                        </span>
+
+                        <span class="hero-line hero-line-two">
+                            Just Earn.
+                        </span>
+
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        Find verified part-time jobs, internships,
+                        freelance gigs, volunteer roles and campus
+                        ambassador opportunities designed for students.
+
+                    </p>
+
+
+                    <div class="button-row">
+
+                        <a
+                            href="browse.html"
+                            class="btn btn-white"
+                        >
+                            Browse opportunities
+                        </a>
+
+
+                        <a
+                            href="about.html"
+                            class="btn btn-outline"
+                        >
+                            Learn about Yearnly
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 YEARnLY BRAND
+            ========================== -->
+
+            <section class="brand-section">
+
+                <div class="brand-large">
+                    Yearnly
+                </div>
+
+                <div class="tagline">
+                    DON'T YEARN. JUST EARN.
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 WHY YEARnLY
+            ========================== -->
+
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        Why Yearnly
+                    </div>
+
+                    <h2>
+                        Opportunities without the guesswork.
+                    </h2>
+
+                    <p>
+                        Yearnly connects students with trusted
+                        businesses and meaningful opportunities.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-grid">
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Trust
+                        </h3>
+
+                        <p>
+                            Businesses are verified so students
+                            can discover opportunities with confidence.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Opportunity
+                        </h3>
+
+                        <p>
+                            From internships and part-time jobs
+                            to freelance and volunteer roles.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Inclusivity
+                        </h3>
+
+                        <p>
+                            Built for students across India,
+                            from metros to smaller cities.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 HOW IT WORKS
+            ========================== -->
+
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        How it works
+                    </div>
+
+                    <h2>
+                        Find your next opportunity.
+                    </h2>
+
+                </div>
+
+
+                <div class="steps">
+
+
+                    <article class="step">
+
+                        <div class="step-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Create your profile
+                        </h3>
+
+                        <p>
+                            Add your skills, interests and
+                            experience to your student profile.
+                        </p>
+
+                    </article>
+
+
+                    <article class="step">
+
+                        <div class="step-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Browse opportunities
+                        </h3>
+
+                        <p>
+                            Explore verified jobs, internships,
+                            freelance roles and more.
+                        </p>
+
+                    </article>
+
+
+                    <article class="step">
+
+                        <div class="step-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Apply and connect
+                        </h3>
+
+                        <p>
+                            Apply directly and communicate with
+                            businesses through Yearnly.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 FAQ
+            ========================== -->
+
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div class="section-label">
+                        FAQs
+                    </div>
+
+                    <h2>
+                        Frequently asked questions.
+                    </h2>
+
+                </div>
+
+
+                <div class="faq-list">
+
+
+                    <div class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            onclick="toggleFAQ(this)"
+                        >
+
+                            <span>
+                                What is Yearnly?
+                            </span>
+
+                            <span class="faq-plus">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            Yearnly connects students with verified
+                            businesses offering part-time jobs,
+                            internships, freelance opportunities,
+                            volunteering and other student-friendly roles.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            onclick="toggleFAQ(this)"
+                        >
+
+                            <span>
+                                Who can use Yearnly?
+                            </span>
+
+                            <span class="faq-plus">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            Students can discover and apply for
+                            opportunities, while businesses can find
+                            motivated student talent.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            onclick="toggleFAQ(this)"
+                        >
+
+                            <span>
+                                Are businesses verified?
+                            </span>
+
+                            <span class="faq-plus">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            Yearnly is designed around verified
+                            businesses and trusted opportunities.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            onclick="toggleFAQ(this)"
+                        >
+
+                            <span>
+                                Is Yearnly available across India?
+                            </span>
+
+                            <span class="faq-plus">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            Yes. Yearnly is being built for students
+                            and businesses across India.
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 FOOTER
+            ========================== -->
+
+            <footer class="footer">
+
+                © 2026 Yearnly.
+                Don't Yearn. Just Earn.
+
+            </footer>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function toggleAccountMenu() {
+
+            const menu =
+                document.getElementById("accountMenu");
+
+            menu.classList.toggle("show");
+
+        }
+
+
+        function toggleMobileMenu() {
+
+            const menu =
+                document.getElementById("mobileMenu");
+
+            menu.classList.toggle("show");
+
+        }
+
+
+        function toggleFAQ(button) {
+
+            const item =
+                button.parentElement;
+
+            item.classList.toggle("open");
+
+            const plus =
+                button.querySelector(".faq-plus");
+
+            if (item.classList.contains("open")) {
+
+                plus.textContent = "−";
+
+            } else {
+
+                plus.textContent = "+";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

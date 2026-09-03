@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up | Yearnly</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .signup-page {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .signup-card {
+            width: 100%;
+            max-width: 520px;
+            background: #0c0c0c;
+            border: 1px solid #252525;
+            border-radius: 16px;
+            padding: 38px;
+        }
+
+        .signup-brand {
+            font-size: 25px;
+            font-weight: 700;
+            margin-bottom: 42px;
+            letter-spacing: -1px;
+        }
+
+        .signup-eyebrow {
+            color: #777;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .signup-card h1 {
+            font-size: 34px;
+            letter-spacing: -1.8px;
+            margin-bottom: 10px;
+        }
+
+        .signup-description {
+            color: #858585;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .signup-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .signup-group label {
+            color: #ddd;
+            font-size: 13px;
+        }
+
+        .signup-group input,
+        .signup-group select {
+            width: 100%;
+            padding: 13px 14px;
+            background: #111;
+            color: white;
+            border: 1px solid #303030;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .signup-group input:focus,
+        .signup-group select:focus {
+            border-color: #666;
+        }
+
+        .account-type {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .account-option {
+            position: relative;
+        }
+
+        .account-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .account-option label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 14px;
+            border: 1px solid #303030;
+            border-radius: 8px;
+            background: #111;
+            color: #999;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .account-option input:checked + label {
+            background: white;
+            border-color: white;
+            color: black;
+        }
+
+        .password-help {
+            color: #666;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .consent-row {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .consent-row input {
+            margin-top: 3px;
+        }
+
+        .consent-row label {
+            color: #888;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .signup-button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+            color: black;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .signup-message {
+            display: none;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #aaa;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .login-text {
+            text-align: center;
+            color: #777;
+            font-size: 12px;
+            margin-top: 25px;
+        }
+
+        .login-text a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 500px) {
+
+            .signup-card {
+                padding: 28px 22px;
+            }
+
+            .signup-card h1 {
+                font-size: 30px;
+            }
+
+            .account-type {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .password-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-wrapper input {
+            padding-right: 82px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 9px;
+            transform: translateY(-50%);
+            border: 0;
+            background: transparent;
+            color: #8d8d8d;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 7px 6px;
+            border-radius: 6px;
+        }
+
+        .password-toggle:hover {
+            color: white;
+            background: #1a1a1a;
+        }
+
+        .password-toggle:focus-visible {
+            outline: 1px solid #666;
+            outline-offset: 2px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main class="signup-page">
+
+        <section class="signup-card">
+
+            <div class="signup-brand">
+                Yearnly
+            </div>
+
+            <div class="signup-eyebrow">
+                GET STARTED
+            </div>
+
+            <h1>
+                Create your account
+            </h1>
+
+            <p class="signup-description">
+                Join Yearnly and start discovering opportunities
+                or connecting with students.
+            </p>
+
+
+            <form
+                class="signup-form"
+                id="signupForm"
+            >
+                 <div class="signup-group">
+
+    <label>
+        What would you like to use Yearnly for?*
+    </label>
+
+    <div class="account-type">
+
+        <div class="account-option">
+
+            <input
+                type="checkbox"
+                id="findOpportunities"
+                name="yearnlyUse"
+                value="find-opportunities"
+            >
+
+            <label for="findOpportunities">
+                🎓 Find Opportunities
+            </label>
+
+        </div>
+
+
+        <div class="account-option">
+
+            <input
+                type="checkbox"
+                id="hireStudents"
+                name="yearnlyUse"
+                value="hire-students"
+            >
+
+            <label for="hireStudents">
+                🏢 Hire Students
+            </label>
+
+        </div>
+
+    </div>
+
+    <span class="password-help">
+        You can select one or both.
+    </span>
+
+</div>
+            
+              <!-- NAME -->
+
+                <div class="signup-group">
+
+                    <label for="name">
+                        Name*
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="signup-group">
+
+                    <label for="email">
+                        Email*
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="signup-group">
+
+                    <label for="phone">
+                        Phone Number*
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="+91 XXXXX XXXXX"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="signup-group">
+
+                    <label for="password">
+                        Password*
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="passwordToggle"
+                            aria-label="Show password"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                    <span class="password-help">
+                        Use at least 8 characters.
+                    </span>
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="signup-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password*
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm your password"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="confirmPasswordToggle"
+                            aria-label="Show confirm password"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONSENT -->
+
+                <div class="consent-row">
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                    >
+
+                    <label for="terms">
+                        I agree to Yearnly's Terms & Conditions
+                        and Privacy Policy.
+                    </label>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="signup-button"
+                >
+                    Create Account
+                </button>
+
+
+                <div
+                    class="signup-message"
+                    id="signupMessage"
+                >
+                    Your account form has been submitted.
+                </div>
+
+            </form>
+
+
+            <div class="login-text">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Log In
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+<script type="module">
+
+    import {
+        auth,
+        database
+    } from "./js/firebase-init.js";
+
+    import {
+        createUserWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+    import {
+        ref,
+        set
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+
+        function setupPasswordToggle(
+            inputId,
+            buttonId
+        ) {
+
+            const input =
+                document.getElementById(
+                    inputId
+                );
+
+            const button =
+                document.getElementById(
+                    buttonId
+                );
+
+            if (!input || !button) {
+                return;
+            }
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    const showing =
+                        input.type === "text";
+
+                    input.type =
+                        showing
+                            ? "password"
+                            : "text";
+
+                    button.textContent =
+                        showing
+                            ? "Show"
+                            : "Hide";
+
+                    button.setAttribute(
+                        "aria-label",
+                        showing
+                            ? "Show password"
+                            : "Hide password"
+                    );
+
+                }
+            );
+
+        }
+
+
+        setupPasswordToggle(
+            "password",
+            "passwordToggle"
+        );
+
+
+        setupPasswordToggle(
+            "confirmPassword",
+            "confirmPasswordToggle"
+        );
+
+
+    document
+        .getElementById("signupForm")
+        .addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+
+            // Get form values
+
+            const name =
+                document.getElementById("name").value.trim();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const phone =
+                document.getElementById("phone").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+            const confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+            const terms =
+                document.getElementById("terms").checked;
+
+            const findOpportunities =
+                document.getElementById("findOpportunities").checked;
+
+            const hireStudents =
+                document.getElementById("hireStudents").checked;
+
+
+            // Check Yearnly usage selection
+
+            if (!findOpportunities && !hireStudents) {
+
+                alert(
+                    "Please select at least one way you want to use Yearnly."
+                );
+
+                return;
+
+            }
+
+
+            // Check password length
+
+            if (password.length < 8) {
+
+                alert(
+                    "Password must be at least 8 characters."
+                );
+
+                return;
+
+            }
+
+
+            // Check passwords
+
+            if (password !== confirmPassword) {
+
+                alert(
+                    "Passwords do not match."
+                );
+
+                return;
+
+            }
+
+
+            // Check terms
+
+            if (!terms) {
+
+                alert(
+                    "Please agree to the Terms & Conditions and Privacy Policy."
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                // Create Firebase account
+
+                const userCredential =
+                    await createUserWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                const user =
+                    userCredential.user;
+
+
+                // Save user information in Realtime Database
+
+                await set(
+                    ref(database, "users/" + user.uid),
+                    {
+
+                        name: name,
+
+                        email: email,
+
+                        phone: phone,
+
+                        uses: {
+
+                            findOpportunities:
+                                findOpportunities,
+
+                            hireStudents:
+                                hireStudents
+
+                        },
+
+                        createdAt:
+                            new Date().toISOString()
+
+                    }
+                );
+
+
+                // Show success message
+
+                const signupMessage =
+                    document.getElementById("signupMessage");
+
+                signupMessage.textContent =
+                    "Account created successfully!";
+
+                signupMessage.style.display =
+                    "block";
+
+
+                // Go to central dashboard
+
+                setTimeout(function() {
+
+                    window.location.href =
+                        "dashboard.html";
+
+                }, 800);
+
+
+            } catch (error) {
+
+                console.error(
+                    "Signup error:",
+                    error
+                );
+
+
+                if (
+                    error.code ===
+                    "auth/email-already-in-use"
+                ) {
+
+                    alert(
+                        "An account with this email already exists."
+                    );
+
+                } else if (
+                    error.code ===
+                    "auth/invalid-email"
+                ) {
+
+                    alert(
+                        "Please enter a valid email address."
+                    );
+
+                } else if (
+                    error.code ===
+                    "auth/weak-password"
+                ) {
+
+                    alert(
+                        "Your password is too weak. Use at least 8 characters."
+                    );
+
+                } else {
+
+                    alert(
+                        "Something went wrong while creating your account. Please try again."
+                    );
+
+                }
+
+            }
+
+        });
+
+</script>
+   
+
+</body>
+
+</html>

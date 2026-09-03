@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | Yearnly</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .contact-page {
+            max-width: 1150px;
+            margin: auto;
+            padding: 55px 45px 80px;
+        }
+
+        .contact-section {
+            margin-bottom: 70px;
+        }
+
+        .contact-eyebrow {
+            color: #777;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 13px;
+        }
+
+        .contact-title {
+            font-size: clamp(42px, 6vw, 72px);
+            letter-spacing: -4px;
+            line-height: .95;
+            margin-bottom: 20px;
+        }
+
+        .contact-intro {
+            color: #929292;
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 650px;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 20px;
+        }
+
+        .contact-info,
+        .contact-form-card {
+            background: #0c0c0c;
+            border: 1px solid #252525;
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .contact-info h2,
+        .contact-form-card h2 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .contact-info > p {
+            color: #888;
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            padding: 18px 0;
+            border-top: 1px solid #252525;
+        }
+
+        .contact-detail-label {
+            color: #666;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 7px;
+        }
+
+        .contact-detail-value {
+            color: #ddd;
+            font-size: 13px;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .contact-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .contact-group label {
+            color: #ddd;
+            font-size: 13px;
+        }
+
+        .contact-group input,
+        .contact-group select,
+        .contact-group textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #303030;
+            border-radius: 8px;
+            background: #111;
+            color: white;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .contact-group input:focus,
+        .contact-group select:focus,
+        .contact-group textarea:focus {
+            border-color: #666;
+        }
+
+        .contact-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .contact-group select {
+            cursor: pointer;
+        }
+
+        .contact-submit {
+            grid-column: 1 / -1;
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            padding: 13px 20px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+
+        .contact-message {
+            display: none;
+            grid-column: 1 / -1;
+            padding: 12px 14px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        @media (max-width: 850px) {
+
+            .contact-page {
+                padding: 40px 30px 65px;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .contact-page {
+                padding: 32px 18px 60px;
+            }
+
+            .contact-title {
+                font-size: 50px;
+            }
+
+            .contact-info,
+            .contact-form-card {
+                padding: 24px;
+            }
+
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-group.full {
+                grid-column: auto;
+            }
+
+            .contact-submit,
+            .contact-message {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-name">Yearnly</div>
+        </div>
+
+        <nav class="nav-section">
+
+            <a href="index.html" class="nav-link">
+                <span class="nav-icon">⌂</span>
+                Home
+            </a>
+
+            <a href="dashboard.html" class="nav-link">
+    <span class="nav-icon">▦</span>
+    Dashboard
+</a>
+
+            <a href="browse.html" class="nav-link">
+                <span class="nav-icon">⌕</span>
+                Browse Opportunities
+            </a>
+
+            <a href="students.html" class="nav-link">
+                <span class="nav-icon">♙</span>
+                For Students
+            </a>
+
+            <a href="business.html" class="nav-link">
+                <span class="nav-icon">▣</span>
+                For Businesses
+            </a>
+
+        </nav>
+
+        <div class="nav-divider"></div>
+
+        <nav class="nav-section">
+
+            <a href="about.html" class="nav-link">
+                <span class="nav-icon">ⓘ</span>
+                About Us
+            </a>
+
+            <a href="contact.html" class="nav-link active">
+                <span class="nav-icon">✉</span>
+                Contact
+            </a>
+
+        </nav>
+
+        <div class="account-area">
+
+            <div class="account-menu" id="accountMenu">
+
+                <a href="account.html">
+                    Account Settings
+                </a>
+
+                <a href="login.html">
+                    Log out
+                </a>
+
+            </div>
+
+            <button
+                class="account-button"
+                onclick="toggleAccountMenu()"
+            >
+
+                <div class="avatar">
+                    VM
+                </div>
+
+                <div class="account-info">
+
+                    <span class="account-name">
+                        Vartika Manjhani
+                    </span>
+
+                    <span class="account-email">
+                        yearnly.in@gmail.com
+                    </span>
+
+                </div>
+
+                <span class="account-arrow">
+                    ⌃
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MOBILE HEADER -->
+
+    <header class="mobile-header">
+
+        <div class="mobile-brand">
+            Yearnly
+        </div>
+
+        <button
+            class="menu-button"
+            onclick="toggleMobileMenu()"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+    <div class="mobile-menu" id="mobileMenu">
+
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">
+        Dashboard
+    </a>
+        <a href="browse.html">Browse Opportunities</a>
+        <a href="students.html">For Students</a>
+        <a href="business.html">For Businesses</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html">Account Settings</a>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="contact-page">
+
+            <section class="contact-section">
+
+                <div class="contact-eyebrow">
+                    CONTACT US
+                </div>
+
+                <h1 class="contact-title">
+                    Let's talk.
+                </h1>
+
+                <p class="contact-intro">
+                    Have a question, suggestion or need help with
+                    Yearnly? Send us a message and we'll get back to you.
+                </p>
+
+            </section>
+
+
+            <section class="contact-layout">
+
+                <!-- CONTACT INFORMATION -->
+
+                <div class="contact-info">
+
+                    <h2>
+                        Get in touch
+                    </h2>
+
+                    <p>
+                        We're here to help students and businesses
+                        make the most out of Yearnly.
+                    </p>
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-label">
+                            Email
+                        </div>
+
+                        <div class="contact-detail-value">
+                            contactyearnly@gmail.com
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-label">
+                            Phone
+                        </div>
+
+                        <div class="contact-detail-value">
+                            +91 XXXXX XXXXX
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-label">
+                            Location
+                        </div>
+
+                        <div class="contact-detail-value">
+                            India
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FORM -->
+
+                <div class="contact-form-card">
+
+                    <h2>
+                        Send us a message
+                    </h2>
+
+                    <form id="contactForm" class="contact-form">
+
+
+                        <div class="contact-group">
+
+                            <label>
+                                Name*
+                            </label>
+
+                            <input
+                                type="text"
+                                id="contactName"
+                                placeholder="Your name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="contact-group">
+
+                            <label>
+                                Email*
+                            </label>
+
+                            <input
+                                type="email"
+                                id="contactEmail"
+                                placeholder="you@example.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="contact-group">
+
+                            <label>
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="contactPhone"
+                                placeholder="+91 XXXXX XXXXX"
+                            >
+
+                        </div>
+
+
+                        <div class="contact-group">
+
+                            <label>
+                                I am a*
+                            </label>
+
+                            <select
+                                id="contactType"
+                                required
+                            >
+
+                                <option value="">
+                                    Select one
+                                </option>
+
+                                <option value="student">
+                                    Student
+                                </option>
+
+                                <option value="business">
+                                    Business
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="contact-group full">
+
+                            <label>
+                                Message*
+                            </label>
+
+                            <textarea
+                                id="contactText"
+                                placeholder="How can we help?"
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="contact-submit"
+                        >
+                            Send Message
+                        </button>
+
+
+                        <div
+                            class="contact-message"
+                            id="contactMessage"
+                        >
+                            Your message has been submitted.
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+            <footer class="footer">
+
+                © 2026 Yearnly. Don't Yearn. Just Earn.
+
+            </footer>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        function toggleAccountMenu() {
+
+            document
+                .getElementById("accountMenu")
+                .classList.toggle("show");
+
+        }
+
+
+        function toggleMobileMenu() {
+
+            document
+                .getElementById("mobileMenu")
+                .classList.toggle("show");
+
+        }
+
+
+        document
+            .getElementById("contactForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                document
+                    .getElementById("contactMessage")
+                    .style.display = "block";
+
+            });
+
+    </script>
+
+</body>
+
+</html>

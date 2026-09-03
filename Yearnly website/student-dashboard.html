@@ -1,0 +1,3546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Student Dashboard | Yearnly</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        .dashboard-page {
+            max-width: 1250px;
+            margin: auto;
+            padding: 45px 40px 70px;
+        }
+
+
+        .dashboard-header {
+            margin-bottom: 35px;
+        }
+
+
+        .dashboard-eyebrow {
+            color: #777;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+
+        .dashboard-header h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            letter-spacing: -3px;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+
+        .dashboard-header p {
+            color: #888;
+            font-size: 14px;
+        }
+
+
+        .dashboard-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+
+        .secondary-button {
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid #383838;
+            color: white;
+        }
+
+
+        .secondary-button:hover {
+            border-color: #666;
+        }
+
+
+        /* SUMMARY */
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 45px;
+        }
+
+
+        .summary-card {
+            background: #0c0c0c;
+            border: 1px solid #252525;
+            border-radius: 13px;
+            padding: 22px;
+        }
+
+
+        .summary-label {
+            color: #777;
+            font-size: 11px;
+            margin-bottom: 18px;
+        }
+
+
+        .summary-number {
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+
+        /* SECTION */
+
+        .dashboard-section {
+            margin-bottom: 55px;
+        }
+
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+
+        .section-heading h2 {
+            font-size: 22px;
+            letter-spacing: -1px;
+        }
+
+
+        .section-heading a {
+            color: #888;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+
+        /* OPPORTUNITIES */
+
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+
+        .opportunity-card {
+            background: #0c0c0c;
+            border: 1px solid #252525;
+            border-radius: 14px;
+            padding: 22px;
+        }
+
+
+        .opportunity-top {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+
+        .opportunity-image {
+            width: 52px;
+            height: 52px;
+            border-radius: 10px;
+            background: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+
+        .opportunity-title {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+
+        .opportunity-business {
+            color: #777;
+            font-size: 12px;
+        }
+
+
+        .opportunity-description {
+            color: #858585;
+            font-size: 12px;
+            line-height: 1.6;
+            margin: 18px 0;
+        }
+
+
+        .opportunity-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 18px;
+        }
+
+
+        .opportunity-tag {
+            border: 1px solid #303030;
+            border-radius: 20px;
+            padding: 6px 9px;
+            color: #aaa;
+            font-size: 10px;
+        }
+
+
+        .opportunity-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            border-top: 1px solid #252525;
+            padding-top: 17px;
+        }
+
+
+        .detail-label {
+            color: #666;
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+
+
+        .detail-value {
+            color: #ddd;
+            font-size: 12px;
+        }
+
+
+        .opportunity-actions {
+            display: flex;
+            gap: 9px;
+            margin-top: 20px;
+        }
+
+
+        .apply-button,
+        .message-button {
+            flex: 1;
+            padding: 11px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+        }
+
+
+        .apply-button {
+            background: white;
+            color: black;
+            border: 1px solid white;
+        }
+
+
+        .apply-button:hover {
+            background: #ddd;
+        }
+
+
+        .apply-button:disabled {
+            background: #333;
+            color: #777;
+            border-color: #333;
+            cursor: not-allowed;
+        }
+
+
+        .message-button {
+            background: transparent;
+            color: white;
+            border: 1px solid #383838;
+        }
+
+
+        .message-button:hover {
+            border-color: #666;
+        }
+
+
+        /* APPLICATIONS */
+
+        .application-list {
+            border-top: 1px solid #252525;
+        }
+
+
+        .application-row {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr auto;
+            gap: 20px;
+            align-items: center;
+            padding: 19px 0;
+            border-bottom: 1px solid #252525;
+        }
+
+
+        .application-name {
+            font-size: 13px;
+            color: #ddd;
+        }
+
+
+        .application-business {
+            color: #777;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+
+        .application-status {
+            font-size: 11px;
+            color: #aaa;
+        }
+
+
+        .status-accepted {
+            color: white;
+        }
+
+
+        .status-pending {
+            color: #777;
+        }
+
+
+        .status-rejected {
+            color: #666;
+        }
+
+
+        .application-message {
+            background: transparent;
+            color: white;
+            border: 1px solid #383838;
+            border-radius: 7px;
+            padding: 8px 13px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+
+        .application-message:hover {
+            border-color: #666;
+        }
+
+
+        /* PROFILE */
+
+        .profile-card {
+            background: #0c0c0c;
+            border: 1px solid #252525;
+            border-radius: 14px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+
+        .profile-left {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+        }
+
+
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+        }
+
+
+        .profile-info h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+
+        .profile-info p {
+            color: #777;
+            font-size: 11px;
+        }
+
+
+        .profile-button {
+            text-decoration: none;
+            color: white;
+            border: 1px solid #383838;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 11px;
+        }
+
+
+        /* EMPTY */
+
+        .empty-state {
+            border: 1px dashed #303030;
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+
+
+        /* APPLICATION MODAL */
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.78);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+
+        .application-modal {
+            width: 100%;
+            max-width: 520px;
+            background: #0b0b0b;
+            border: 1px solid #303030;
+            border-radius: 14px;
+            padding: 25px;
+            box-sizing: border-box;
+        }
+
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+
+        .modal-header h2 {
+            font-size: 22px;
+            letter-spacing: -1px;
+        }
+
+
+        .modal-header p {
+            color: #777;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+
+        .close-modal {
+            background: transparent;
+            color: #777;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+
+        .close-modal:hover {
+            color: white;
+        }
+
+
+        .application-form-group {
+            margin-bottom: 17px;
+        }
+
+
+        .application-form-group label {
+            display: block;
+            color: #ccc;
+            font-size: 11px;
+            margin-bottom: 7px;
+        }
+
+
+        .application-form-group input,
+        .application-form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            background: #111;
+            border: 1px solid #303030;
+            border-radius: 8px;
+            color: white;
+            padding: 12px;
+            font-family: inherit;
+            font-size: 12px;
+            outline: none;
+        }
+
+
+        .application-form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+
+        .application-form-group input:focus,
+        .application-form-group textarea:focus {
+            border-color: #666;
+        }
+
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+
+        .modal-cancel,
+        .modal-submit {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+
+        .modal-cancel {
+            background: transparent;
+            color: white;
+            border: 1px solid #383838;
+        }
+
+
+        .modal-submit {
+            background: white;
+            color: black;
+            border: 1px solid white;
+        }
+
+
+        .modal-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+
+
+        /* ================================
+           MESSAGING
+        ================================= */
+
+        .message-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.82);
+            z-index: 5000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .message-modal.show {
+            display: flex;
+        }
+
+        .chat-box {
+            width: 100%;
+            max-width: 520px;
+            height: min(680px, 90vh);
+            background: #0b0b0b;
+            border: 1px solid #303030;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 18px 20px;
+            border-bottom: 1px solid #282828;
+        }
+
+        .chat-header h2 {
+            font-size: 17px;
+            margin: 0 0 5px;
+        }
+
+        .chat-header p {
+            color: #777;
+            font-size: 11px;
+            margin: 0;
+        }
+
+        .close-chat {
+            background: transparent;
+            border: none;
+            color: #777;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        .close-chat:hover {
+            color: white;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-empty {
+            margin: auto;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .chat-message {
+            max-width: 78%;
+            padding: 10px 13px;
+            border-radius: 11px;
+            font-size: 12px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .chat-message.student {
+            align-self: flex-end;
+            background: white;
+            color: black;
+            border-bottom-right-radius: 3px;
+        }
+
+        .chat-message.business {
+            align-self: flex-start;
+            background: #181818;
+            color: #ddd;
+            border: 1px solid #292929;
+            border-bottom-left-radius: 3px;
+        }
+
+        .chat-time {
+            font-size: 9px;
+            opacity: .5;
+            margin-top: 4px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 8px;
+            padding: 12px;
+            border-top: 1px solid #282828;
+        }
+
+        .chat-input {
+            flex: 1;
+            min-width: 0;
+            height: 44px;
+            box-sizing: border-box;
+            background: #111;
+            border: 1px solid #303030;
+            border-radius: 8px;
+            color: white;
+            padding: 0 12px;
+            font-family: inherit;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: #666;
+        }
+
+        .chat-send {
+            width: 75px;
+            height: 44px;
+            border: 1px solid white;
+            border-radius: 8px;
+            background: white;
+            color: black;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .chat-send:hover {
+            background: #ddd;
+        }
+
+        .chat-send:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        .accepted-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .message-button {
+            border: 1px solid #444;
+            background: transparent;
+            color: white;
+            border-radius: 7px;
+            padding: 8px 13px;
+            font-family: inherit;
+            font-size: 10px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .message-button:hover {
+            border-color: white;
+        }
+
+        @media (max-width: 600px) {
+            .message-modal {
+                padding: 0;
+            }
+
+            .chat-box {
+                width: 100%;
+                height: 100%;
+                max-height: 100%;
+                border-radius: 0;
+            }
+
+            .chat-message {
+                max-width: 85%;
+            }
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .dashboard-page {
+                padding: 35px 25px 60px;
+            }
+
+
+            .opportunity-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .application-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .dashboard-page {
+                padding: 30px 18px 55px;
+            }
+
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .opportunity-actions {
+                flex-direction: column;
+            }
+
+
+            .application-row {
+                grid-template-columns: 1fr;
+                gap: 9px;
+            }
+
+
+            .profile-card {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+
+            .profile-button {
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-name">
+                Yearnly
+            </div>
+
+        </div>
+
+
+        <nav class="nav-section">
+
+            <a
+                href="index.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">⌂</span>
+                Home
+            </a>
+
+
+            <a
+                href="student-dashboard.html"
+                class="nav-link active"
+            >
+                <span class="nav-icon">▦</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="browse.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">⌕</span>
+                Browse Opportunities
+            </a>
+
+
+            <a
+                href="students.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">♙</span>
+                For Students
+            </a>
+
+
+            <a
+                href="business.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">▣</span>
+                For Businesses
+            </a>
+
+        </nav>
+
+
+        <div class="nav-divider"></div>
+
+
+        <nav class="nav-section">
+
+            <a
+                href="about.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">ⓘ</span>
+                About Us
+            </a>
+
+
+            <a
+                href="contact.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">✉</span>
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div class="account-area">
+
+            <button
+                class="account-button"
+                type="button"
+                onclick="window.location.href='account.html'"
+            >
+
+                <div class="avatar">
+                    VM
+                </div>
+
+
+                <div class="account-info">
+
+                    <span class="account-name">
+                        Vartika Manjhani
+                    </span>
+
+                    <span class="account-email">
+                        yearnly.in@gmail.com
+                    </span>
+
+                </div>
+
+
+                <span class="account-arrow">
+                    ⌃
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MOBILE HEADER -->
+
+    <header class="mobile-header">
+
+        <div class="mobile-brand">
+            Yearnly
+        </div>
+
+
+        <button
+            class="menu-button"
+            type="button"
+            onclick="toggleMobileMenu()"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+    <!-- MOBILE MENU -->
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <a href="index.html">
+            Home
+        </a>
+
+
+        <a href="student-dashboard.html">
+            Dashboard
+        </a>
+
+
+        <a href="browse.html">
+            Browse Opportunities
+        </a>
+
+
+        <a href="students.html">
+            For Students
+        </a>
+
+
+        <a href="business.html">
+            For Businesses
+        </a>
+
+
+        <a href="about.html">
+            About Us
+        </a>
+
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+
+        <a href="account.html">
+            Account Settings
+        </a>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="dashboard-page">
+
+
+            <!-- HEADER -->
+
+            <header class="dashboard-header">
+
+                <div class="dashboard-eyebrow">
+                    STUDENT DASHBOARD
+                </div>
+
+
+                <h1 id="welcomeHeading">
+                    Hello.
+                </h1>
+
+
+                <p>
+                    Discover opportunities and keep track of
+                    your applications.
+                </p>
+
+
+                <div class="dashboard-actions">
+
+                    <a
+                        href="business-dashboard.html"
+                        class="secondary-button"
+                    >
+                        Switch to Business Dashboard
+                    </a>
+
+                </div>
+
+            </header>
+
+
+            <!-- SUMMARY -->
+
+            <section class="summary-grid">
+
+                <div class="summary-card">
+
+                    <div class="summary-label">
+                        Applications
+                    </div>
+
+
+                    <div
+                        class="summary-number"
+                        id="applicationsCount"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-label">
+                        Accepted
+                    </div>
+
+
+                    <div
+                        class="summary-number"
+                        id="acceptedCount"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-label">
+                        Saved
+                    </div>
+
+
+                    <div
+                        class="summary-number"
+                        id="savedCount"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- OPPORTUNITIES -->
+
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <h2>
+                        Opportunities for you
+                    </h2>
+
+
+                    <a href="browse.html">
+                        Browse all →
+                    </a>
+
+                </div>
+
+
+                <div
+                    class="opportunity-grid"
+                    id="opportunityGrid"
+                >
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="opportunityEmpty"
+                    style="display:none;"
+                >
+                    No open opportunities are available right now.
+                </div>
+
+            </section>
+
+
+            <!-- MY APPLICATIONS -->
+
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <h2>
+                        My Applications
+                    </h2>
+
+                </div>
+
+
+                <div
+                    class="application-list"
+                    id="applicationList"
+                >
+
+                    <div class="empty-state">
+                        You haven't applied to any opportunities yet.
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ACCEPTED -->
+
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <h2>
+                        Accepted Opportunities
+                    </h2>
+
+                </div>
+
+
+                <div
+                    id="acceptedList"
+                >
+
+                    <div class="empty-state">
+                        When a business accepts your application,
+                        the opportunity will appear here.
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROFILE -->
+
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <h2>
+                        Your Profile
+                    </h2>
+
+                </div>
+
+
+                <div class="profile-card">
+
+                    <div class="profile-left">
+
+                        <div
+                            class="profile-avatar"
+                            id="profileAvatar"
+                        >
+                            Y
+                        </div>
+
+
+                        <div class="profile-info">
+
+                            <h3 id="profileName">
+                                Student
+                            </h3>
+
+
+                            <p>
+                                Complete your profile so businesses
+                                can learn more about you.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="students.html"
+                        class="profile-button"
+                    >
+                        Edit Profile
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <footer class="footer">
+
+                © 2026 Yearnly. Don't Yearn. Just Earn.
+
+            </footer>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- MESSAGE MODAL -->
+
+    <div
+        class="message-modal"
+        id="messageModal"
+    >
+
+        <div class="chat-box">
+
+            <div class="chat-header">
+
+                <div>
+                    <h2 id="chatBusinessName">
+                        Business
+                    </h2>
+
+                    <p id="chatOpportunityName">
+                        Opportunity
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="close-chat"
+                    onclick="closeChat()"
+                    aria-label="Close chat"
+                >
+                    ×
+                </button>
+
+            </div>
+
+            <div
+                class="chat-messages"
+                id="chatMessages"
+            >
+                <div class="chat-empty">
+                    No messages yet. Start the conversation.
+                </div>
+            </div>
+
+            <form
+                class="chat-input-area"
+                id="chatForm"
+            >
+
+                <input
+                    type="text"
+                    class="chat-input"
+                    id="chatInput"
+                    placeholder="Write a message..."
+                    autocomplete="off"
+                    maxlength="1000"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="chat-send"
+                    id="chatSendButton"
+                >
+                    Send
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- APPLICATION MODAL -->
+
+    <div
+        class="modal-overlay"
+        id="applicationModal"
+    >
+
+        <div class="application-modal">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Apply for Opportunity
+                    </h2>
+
+
+                    <p id="modalOpportunityName">
+                        Opportunity
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="close-modal"
+                    onclick="closeApplicationModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="applicationForm">
+
+                <div class="application-form-group">
+
+                    <label for="applicationPhone">
+                        Phone Number
+                    </label>
+
+
+                    <input
+                        type="tel"
+                        id="applicationPhone"
+                        placeholder="Enter your phone number"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="application-form-group">
+
+                    <label for="applicationMessage">
+                        Why are you interested in this opportunity?
+                    </label>
+
+
+                    <textarea
+                        id="applicationMessage"
+                        placeholder="Tell the business a little about yourself and why you'd be a good fit..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="modal-cancel"
+                        onclick="closeApplicationModal()"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="modal-submit"
+                        id="submitApplicationButton"
+                    >
+                        Submit Application
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- FIREBASE -->
+
+    <script type="module">
+
+        import {
+            auth,
+            database
+        } from "./js/firebase-init.js";
+
+
+        import {
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+        import {
+            ref,
+            get,
+            push,
+            set,
+            update,
+            onValue
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+        let currentUser = null;
+
+        let currentUserData = null;
+
+        let selectedOpportunity = null;
+
+        let opportunities = [];
+
+        let applications = [];
+
+        let selectedChatOpportunity = null;
+        let chatListener = null;
+
+
+        /* ================================
+           MOBILE MENU
+        ================================= */
+
+        window.toggleMobileMenu =
+            function() {
+
+                document
+                    .getElementById("mobileMenu")
+                    .classList
+                    .toggle("show");
+
+            };
+
+
+        /* ================================
+           AUTHENTICATION
+        ================================= */
+
+        onAuthStateChanged(
+            auth,
+            async function(user) {
+
+                if (!user) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+
+                currentUser =
+                    user;
+
+
+                await loadUserProfile();
+
+                loadOpportunities();
+
+                loadApplications();
+
+            }
+        );
+
+
+        /* ================================
+           USER PROFILE
+        ================================= */
+
+        async function loadUserProfile() {
+
+            try {
+
+                const userRef =
+                    ref(
+                        database,
+                        "users/" +
+                        currentUser.uid
+                    );
+
+
+                const snapshot =
+                    await get(userRef);
+
+
+                if (
+                    snapshot.exists()
+                ) {
+
+                    currentUserData =
+                        snapshot.val();
+
+                } else {
+
+                    currentUserData = {};
+
+                }
+
+
+                const name =
+                    currentUserData.name ||
+                    currentUser.displayName ||
+                    "Student";
+
+
+                const firstName =
+                    name
+                        .trim()
+                        .split(" ")[0];
+
+
+                document
+                    .getElementById(
+                        "welcomeHeading"
+                    )
+                    .textContent =
+                    "Hello, " +
+                    firstName +
+                    ".";
+
+
+                document
+                    .getElementById(
+                        "profileName"
+                    )
+                    .textContent =
+                    name;
+
+
+                const initials =
+                    getInitials(name);
+
+
+                document
+                    .getElementById(
+                        "profileAvatar"
+                    )
+                    .textContent =
+                    initials;
+
+            } catch (error) {
+
+                console.error(
+                    "Profile loading error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        function getInitials(
+            name
+        ) {
+
+            const parts =
+                name
+                    .trim()
+                    .split(/\s+/);
+
+
+            if (
+                parts.length === 1
+            ) {
+
+                return parts[0]
+                    .charAt(0)
+                    .toUpperCase();
+
+            }
+
+
+            return (
+                parts[0].charAt(0) +
+                parts[parts.length - 1]
+                    .charAt(0)
+            ).toUpperCase();
+
+        }
+
+
+        /* ================================
+           OPPORTUNITIES
+        ================================= */
+
+        function loadOpportunities() {
+
+            const opportunitiesRef =
+                ref(
+                    database,
+                    "opportunities"
+                );
+
+
+            onValue(
+                opportunitiesRef,
+                function(snapshot) {
+
+                    const data =
+                        snapshot.val();
+
+
+                    opportunities = [];
+
+
+                    if (data) {
+
+                        Object.keys(data)
+                            .forEach(
+                                function(id) {
+
+                                    const opportunity =
+                                        data[id];
+
+
+                                    if (
+                                        isOpportunityOpen(
+                                            opportunity
+                                        )
+                                    ) {
+
+                                        opportunities.push({
+
+                                            id: id,
+
+                                            ...opportunity
+
+                                        });
+
+                                    }
+
+                                }
+                            );
+
+                    }
+
+
+                    renderOpportunities();
+
+                },
+                function(error) {
+
+                    console.error(
+                        "Opportunity loading error:",
+                        error
+                    );
+
+                }
+            );
+
+        }
+
+
+        function isOpportunityOpen(
+            opportunity
+        ) {
+
+            const status =
+                (
+                    opportunity.status ||
+                    ""
+                ).toLowerCase();
+
+
+            if (
+                status !== "open"
+            ) {
+
+                return false;
+
+            }
+
+
+            if (
+                opportunity.deadline
+            ) {
+
+                const today =
+                    new Date();
+
+
+                today.setHours(
+                    0,
+                    0,
+                    0,
+                    0
+                );
+
+
+                const deadline =
+                    new Date(
+                        opportunity.deadline +
+                        "T23:59:59"
+                    );
+
+
+                if (
+                    deadline < today
+                ) {
+
+                    return false;
+
+                }
+
+            }
+
+
+            return true;
+
+        }
+
+
+        function renderOpportunities() {
+
+            const grid =
+                document
+                    .getElementById(
+                        "opportunityGrid"
+                    );
+
+
+            const empty =
+                document
+                    .getElementById(
+                        "opportunityEmpty"
+                    );
+
+
+            grid.innerHTML =
+                "";
+
+
+            if (
+                opportunities.length === 0
+            ) {
+
+                empty.style.display =
+                    "block";
+
+                return;
+
+            }
+
+
+            empty.style.display =
+                "none";
+
+
+            opportunities
+                .slice(0, 4)
+                .forEach(
+                    function(opportunity) {
+
+                        createOpportunityCard(
+                            opportunity
+                        );
+
+                    }
+                );
+
+        }
+
+
+        function createOpportunityCard(
+            opportunity
+        ) {
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "opportunity-card";
+
+
+            const company =
+                opportunity.companyName ||
+                "Business";
+
+
+            const title =
+                opportunity.title ||
+                "Opportunity";
+
+
+            const city =
+                opportunity.city ||
+                "Not specified";
+
+
+            const pay =
+                opportunity.pay ||
+                "Not specified";
+
+
+            const duration =
+                opportunity.duration ||
+                "Not specified";
+
+
+            const deadline =
+                opportunity.deadline
+                    ? formatDate(
+                        opportunity.deadline
+                    )
+                    : "Not specified";
+
+
+            const type =
+                opportunity.type ||
+                "Opportunity";
+
+
+            const category =
+                opportunity.category ||
+                "Other";
+
+
+            const mode =
+                opportunity.workMode ||
+                "Not specified";
+
+
+            const description =
+                opportunity.description ||
+                "No description provided.";
+
+
+            const initial =
+                company
+                    .charAt(0)
+                    .toUpperCase();
+
+
+            card.innerHTML = `
+
+                <div class="opportunity-top">
+
+                    <div class="opportunity-image">
+                        ${escapeHTML(initial)}
+                    </div>
+
+
+                    <div>
+
+                        <h3 class="opportunity-title">
+                            ${escapeHTML(title)}
+                        </h3>
+
+
+                        <div class="opportunity-business">
+                            ${escapeHTML(company)}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <p class="opportunity-description">
+                    ${escapeHTML(description)}
+                </p>
+
+
+                <div class="opportunity-tags">
+
+                    <span class="opportunity-tag">
+                        ${escapeHTML(type)}
+                    </span>
+
+
+                    <span class="opportunity-tag">
+                        ${escapeHTML(category)}
+                    </span>
+
+
+                    <span class="opportunity-tag">
+                        ${escapeHTML(mode)}
+                    </span>
+
+                </div>
+
+
+                <div class="opportunity-details">
+
+                    <div>
+
+                        <div class="detail-label">
+                            Location
+                        </div>
+
+
+                        <div class="detail-value">
+                            ${escapeHTML(city)}
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="detail-label">
+                            Pay
+                        </div>
+
+
+                        <div class="detail-value">
+                            ${escapeHTML(pay)}
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="detail-label">
+                            Duration
+                        </div>
+
+
+                        <div class="detail-value">
+                            ${escapeHTML(duration)}
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="detail-label">
+                            Deadline
+                        </div>
+
+
+                        <div class="detail-value">
+                            ${escapeHTML(deadline)}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="opportunity-actions">
+
+                    <button
+                        type="button"
+                        class="apply-button"
+                    >
+                        Apply
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="message-button"
+                    >
+                        Message
+                    </button>
+
+                </div>
+
+            `;
+
+
+            const applyButton =
+                card.querySelector(
+                    ".apply-button"
+                );
+
+
+            const messageButton =
+                card.querySelector(
+                    ".message-button"
+                );
+
+
+            applyButton.addEventListener(
+                "click",
+                function() {
+
+                    openApplicationModal(
+                        opportunity
+                    );
+
+                }
+            );
+
+
+            messageButton.addEventListener(
+                "click",
+                function() {
+                    openChat(opportunity);
+                }
+            );
+
+
+            checkIfAlreadyApplied(
+                opportunity.id,
+                applyButton
+            );
+
+
+            document
+                .getElementById(
+                    "opportunityGrid"
+                )
+                .appendChild(card);
+
+        }
+
+
+        /* ================================
+           CHECK DUPLICATE APPLICATION
+        ================================= */
+
+        async function checkIfAlreadyApplied(
+            opportunityId,
+            button
+        ) {
+
+            if (!currentUser) {
+
+                return;
+
+            }
+
+
+            try {
+
+                const applicationsRef =
+                    ref(
+                        database,
+                        "applications"
+                    );
+
+
+                const snapshot =
+                    await get(
+                        applicationsRef
+                    );
+
+
+                if (
+                    !snapshot.exists()
+                ) {
+
+                    return;
+
+                }
+
+
+                const data =
+                    snapshot.val();
+
+
+                const alreadyApplied =
+                    Object.values(data)
+                        .some(
+                            function(application) {
+
+                                return (
+                                    application.studentId ===
+                                    currentUser.uid
+                                    &&
+                                    application.opportunityId ===
+                                    opportunityId
+                                );
+
+                            }
+                        );
+
+
+                if (
+                    alreadyApplied
+                ) {
+
+                    button.disabled =
+                        true;
+
+                    button.textContent =
+                        "Applied";
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Application check error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+
+        /* ================================
+           MESSAGING
+        ================================= */
+
+        function getConversationId(
+            studentId,
+            businessId,
+            opportunityId
+        ) {
+
+            return (
+                studentId +
+                "_" +
+                businessId +
+                "_" +
+                opportunityId
+            );
+
+        }
+
+
+        function openAcceptedChat(
+            application
+        ) {
+
+            openChat({
+
+                id:
+                    application.opportunityId,
+
+                businessId:
+                    application.businessId,
+
+                companyName:
+                    application.businessName,
+
+                title:
+                    application.opportunityTitle
+
+            });
+
+        }
+
+
+        window.openChat =
+            function(opportunity) {
+
+                if (
+                    !currentUser ||
+                    !opportunity
+                ) {
+                    return;
+                }
+
+                const businessId =
+                    opportunity.businessId;
+
+                if (!businessId) {
+
+                    alert(
+                        "This opportunity is missing the business information needed to start a conversation."
+                    );
+
+                    return;
+
+                }
+
+                if (chatListener) {
+
+                    chatListener();
+
+                    chatListener = null;
+
+                }
+
+                selectedChatOpportunity =
+                    opportunity;
+
+                document
+                    .getElementById(
+                        "chatBusinessName"
+                    )
+                    .textContent =
+                    opportunity.companyName ||
+                    "Business";
+
+                document
+                    .getElementById(
+                        "chatOpportunityName"
+                    )
+                    .textContent =
+                    opportunity.title ||
+                    "Opportunity";
+
+                document
+                    .getElementById(
+                        "chatMessages"
+                    )
+                    .innerHTML = `
+                        <div class="chat-empty">
+                            Loading messages...
+                        </div>
+                    `;
+
+                document
+                    .getElementById(
+                        "messageModal"
+                    )
+                    .classList
+                    .add("show");
+
+                const conversationId =
+                    getConversationId(
+                        currentUser.uid,
+                        businessId,
+                        opportunity.id
+                    );
+
+                const messagesRef =
+                    ref(
+                        database,
+                        "messages/" +
+                        conversationId +
+                        "/messages"
+                    );
+
+                chatListener =
+                    onValue(
+                        messagesRef,
+                        function(snapshot) {
+
+                            renderChatMessages(
+                                snapshot.val()
+                            );
+
+                        },
+                        function(error) {
+
+                            console.error(
+                                "Chat loading error:",
+                                error
+                            );
+
+                            document
+                                .getElementById(
+                                    "chatMessages"
+                                )
+                                .innerHTML = `
+                                    <div class="chat-empty">
+                                        Unable to load messages.
+                                    </div>
+                                `;
+
+                        }
+                    );
+
+                setTimeout(
+                    function() {
+
+                        document
+                            .getElementById(
+                                "chatInput"
+                            )
+                            .focus();
+
+                    },
+                    100
+                );
+
+            };
+
+
+        window.closeChat =
+            function() {
+
+                if (chatListener) {
+
+                    chatListener();
+
+                    chatListener = null;
+
+                }
+
+                selectedChatOpportunity =
+                    null;
+
+                document
+                    .getElementById(
+                        "messageModal"
+                    )
+                    .classList
+                    .remove("show");
+
+                document
+                    .getElementById(
+                        "chatInput"
+                    )
+                    .value =
+                    "";
+
+            };
+
+
+        function renderChatMessages(
+            data
+        ) {
+
+            const container =
+                document
+                    .getElementById(
+                        "chatMessages"
+                    );
+
+            container.innerHTML =
+                "";
+
+            if (!data) {
+
+                container.innerHTML = `
+                    <div class="chat-empty">
+                        No messages yet. Start the conversation.
+                    </div>
+                `;
+
+                return;
+
+            }
+
+            const messages =
+                Object.keys(data)
+                    .map(
+                        function(id) {
+
+                            return {
+                                id: id,
+                                ...data[id]
+                            };
+
+                        }
+                    )
+                    .sort(
+                        function(a, b) {
+
+                            return (
+                                new Date(
+                                    a.sentAt ||
+                                    0
+                                ) -
+                                new Date(
+                                    b.sentAt ||
+                                    0
+                                )
+                            );
+
+                        }
+                    );
+
+            messages.forEach(
+                function(message) {
+
+                    const bubble =
+                        document.createElement(
+                            "div"
+                        );
+
+                    const isStudent =
+                        message.senderId ===
+                        currentUser.uid;
+
+                    bubble.className =
+                        "chat-message " +
+                        (
+                            isStudent
+                                ? "student"
+                                : "business"
+                        );
+
+                    const text =
+                        document.createElement(
+                            "div"
+                        );
+
+                    text.textContent =
+                        message.text ||
+                        "";
+
+                    const time =
+                        document.createElement(
+                            "div"
+                        );
+
+                    time.className =
+                        "chat-time";
+
+                    time.textContent =
+                        formatChatTime(
+                            message.sentAt
+                        );
+
+                    bubble.appendChild(
+                        text
+                    );
+
+                    bubble.appendChild(
+                        time
+                    );
+
+                    container.appendChild(
+                        bubble
+                    );
+
+                }
+            );
+
+            container.scrollTop =
+                container.scrollHeight;
+
+        }
+
+
+        function formatChatTime(
+            value
+        ) {
+
+            if (!value) {
+                return "";
+            }
+
+            const date =
+                new Date(value);
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+                return "";
+            }
+
+            return date.toLocaleTimeString(
+                "en-IN",
+                {
+                    hour: "numeric",
+                    minute: "2-digit"
+                }
+            );
+
+        }
+
+
+        document
+            .getElementById(
+                "chatForm"
+            )
+            .addEventListener(
+                "submit",
+                async function(event) {
+
+                    event.preventDefault();
+
+                    if (
+                        !currentUser ||
+                        !selectedChatOpportunity
+                    ) {
+
+                        return;
+
+                    }
+
+                    const input =
+                        document
+                            .getElementById(
+                                "chatInput"
+                            );
+
+                    const sendButton =
+                        document
+                            .getElementById(
+                                "chatSendButton"
+                            );
+
+                    const text =
+                        input.value.trim();
+
+                    if (!text) {
+                        return;
+                    }
+
+                    const businessId =
+                        selectedChatOpportunity.businessId;
+
+                    const opportunityId =
+                        selectedChatOpportunity.id;
+
+                    if (!businessId) {
+
+                        alert(
+                            "This opportunity is missing the business ID."
+                        );
+
+                        return;
+
+                    }
+
+                    const conversationId =
+                        getConversationId(
+                            currentUser.uid,
+                            businessId,
+                            opportunityId
+                        );
+
+                    sendButton.disabled =
+                        true;
+
+                    sendButton.textContent =
+                        "...";
+
+                    try {
+
+                        const conversationRef =
+                            ref(
+                                database,
+                                "messages/" +
+                                conversationId
+                            );
+
+                        await update(
+                            conversationRef,
+                            {
+                                studentId:
+                                    currentUser.uid,
+
+                                businessId:
+                                    businessId,
+
+                                opportunityId:
+                                    opportunityId,
+
+                                opportunityTitle:
+                                    selectedChatOpportunity.title ||
+                                    "",
+
+                                businessName:
+                                    selectedChatOpportunity.companyName ||
+                                    "",
+
+                                updatedAt:
+                                    new Date()
+                                        .toISOString()
+                            }
+                        );
+
+                        const messagesRef =
+                            ref(
+                                database,
+                                "messages/" +
+                                conversationId +
+                                "/messages"
+                            );
+
+                        const newMessageRef =
+                            push(
+                                messagesRef
+                            );
+
+                        await set(
+                            newMessageRef,
+                            {
+                                senderId:
+                                    currentUser.uid,
+
+                                senderType:
+                                    "student",
+
+                                text:
+                                    text,
+
+                                sentAt:
+                                    new Date()
+                                        .toISOString()
+                            }
+                        );
+
+                        input.value =
+                            "";
+
+                    } catch (error) {
+
+                        console.error(
+                            "Message sending error:",
+                            error
+                        );
+
+                        alert(
+                            "Unable to send the message. Please check your Firebase Realtime Database rules and try again."
+                        );
+
+                    }
+
+                    sendButton.disabled =
+                        false;
+
+                    sendButton.textContent =
+                        "Send";
+
+                }
+            );
+
+
+        /* ================================
+           APPLICATION MODAL
+        ================================= */
+
+        function openApplicationModal(
+            opportunity
+        ) {
+
+            selectedOpportunity =
+                opportunity;
+
+
+            document
+                .getElementById(
+                    "modalOpportunityName"
+                )
+                .textContent =
+                opportunity.title +
+                " — " +
+                (
+                    opportunity.companyName ||
+                    "Business"
+                );
+
+
+            const phoneInput =
+                document
+                    .getElementById(
+                        "applicationPhone"
+                    );
+
+
+            phoneInput.value =
+                currentUserData?.phone ||
+                "";
+
+
+            document
+                .getElementById(
+                    "applicationMessage"
+                )
+                .value =
+                "";
+
+
+            document
+                .getElementById(
+                    "applicationModal"
+                )
+                .classList
+                .add("show");
+
+        }
+
+
+        window.closeApplicationModal =
+            function() {
+
+                selectedOpportunity =
+                    null;
+
+
+                document
+                    .getElementById(
+                        "applicationModal"
+                    )
+                    .classList
+                    .remove("show");
+
+            };
+
+
+        /* ================================
+           SUBMIT APPLICATION
+        ================================= */
+
+        document
+            .getElementById(
+                "applicationForm"
+            )
+            .addEventListener(
+                "submit",
+                async function(event) {
+
+                    event.preventDefault();
+
+
+                    if (
+                        !currentUser
+                    ) {
+
+                        alert(
+                            "Please log in first."
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (
+                        !selectedOpportunity
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const phone =
+                        document
+                            .getElementById(
+                                "applicationPhone"
+                            )
+                            .value
+                            .trim();
+
+
+                    const message =
+                        document
+                            .getElementById(
+                                "applicationMessage"
+                            )
+                            .value
+                            .trim();
+
+
+                    if (
+                        !phone ||
+                        !message
+                    ) {
+
+                        alert(
+                            "Please complete all fields."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const submitButton =
+                        document
+                            .getElementById(
+                                "submitApplicationButton"
+                            );
+
+
+                    submitButton.disabled =
+                        true;
+
+                    submitButton.textContent =
+                        "Submitting...";
+
+
+                    try {
+
+                        // CHECK AGAIN BEFORE SAVING
+
+                        const applicationsRef =
+                            ref(
+                                database,
+                                "applications"
+                            );
+
+
+                        const snapshot =
+                            await get(
+                                applicationsRef
+                            );
+
+
+                        if (
+                            snapshot.exists()
+                        ) {
+
+                            const data =
+                                snapshot.val();
+
+
+                            const alreadyApplied =
+                                Object.values(data)
+                                    .some(
+                                        function(application) {
+
+                                            return (
+                                                application.studentId ===
+                                                currentUser.uid
+                                                &&
+                                                application.opportunityId ===
+                                                selectedOpportunity.id
+                                            );
+
+                                        }
+                                    );
+
+
+                            if (
+                                alreadyApplied
+                            ) {
+
+                                alert(
+                                    "You have already applied for this opportunity."
+                                );
+
+
+                                submitButton.disabled =
+                                    false;
+
+                                submitButton.textContent =
+                                    "Submit Application";
+
+
+                                closeApplicationModal();
+
+                                return;
+
+                            }
+
+                        }
+
+
+                        const newApplicationRef =
+                            push(
+                                applicationsRef
+                            );
+
+
+                        const applicationId =
+                            newApplicationRef.key;
+
+
+                        const studentName =
+                            currentUserData?.name ||
+                            currentUser.displayName ||
+                            "Student";
+
+
+                        await set(
+                            newApplicationRef,
+                            {
+
+                                id:
+                                    applicationId,
+
+                                opportunityId:
+                                    selectedOpportunity.id,
+
+                                opportunityTitle:
+                                    selectedOpportunity.title ||
+                                    "",
+
+                                businessId:
+                                    selectedOpportunity.businessId ||
+                                    "",
+
+                                businessName:
+                                    selectedOpportunity.companyName ||
+                                    "",
+
+                                studentId:
+                                    currentUser.uid,
+
+                                studentName:
+                                    studentName,
+
+                                studentEmail:
+                                    currentUser.email ||
+                                    "",
+
+                                phone:
+                                    phone,
+
+                                message:
+                                    message,
+
+                                status:
+                                    "Pending",
+
+                                appliedAt:
+                                    new Date()
+                                        .toISOString()
+
+                            }
+                        );
+
+
+                        alert(
+                            "Application submitted successfully!"
+                        );
+
+
+                        closeApplicationModal();
+
+
+                        submitButton.disabled =
+                            false;
+
+                        submitButton.textContent =
+                            "Submit Application";
+
+
+                        loadApplications();
+
+
+                        renderOpportunities();
+
+                    } catch (error) {
+
+                        console.error(
+                            "Application submission error:",
+                            error
+                        );
+
+
+                        alert(
+                            "Unable to submit your application. Please try again."
+                        );
+
+
+                        submitButton.disabled =
+                            false;
+
+                        submitButton.textContent =
+                            "Submit Application";
+
+                    }
+
+                }
+            );
+
+
+        /* ================================
+           APPLICATIONS
+        ================================= */
+
+        function loadApplications() {
+
+            const applicationsRef =
+                ref(
+                    database,
+                    "applications"
+                );
+
+
+            onValue(
+                applicationsRef,
+                function(snapshot) {
+
+                    const data =
+                        snapshot.val();
+
+
+                    applications = [];
+
+
+                    if (data) {
+
+                        Object.keys(data)
+                            .forEach(
+                                function(id) {
+
+                                    const application =
+                                        data[id];
+
+
+                                    if (
+                                        application.studentId ===
+                                        currentUser.uid
+                                    ) {
+
+                                        applications.push({
+
+                                            id: id,
+
+                                            ...application
+
+                                        });
+
+                                    }
+
+                                }
+                            );
+
+                    }
+
+
+                    renderApplications();
+
+                },
+                function(error) {
+
+                    console.error(
+                        "Application loading error:",
+                        error
+                    );
+
+                }
+            );
+
+        }
+
+
+        function renderApplications() {
+
+            const list =
+                document
+                    .getElementById(
+                        "applicationList"
+                    );
+
+
+            const acceptedList =
+                document
+                    .getElementById(
+                        "acceptedList"
+                    );
+
+
+            const applicationsCount =
+                document
+                    .getElementById(
+                        "applicationsCount"
+                    );
+
+
+            const acceptedCount =
+                document
+                    .getElementById(
+                        "acceptedCount"
+                    );
+
+
+            applicationsCount.textContent =
+                applications.length;
+
+
+            const acceptedApplications =
+                applications.filter(
+                    function(application) {
+
+                        return (
+                            (
+                                application.status ||
+                                ""
+                            ).toLowerCase() ===
+                            "accepted"
+                        );
+
+                    }
+                );
+
+
+            acceptedCount.textContent =
+                acceptedApplications.length;
+
+
+            if (
+                applications.length === 0
+            ) {
+
+                list.innerHTML = `
+
+                    <div class="empty-state">
+
+                        You haven't applied to any
+                        opportunities yet.
+
+                    </div>
+
+                `;
+
+            } else {
+
+                list.innerHTML =
+                    "";
+
+
+                applications
+                    .slice()
+                    .reverse()
+                    .forEach(
+                        function(application) {
+
+                            createApplicationRow(
+                                application,
+                                list
+                            );
+
+                        }
+                    );
+
+            }
+
+
+            if (
+                acceptedApplications.length === 0
+            ) {
+
+                acceptedList.innerHTML = `
+
+                    <div class="empty-state">
+
+                        When a business accepts your application,
+                        the opportunity will appear here.
+
+                    </div>
+
+                `;
+
+            } else {
+
+                acceptedList.innerHTML =
+                    "";
+
+
+                acceptedApplications
+                    .forEach(
+                        function(application) {
+
+                            const card =
+                                document.createElement(
+                                    "div"
+                                );
+
+                            card.className =
+                                "profile-card";
+
+                            card.innerHTML = `
+
+                                <div>
+
+                                    <div
+                                        class="application-name"
+                                    >
+                                        ${escapeHTML(
+                                            application.opportunityTitle ||
+                                            "Opportunity"
+                                        )}
+                                    </div>
+
+                                    <div
+                                        class="application-business"
+                                    >
+                                        ${escapeHTML(
+                                            application.businessName ||
+                                            "Business"
+                                        )}
+                                    </div>
+
+                                </div>
+
+                                <div class="accepted-actions">
+
+                                    <div
+                                        class="
+                                            application-status
+                                            status-accepted
+                                        "
+                                    >
+                                        Accepted
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        class="message-button"
+                                    >
+                                        Message
+                                    </button>
+
+                                </div>
+
+                            `;
+
+                            const messageButton =
+                                card.querySelector(
+                                    ".message-button"
+                                );
+
+                            messageButton.addEventListener(
+                                "click",
+                                function() {
+
+                                    openAcceptedChat(
+                                        application
+                                    );
+
+                                }
+                            );
+
+                            acceptedList
+                                .appendChild(
+                                    card
+                                );
+
+                        }
+                    );
+
+            }
+
+        }
+
+
+        function createApplicationRow(
+            application,
+            container
+        ) {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            row.className =
+                "application-row";
+
+
+            const status =
+                application.status ||
+                "Pending";
+
+
+            const statusClass =
+                status.toLowerCase() ===
+                    "accepted"
+                    ? "status-accepted"
+                    : status.toLowerCase() ===
+                        "rejected"
+                        ? "status-rejected"
+                        : "status-pending";
+
+
+            const appliedDate =
+                application.appliedAt
+                    ? formatDateTime(
+                        application.appliedAt
+                    )
+                    : "—";
+
+
+            row.innerHTML = `
+
+                <div>
+
+                    <div class="application-name">
+                        ${escapeHTML(
+                            application.opportunityTitle ||
+                            "Opportunity"
+                        )}
+                    </div>
+
+
+                    <div class="application-business">
+                        ${escapeHTML(
+                            application.businessName ||
+                            "Business"
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="application-status ${statusClass}">
+                    ${escapeHTML(status)}
+                </div>
+
+
+                <div class="application-status">
+                    ${escapeHTML(appliedDate)}
+                </div>
+
+
+                <div>
+
+                    <button
+                        type="button"
+                        class="application-message"
+                        onclick="viewApplication('${application.id}')"
+                    >
+                        View
+                    </button>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                row
+            );
+
+        }
+
+
+        window.viewApplication =
+            function(
+                applicationId
+            ) {
+
+                const application =
+                    applications.find(
+                        function(item) {
+
+                            return (
+                                item.id ===
+                                applicationId
+                            );
+
+                        }
+                    );
+
+
+                if (
+                    !application
+                ) {
+
+                    return;
+
+                }
+
+
+                alert(
+                    "Application status: " +
+                    (
+                        application.status ||
+                        "Pending"
+                    ) +
+                    "\n\n" +
+                    "Opportunity: " +
+                    (
+                        application.opportunityTitle ||
+                        "Opportunity"
+                    ) +
+                    "\n\n" +
+                    "Business: " +
+                    (
+                        application.businessName ||
+                        "Business"
+                    )
+                );
+
+            };
+
+
+        /* ================================
+           DATE
+        ================================= */
+
+        function formatDate(
+            dateString
+        ) {
+
+            const date =
+                new Date(
+                    dateString +
+                    "T00:00:00"
+                );
+
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+
+                return dateString;
+
+            }
+
+
+            return date.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+        }
+
+
+        function formatDateTime(
+            dateString
+        ) {
+
+            const date =
+                new Date(
+                    dateString
+                );
+
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+
+                return "—";
+
+            }
+
+
+            return date.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+        }
+
+
+        /* ================================
+           HTML ESCAPE
+        ================================= */
+
+        function escapeHTML(
+            value
+        ) {
+
+            return String(value)
+
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

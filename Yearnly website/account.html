@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Account Settings | Yearnly</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .account-page {
+            max-width: 1050px;
+            margin: auto;
+            padding: 55px 45px 80px;
+        }
+
+        .account-header {
+            margin-bottom: 30px;
+        }
+
+        .account-eyebrow {
+            color: #777;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .account-header h1 {
+            font-size: clamp(38px, 5vw, 58px);
+            letter-spacing: -3px;
+            margin-bottom: 10px;
+        }
+
+        .account-header p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* WHITE BANNER */
+
+        .account-banner {
+            background: white;
+            color: black;
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            margin-bottom: 20px;
+        }
+
+        .account-avatar-large {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .account-banner h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .account-banner p {
+            font-size: 13px;
+            opacity: .65;
+        }
+
+        /* SETTINGS */
+
+        .settings-card {
+            background: #0c0c0c;
+            border: 1px solid #252525;
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .settings-title {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .settings-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .settings-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .settings-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .settings-group label {
+            color: #ddd;
+            font-size: 13px;
+        }
+
+        .settings-group input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #303030;
+            border-radius: 8px;
+            background: #111;
+            color: white;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .settings-group input:focus {
+            border-color: #666;
+        }
+
+        .save-button {
+            grid-column: 1 / -1;
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            padding: 13px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .account-message {
+            display: none;
+            grid-column: 1 / -1;
+            padding: 12px 14px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        /* ACCOUNT ACTIONS */
+
+        .account-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .account-action {
+            padding: 11px 17px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 12px;
+            border: 1px solid #333;
+            color: #ddd;
+        }
+
+        .account-action:hover {
+            border-color: #666;
+        }
+
+        @media (max-width: 700px) {
+
+            .account-page {
+                padding: 35px 18px 60px;
+            }
+
+            .account-banner {
+                padding: 25px;
+            }
+
+            .settings-card {
+                padding: 22px;
+            }
+
+            .settings-form {
+                grid-template-columns: 1fr;
+            }
+
+            .settings-group.full,
+            .save-button,
+            .account-message {
+                grid-column: auto;
+            }
+
+            .account-actions {
+                flex-direction: column;
+            }
+
+            .account-action {
+                text-align: center;
+            }
+        }
+
+        .account-banner-info {
+            min-width: 0;
+        }
+
+        .account-email-note {
+            color: #777;
+            font-size: 10px;
+            margin-top: 6px;
+        }
+
+        .account-loading {
+            color: #777;
+            font-size: 12px;
+        }
+
+        .settings-group input[readonly] {
+            opacity: .65;
+            cursor: not-allowed;
+        }
+
+        .account-message.success {
+            display: block;
+            color: #cfcfcf;
+            border-color: #3d3d3d;
+        }
+
+        .account-message.error {
+            display: block;
+            color: #ffb4b4;
+            border-color: #5a3030;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-name">Yearnly</div>
+        </div>
+
+        <nav class="nav-section">
+
+            <a href="index.html" class="nav-link">
+                <span class="nav-icon">⌂</span>
+                Home
+            </a>
+
+            <a href="dashboard.html" class="nav-link">
+    <span class="nav-icon">▦</span>
+    Dashboard
+</a>
+
+
+            <a href="browse.html" class="nav-link">
+                <span class="nav-icon">⌕</span>
+                Browse Opportunities
+            </a>
+
+            <a href="students.html" class="nav-link">
+                <span class="nav-icon">♙</span>
+                For Students
+            </a>
+
+            <a href="business.html" class="nav-link">
+                <span class="nav-icon">▣</span>
+                For Businesses
+            </a>
+
+        </nav>
+
+        <div class="nav-divider"></div>
+
+        <nav class="nav-section">
+
+            <a href="about.html" class="nav-link">
+                <span class="nav-icon">ⓘ</span>
+                About Us
+            </a>
+
+            <a href="contact.html" class="nav-link">
+                <span class="nav-icon">✉</span>
+                Contact
+            </a>
+
+        </nav>
+
+        <div class="account-area">
+
+            <div class="account-menu">
+
+                <a href="account.html">
+                    Account Settings
+                </a>
+
+                <a
+                    href="#"
+                    onclick="logoutUser(event)"
+                >
+                    Log out
+                </a>
+
+            </div>
+
+            <button
+                class="account-button"
+                type="button"
+                onclick="toggleAccountMenu()"
+            >
+
+                <div
+                    class="avatar"
+                    id="navAvatar"
+                >
+                    Y
+                </div>
+
+                <div class="account-info">
+
+                    <span
+                        class="account-name"
+                        id="navAccountName"
+                    >
+                        Account
+                    </span>
+
+                    <span
+                        class="account-email"
+                        id="navAccountEmail"
+                    >
+                        Loading...
+                    </span>
+
+                </div>
+
+                <span class="account-arrow">
+                    ⌃
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MOBILE HEADER -->
+
+    <header class="mobile-header">
+
+        <div class="mobile-brand">
+            Yearnly
+        </div>
+
+        <button
+            class="menu-button"
+            onclick="toggleMobileMenu()"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+    <div class="mobile-menu" id="mobileMenu">
+
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">
+        Dashboard
+    </a>
+        <a href="browse.html">Browse Opportunities</a>
+        <a href="students.html">For Students</a>
+        <a href="business.html">For Businesses</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html">Account Settings</a>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="account-page">
+
+            <div class="account-header">
+
+                <div class="account-eyebrow">
+                    ACCOUNT
+                </div>
+
+                <h1>
+                    Account Settings
+                </h1>
+
+                <p>
+                    Manage your personal account information.
+                </p>
+
+            </div>
+
+
+            <!-- WHITE BANNER -->
+
+            <section class="account-banner">
+
+                <div
+                    class="account-avatar-large"
+                    id="accountAvatarLarge"
+                >
+                    Y
+                </div>
+
+                <div class="account-banner-info">
+
+                    <h2
+                        id="accountDisplayName"
+                    >
+                        <span class="account-loading">
+                            Loading account...
+                        </span>
+                    </h2>
+
+                    <p
+                        id="accountTypeLabel"
+                    >
+                        Yearnly account
+                    </p>
+
+                    <div
+                        class="account-email-note"
+                        id="accountEmailNote"
+                    >
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SETTINGS -->
+
+            <section class="settings-card">
+
+                <h2 class="settings-title">
+                    Personal information
+                </h2>
+
+                <form
+                    class="settings-form"
+                    id="accountForm"
+                >
+
+                    <div class="settings-group">
+
+                        <label>
+                            Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="accountName"
+                            placeholder="Enter your name"
+                            autocomplete="name"
+                            required
+                        >
+
+                        <div
+                            class="account-email-note"
+                            id="accountEmailHelp"
+                        >
+                            Your login email is managed by Firebase.
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-group">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="accountEmail"
+                            readonly
+                            aria-describedby="accountEmailHelp"
+                        >
+
+                    </div>
+
+
+                    <div class="settings-group full">
+
+                        <label>
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="accountPhone"
+                            placeholder="+91 XXXXX XXXXX"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        Save Changes
+                    </button>
+
+
+                    <div
+                        class="account-message"
+                        id="accountMessage"
+                    >
+                        Your account information has been updated.
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <div class="account-actions">
+
+                <a
+                    href="index.html"
+                    class="account-action"
+                >
+                    Back to Home
+                </a>
+
+                <a
+                    href="login.html"
+                    class="account-action"
+                >
+                    Log Out
+                </a>
+
+            </div>
+
+
+            <footer class="footer">
+
+                © 2026 Yearnly. Don't Yearn. Just Earn.
+
+            </footer>
+
+        </div>
+
+    </main>
+
+
+
+    <script type="module">
+
+        import {
+            auth,
+            database
+        } from "./js/firebase-init.js";
+
+
+        import {
+            onAuthStateChanged,
+            updateProfile,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+        import {
+            ref,
+            get,
+            update
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+        let currentUser = null;
+
+        let currentUserData = {};
+
+
+        function getInitials(name) {
+
+            const safeName =
+                (name || "Yearnly").trim();
+
+            const parts =
+                safeName
+                    .split(/\s+/)
+                    .filter(Boolean);
+
+            if (!parts.length) {
+                return "Y";
+            }
+
+            if (parts.length === 1) {
+                return parts[0]
+                    .charAt(0)
+                    .toUpperCase();
+            }
+
+            return (
+                parts[0].charAt(0) +
+                parts[parts.length - 1].charAt(0)
+            ).toUpperCase();
+
+        }
+
+
+        function getDisplayName(userData, user) {
+
+            return (
+                userData.name ||
+                user.displayName ||
+                "Yearnly User"
+            );
+
+        }
+
+
+        function getAccountType(userData) {
+
+            const role =
+                userData.role ||
+                userData.accountType ||
+                userData.type ||
+                "";
+
+            if (
+                String(role).toLowerCase()
+                    .includes("business")
+            ) {
+
+                return "Business account";
+
+            }
+
+            if (
+                String(role).toLowerCase()
+                    .includes("student")
+            ) {
+
+                return "Student account";
+
+            }
+
+            const use =
+                userData.yearnlyUse;
+
+            if (
+                typeof use === "string" &&
+                use.includes("hire")
+            ) {
+
+                return "Business account";
+
+            }
+
+            if (
+                Array.isArray(use) &&
+                use.some(
+                    function(item) {
+                        return String(item)
+                            .includes("hire");
+                    }
+                )
+            ) {
+
+                return "Business account";
+
+            }
+
+            return "Yearnly account";
+
+        }
+
+
+        function setText(
+            id,
+            value
+        ) {
+
+            const element =
+                document.getElementById(id);
+
+            if (element) {
+                element.textContent =
+                    value;
+            }
+
+        }
+
+
+        function updateAccountUI(
+            user,
+            userData
+        ) {
+
+            const name =
+                getDisplayName(
+                    userData,
+                    user
+                );
+
+            const email =
+                user.email ||
+                "";
+
+            const initials =
+                getInitials(name);
+
+            setText(
+                "navAvatar",
+                initials
+            );
+
+            setText(
+                "navAccountName",
+                name
+            );
+
+            setText(
+                "navAccountEmail",
+                email
+            );
+
+            setText(
+                "accountAvatarLarge",
+                initials
+            );
+
+            setText(
+                "accountDisplayName",
+                name
+            );
+
+            setText(
+                "accountTypeLabel",
+                getAccountType(
+                    userData
+                )
+            );
+
+            setText(
+                "accountEmailNote",
+                email
+            );
+
+            const nameInput =
+                document.getElementById(
+                    "accountName"
+                );
+
+            const emailInput =
+                document.getElementById(
+                    "accountEmail"
+                );
+
+            const phoneInput =
+                document.getElementById(
+                    "accountPhone"
+                );
+
+            if (nameInput) {
+                nameInput.value =
+                    name;
+            }
+
+            if (emailInput) {
+                emailInput.value =
+                    email;
+            }
+
+            if (phoneInput) {
+                phoneInput.value =
+                    userData.phone ||
+                    userData.phoneNumber ||
+                    "";
+            }
+
+        }
+
+
+        async function loadAccount() {
+
+            try {
+
+                const userRef =
+                    ref(
+                        database,
+                        "users/" +
+                        currentUser.uid
+                    );
+
+                const snapshot =
+                    await get(
+                        userRef
+                    );
+
+                currentUserData =
+                    snapshot.exists()
+                        ? snapshot.val()
+                        : {};
+
+                updateAccountUI(
+                    currentUser,
+                    currentUserData
+                );
+
+                setupDashboardLinks(
+                    currentUserData
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Account loading error:",
+                    error
+                );
+
+                updateAccountUI(
+                    currentUser,
+                    {}
+                );
+
+                setupDashboardLinks({});
+
+                showMessage(
+                    "Unable to load your profile information.",
+                    true
+                );
+
+            }
+
+        }
+
+
+        function setupDashboardLinks(
+            userData
+        ) {
+
+            const desktopLink =
+                document.querySelector(
+                    '.nav-link[href="dashboard.html"]'
+                );
+
+            /*
+               account.html itself uses the old generic dashboard
+               link in the layout, so we resolve it by account role.
+            */
+
+            const role =
+                String(
+                    userData.role ||
+                    userData.accountType ||
+                    userData.type ||
+                    ""
+                ).toLowerCase();
+
+            let dashboard =
+                "student-dashboard.html";
+
+            if (
+                role.includes("business")
+            ) {
+
+                dashboard =
+                    "business-dashboard.html";
+
+            }
+
+            const mobileLink =
+                document.getElementById(
+                    "mobileDashboardLink"
+                );
+
+            if (mobileLink) {
+
+                mobileLink.href =
+                    dashboard;
+
+            }
+
+            if (desktopLink) {
+
+                desktopLink.href =
+                    dashboard;
+
+            }
+
+        }
+
+
+        function showMessage(
+            message,
+            isError
+        ) {
+
+            const box =
+                document.getElementById(
+                    "accountMessage"
+                );
+
+            box.textContent =
+                message;
+
+            box.className =
+                "account-message " +
+                (
+                    isError
+                        ? "error"
+                        : "success"
+                );
+
+        }
+
+
+        window.toggleMobileMenu =
+            function() {
+
+                document
+                    .getElementById(
+                        "mobileMenu"
+                    )
+                    .classList
+                    .toggle("show");
+
+            };
+
+
+        window.toggleAccountMenu =
+            function() {
+
+                document
+                    .querySelector(
+                        ".account-menu"
+                    )
+                    .classList
+                    .toggle("show");
+
+            };
+
+
+        window.logoutUser =
+            async function(event) {
+
+                event.preventDefault();
+
+                try {
+
+                    await signOut(auth);
+
+                    window.location.href =
+                        "login.html";
+
+                } catch (error) {
+
+                    console.error(
+                        "Logout error:",
+                        error
+                    );
+
+                    window.location.href =
+                        "login.html";
+
+                }
+
+            };
+
+
+        onAuthStateChanged(
+            auth,
+            async function(user) {
+
+                if (!user) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+                currentUser =
+                    user;
+
+                await loadAccount();
+
+            }
+        );
+
+
+        document
+            .getElementById(
+                "accountForm"
+            )
+            .addEventListener(
+                "submit",
+                async function(event) {
+
+                    event.preventDefault();
+
+                    if (!currentUser) {
+
+                        return;
+
+                    }
+
+                    const name =
+                        document
+                            .getElementById(
+                                "accountName"
+                            )
+                            .value
+                            .trim();
+
+                    const phone =
+                        document
+                            .getElementById(
+                                "accountPhone"
+                            )
+                            .value
+                            .trim();
+
+                    if (!name) {
+
+                        showMessage(
+                            "Please enter your name.",
+                            true
+                        );
+
+                        return;
+
+                    }
+
+                    const saveButton =
+                        document.querySelector(
+                            ".save-button"
+                        );
+
+                    saveButton.disabled =
+                        true;
+
+                    saveButton.textContent =
+                        "Saving...";
+
+                    try {
+
+                        const userRef =
+                            ref(
+                                database,
+                                "users/" +
+                                currentUser.uid
+                            );
+
+                        await update(
+                            userRef,
+                            {
+                                name:
+                                    name,
+
+                                phone:
+                                    phone
+                            }
+                        );
+
+                        await updateProfile(
+                            currentUser,
+                            {
+                                displayName:
+                                    name
+                            }
+                        );
+
+                        currentUserData =
+                            {
+                                ...currentUserData,
+                                name:
+                                    name,
+                                phone:
+                                    phone
+                            };
+
+                        updateAccountUI(
+                            currentUser,
+                            currentUserData
+                        );
+
+                        showMessage(
+                            "Your account information has been updated.",
+                            false
+                        );
+
+                    } catch (error) {
+
+                        console.error(
+                            "Account save error:",
+                            error
+                        );
+
+                        showMessage(
+                            "Unable to save your changes. Please try again.",
+                            true
+                        );
+
+                    }
+
+                    saveButton.disabled =
+                        false;
+
+                    saveButton.textContent =
+                        "Save Changes";
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>

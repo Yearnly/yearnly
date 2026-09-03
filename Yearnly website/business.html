@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For Businesses | Yearnly</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .business-page {
+            max-width: 1250px;
+            margin: auto;
+            padding: 50px 45px 80px;
+        }
+
+        .business-section {
+            margin-bottom: 90px;
+        }
+
+        .business-eyebrow {
+            color: #777;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 13px;
+        }
+
+        .business-heading {
+            font-size: clamp(32px, 4vw, 54px);
+            letter-spacing: -2.5px;
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .business-subheading {
+            color: #969696;
+            font-size: 14px;
+            line-height: 1.7;
+            max-width: 650px;
+        }
+
+        /* FORM */
+
+        .business-form-card {
+            background: #0c0c0c;
+            border: 1px solid #252525;
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 32px;
+            max-width: 950px;
+        }
+
+        .business-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .business-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .business-form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .business-form-group label {
+            font-size: 13px;
+            color: #ddd;
+        }
+
+        .business-form-group input,
+        .business-form-group textarea {
+            width: 100%;
+            background: #111;
+            border: 1px solid #303030;
+            border-radius: 8px;
+            padding: 13px 14px;
+            color: white;
+            outline: none;
+            font-family: inherit;
+            font-size: 13px;
+        }
+
+        .business-form-group input:focus,
+        .business-form-group textarea:focus {
+            border-color: #666;
+        }
+
+        .business-form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .business-upload {
+            border: 1px dashed #414141;
+            border-radius: 9px;
+            padding: 18px;
+            background: #111;
+        }
+
+        .business-upload input {
+            border: none;
+            padding: 0;
+            background: transparent;
+        }
+
+        .business-upload-help {
+            color: #666;
+            font-size: 11px;
+            margin-top: 7px;
+        }
+
+        .register-button {
+            margin-top: 25px;
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            padding: 13px 21px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .business-message {
+            display: none;
+            margin-top: 18px;
+            padding: 12px 14px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        /* WHAT YOU CAN DO */
+
+        .business-features {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border-top: 1px solid #252525;
+            border-bottom: 1px solid #252525;
+        }
+
+        .business-feature {
+            padding: 25px 18px;
+            border-right: 1px solid #252525;
+        }
+
+        .business-feature:last-child {
+            border-right: none;
+        }
+
+        .business-feature-number {
+            color: #666;
+            font-size: 11px;
+            margin-bottom: 28px;
+        }
+
+        .business-feature h3 {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .business-feature p {
+            color: #818181;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* HERO */
+
+        .business-hero {
+            min-height: 440px;
+            border: 1px solid #252525;
+            border-radius: 17px;
+            background:
+                radial-gradient(
+                    circle at 82% 45%,
+                    #1d1d1d 0,
+                    transparent 34%
+                ),
+                #0b0b0b;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .business-hero-content {
+            max-width: 720px;
+        }
+
+        .business-hero h1 {
+            font-size: clamp(42px, 5vw, 70px);
+            letter-spacing: -4px;
+            line-height: .98;
+            margin-bottom: 24px;
+        }
+
+        .business-hero p {
+            color: #9c9c9c;
+            font-size: 15px;
+            line-height: 1.75;
+            max-width: 600px;
+            margin-bottom: 28px;
+        }
+
+        .business-hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .business-btn {
+            text-decoration: none;
+            padding: 13px 19px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .business-btn-white {
+            background: white;
+            color: black;
+        }
+
+        .business-btn-dark {
+            border: 1px solid #3b3b3b;
+            color: white;
+        }
+
+        /* FAQ */
+
+        .business-faq-list {
+            border-top: 1px solid #252525;
+        }
+
+        .business-faq {
+            border-bottom: 1px solid #252525;
+        }
+
+        .business-faq button {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 21px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .business-faq-icon {
+            color: #777;
+            font-size: 20px;
+        }
+
+        .business-faq-answer {
+            display: none;
+            color: #858585;
+            font-size: 13px;
+            line-height: 1.7;
+            padding: 0 45px 22px 0;
+        }
+
+        .business-faq.open .business-faq-answer {
+            display: block;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 1000px) {
+
+            .business-page {
+                padding: 40px 30px 70px;
+            }
+
+            .business-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .business-feature:nth-child(2n) {
+                border-right: none;
+            }
+
+            .business-feature {
+                border-bottom: 1px solid #252525;
+            }
+        }
+
+        /* PHONE */
+
+        @media (max-width: 720px) {
+
+            .business-page {
+                padding: 32px 18px 60px;
+            }
+
+            .business-section {
+                margin-bottom: 60px;
+            }
+
+            .business-form-card {
+                padding: 22px;
+            }
+
+            .business-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .business-form-group.full {
+                grid-column: auto;
+            }
+
+            .business-hero {
+                min-height: auto;
+                padding: 32px 24px;
+            }
+
+            .business-hero h1 {
+                font-size: 48px;
+                letter-spacing: -3px;
+            }
+
+            .business-hero-buttons {
+                flex-direction: column;
+            }
+
+            .business-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .business-features {
+                grid-template-columns: 1fr;
+            }
+
+            .business-feature {
+                border-right: none;
+                border-bottom: 1px solid #252525;
+            }
+
+            .business-feature:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-name">Yearnly</div>
+        </div>
+
+        <nav class="nav-section">
+
+            <a href="index.html" class="nav-link">
+                <span class="nav-icon">⌂</span>
+                Home
+            </a>
+
+            <a href="dashboard.html" class="nav-link">
+    <span class="nav-icon">▦</span>
+    Dashboard
+</a>
+
+            <a href="browse.html" class="nav-link">
+                <span class="nav-icon">⌕</span>
+                Browse Opportunities
+            </a>
+
+            <a href="students.html" class="nav-link">
+                <span class="nav-icon">♙</span>
+                For Students
+            </a>
+
+            <a href="business.html" class="nav-link active">
+                <span class="nav-icon">▣</span>
+                For Businesses
+            </a>
+
+        </nav>
+
+        <div class="nav-divider"></div>
+
+        <nav class="nav-section">
+
+            <a href="about.html" class="nav-link">
+                <span class="nav-icon">ⓘ</span>
+                About Us
+            </a>
+
+            <a href="contact.html" class="nav-link">
+                <span class="nav-icon">✉</span>
+                Contact
+            </a>
+
+        </nav>
+
+        <div class="account-area">
+
+            <div class="account-menu" id="accountMenu">
+
+                <a href="account.html">
+                    Account Settings
+                </a>
+
+                <a href="login.html">
+                    Log out
+                </a>
+
+            </div>
+
+            <button
+                class="account-button"
+                onclick="toggleAccountMenu()"
+            >
+
+                <div class="avatar">
+                    VM
+                </div>
+
+                <div class="account-info">
+
+                    <span class="account-name">
+                        Vartika Manjhani
+                    </span>
+
+                    <span class="account-email">
+                        yearnly.in@gmail.com
+                    </span>
+
+                </div>
+
+                <span class="account-arrow">
+                    ⌃
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MOBILE HEADER -->
+
+    <header class="mobile-header">
+
+        <div class="mobile-brand">
+            Yearnly
+        </div>
+
+        <button
+            class="menu-button"
+            onclick="toggleMobileMenu()"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">
+        Dashboard
+    </a>
+        <a href="browse.html">Browse Opportunities</a>
+        <a href="students.html">For Students</a>
+        <a href="business.html">For Businesses</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html">Account Settings</a>
+
+    </div>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="business-page">
+
+
+            <!-- =========================
+                 REGISTER BUSINESS
+            ========================== -->
+
+            <section class="business-section">
+
+                <div class="business-eyebrow">
+                    BUSINESSES
+                </div>
+
+                <h1 class="business-heading">
+                    Register your business
+                </h1>
+
+                <p class="business-subheading">
+                    Create your business profile and connect
+                    with students looking for meaningful opportunities.
+                </p>
+
+
+                <div class="business-form-card">
+
+                    <form id="businessForm">
+
+                        <div class="business-form-grid">
+
+
+                            <div class="business-form-group">
+
+                                <label>
+                                    Business Name*
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="businessName"
+                                    placeholder="Enter business name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="business-form-group">
+
+                                <label>
+                                    Contact Email*
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="businessEmail"
+                                    placeholder="Enter business email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="business-form-group">
+
+                                <label>
+                                    Phone*
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="businessPhone"
+                                    placeholder="+91 XXXXX XXXXX"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="business-form-group">
+
+                                <label>
+                                    Website
+                                </label>
+
+                                <input
+                                    type="url"
+                                    id="businessWebsite"
+                                    placeholder="https://"
+                                >
+
+                            </div>
+
+
+                            <div class="business-form-group full">
+
+                                <label>
+                                    Business Description*
+                                </label>
+
+                                <textarea
+                                    id="businessDescription"
+                                    placeholder="Tell students about your business..."
+                                    required
+                                ></textarea>
+
+                            </div>
+
+
+                            <div class="business-form-group full">
+
+                                <label>
+                                    Business Logo
+                                </label>
+
+                                <div class="business-upload">
+
+                                    <input
+                                        type="file"
+                                        id="businessLogo"
+                                        accept="image/"
+                                        
+                                    >
+
+                                    <div class="business-upload-help">
+                                        Upload your business logo
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="register-button"
+                        >
+                            Register Business
+                        </button>
+
+
+                        <div
+                            class="business-message"
+                            id="businessMessage"
+                        >
+                            Your business registration has been submitted.
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 HERO
+            ========================== -->
+
+            <section class="business-section">
+
+                <div class="business-hero">
+
+                    <div class="business-hero-content">
+
+                        <div class="business-eyebrow">
+                            FOR BUSINESSES
+                        </div>
+
+                        <h1>
+                            Everything you need to hire students—end to end
+                        </h1>
+
+                        <p>
+                            Find motivated students, post internships and
+                            jobs, manage applications and connect with
+                            candidates through Yearnly.
+                        </p>
+
+                        <div class="business-hero-buttons">
+
+                            <a
+                                href="post-opportunity.html"
+                                class="business-btn business-btn-white"
+                            >
+                                <a href="post-opportunity.html" class="btn btn-white">
+    Post an Opportunity
+</a>
+            
+
+                            <a
+                                href="contact.html"
+                                class="business-btn business-btn-dark"
+                            >
+                                Contact support
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 WHAT YOU CAN DO
+            ========================== -->
+
+            <section class="business-section">
+
+                <div class="business-eyebrow">
+                    WHAT YOU CAN DO
+                </div>
+
+                <h2 class="business-heading">
+                    Everything you need to hire students
+                </h2>
+
+                <p class="business-subheading">
+                    From posting your first opportunity to communicating
+                    with candidates, Yearnly keeps the process simple.
+                </p>
+
+
+                <div class="business-features">
+
+
+                    <article class="business-feature">
+
+                        <div class="business-feature-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Register your business
+                        </h3>
+
+                        <p>
+                            Create a business profile with your
+                            important information.
+                        </p>
+
+                    </article>
+
+
+                    <article class="business-feature">
+
+                        <div class="business-feature-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Post jobs & internships
+                        </h3>
+
+                        <p>
+                            Publish opportunities students can
+                            discover and apply for.
+                        </p>
+
+                    </article>
+
+
+                    <article class="business-feature">
+
+                        <div class="business-feature-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Manage applicants
+                        </h3>
+
+                        <p>
+                            Review applications and find students
+                            who match your requirements.
+                        </p>
+
+                    </article>
+
+
+                    <article class="business-feature">
+
+                        <div class="business-feature-number">
+                            04
+                        </div>
+
+                        <h3>
+                            View student profiles
+                        </h3>
+
+                        <p>
+                            Discover student skills, experience
+                            and other relevant information.
+                        </p>
+
+                    </article>
+
+
+                    <article class="business-feature">
+
+                        <div class="business-feature-number">
+                            05
+                        </div>
+
+                        <h3>
+                            Contact candidates
+                        </h3>
+
+                        <p>
+                            Message suitable candidates directly
+                            through Yearnly.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 BUSINESS FAQ
+            ========================== -->
+
+            <section class="business-section">
+
+                <div class="business-eyebrow">
+                    BUSINESS FAQS
+                </div>
+
+                <h2 class="business-heading">
+                    Questions, answered.
+                </h2>
+
+
+                <div class="business-faq-list">
+
+
+                    <div class="business-faq">
+
+                        <button onclick="toggleBusinessFAQ(this)">
+
+                            <span>
+                                What types of roles can we post?
+                            </span>
+
+                            <span class="business-faq-icon">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="business-faq-answer">
+                            You can post part-time jobs, internships,
+                            freelance work, volunteer roles, and
+                            campus ambassador programs.
+                        </div>
+
+                    </div>
+
+
+                    <div class="business-faq">
+
+                        <button onclick="toggleBusinessFAQ(this)">
+
+                            <span>
+                                How does verification work?
+                            </span>
+
+                            <span class="business-faq-icon">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="business-faq-answer">
+                            We review your business details and
+                            opportunity listings to help maintain
+                            a trusted and reliable platform for students.
+                        </div>
+
+                    </div>
+
+
+                    <div class="business-faq">
+
+                        <button onclick="toggleBusinessFAQ(this)">
+
+                            <span>
+                                Can we filter applicants?
+                            </span>
+
+                            <span class="business-faq-icon">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="business-faq-answer">
+                            Yes. You can review applicant profiles and
+                            use relevant information such as skills,
+                            experience, availability and resumes to
+                            shortlist suitable candidates.
+                        </div>
+
+                    </div>
+
+
+                    <div class="business-faq">
+
+                        <button onclick="toggleBusinessFAQ(this)">
+
+                            <span>
+                                How do we contact candidates?
+                            </span>
+
+                            <span class="business-faq-icon">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="business-faq-answer">
+                            Businesses can contact suitable candidates
+                            through Yearnly after reviewing their profiles
+                            and applications.
+                        </div>
+
+                    </div>
+
+
+                    <div class="business-faq">
+
+                        <button onclick="toggleBusinessFAQ(this)">
+
+                            <span>
+                                Is Yearnly available across India?
+                            </span>
+
+                            <span class="business-faq-icon">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="business-faq-answer">
+                            Yes. Yearnly is designed to connect students
+                            and businesses across India.
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <footer class="footer">
+
+                © 2026 Yearnly. Don't Yearn. Just Earn.
+
+            </footer>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        function toggleAccountMenu() {
+
+            const menu =
+                document.getElementById("accountMenu");
+
+            menu.classList.toggle("show");
+
+        }
+
+
+        function toggleMobileMenu() {
+
+            const menu =
+                document.getElementById("mobileMenu");
+
+            menu.classList.toggle("show");
+
+        }
+
+
+        function toggleBusinessFAQ(button) {
+
+            const item =
+                button.parentElement;
+
+            item.classList.toggle("open");
+
+            const icon =
+                button.querySelector(".business-faq-icon");
+
+            icon.textContent =
+                item.classList.contains("open")
+                    ? "−"
+                    : "+";
+
+        }
+
+
+        document
+            .getElementById("businessForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const message =
+                    document.getElementById("businessMessage");
+
+                message.style.display = "block";
+
+            });
+
+    </script>
+
+</body>
+
+</html>
