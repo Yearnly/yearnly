@@ -2,837 +2,537 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Browse Opportunities | Yearnly</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 
     <style>
-
-        /* ================================
-           PAGE
-        ================================= */
-
         .browse-page {
-
-            max-width: 1500px;
-
+            max-width: 1250px;
             margin: 0 auto;
-
-            padding: 55px 60px 70px;
-
+            padding: 45px 40px 70px;
         }
 
+        .browse-header {
+            margin-bottom: 35px;
+        }
 
         .browse-eyebrow {
-
             color: #777;
-
             font-size: 11px;
-
-            letter-spacing: 1.7px;
-
             text-transform: uppercase;
-
-            margin-bottom: 14px;
-
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
         }
 
-
-        .browse-title {
-
-            font-size: clamp(
-                48px,
-                5vw,
-                72px
-            );
-
+        .browse-header h1 {
+            font-size: clamp(40px, 5vw, 60px);
+            letter-spacing: -3px;
             line-height: 1;
-
-            letter-spacing: -4px;
-
-            margin: 0 0 18px;
-
+            margin: 0 0 12px;
         }
 
-
-        .browse-subtitle {
-
+        .browse-header p {
             color: #888;
-
-            font-size: 15px;
-
-            line-height: 1.6;
-
-            margin: 0;
-
+            font-size: 14px;
+            max-width: 720px;
+            line-height: 1.65;
         }
 
-
-        /* ================================
-           FILTERS
-        ================================= */
-
-        .filters-container {
-
-            display: flex;
-
-            align-items: center;
-
+        .filter-bar {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: 10px;
+            margin-bottom: 30px;
+        }
 
-            margin-top: 38px;
-
-            padding: 10px;
-
-            border: 1px solid #282828;
-
-            border-radius: 16px;
-
-            background: #080808;
-
+        .filter-bar input,
+        .filter-bar select {
             width: 100%;
-
             box-sizing: border-box;
-
-        }
-
-
-        .filter-input,
-        .filter-select {
-
-            height: 48px;
-
-            box-sizing: border-box;
-
-            margin: 0;
-
-            background: #101010;
-
-            border: 1px solid #303030;
-
-            border-radius: 9px;
-
-            color: #fff;
-
-            font-family: inherit;
-
-            font-size: 13px;
-
+            height: 44px;
+            background: #0d0d0d;
+            border: 1px solid #292929;
+            border-radius: 8px;
+            color: white;
+            padding: 0 12px;
             outline: none;
-
+            font-family: inherit;
+            font-size: 12px;
         }
 
-
-        .filter-input {
-
-            flex: 1;
-
-            min-width: 180px;
-
-            padding: 0 15px;
-
+        .filter-bar input:focus,
+        .filter-bar select:focus {
+            border-color: #666;
         }
 
-
-        .filter-select {
-
-            min-width: 170px;
-
-            padding: 0 35px 0 13px;
-
-        }
-
-
-        .filter-input::placeholder {
-
-            color: #666;
-
-        }
-
-
-        .filter-input:focus,
-        .filter-select:focus {
-
-            border-color: #555;
-
-        }
-
-
-        /* ================================
-           RESULTS HEADER
-        ================================= */
-
-        .results-header {
-
+        .browse-meta {
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
-            margin: 34px 0 20px;
-
+            margin-bottom: 17px;
         }
 
-
-        #resultsCount {
-
-            color: #888;
-
-            font-size: 13px;
-
+        .results-count {
+            color: #777;
+            font-size: 11px;
         }
-
 
         .clear-filters {
-
-            border: none;
-
+            border: 0;
             background: transparent;
-
-            color: #888;
-
-            font-family: inherit;
-
-            font-size: 12px;
-
+            color: #777;
             cursor: pointer;
-
-            padding: 5px;
-
+            font-family: inherit;
+            font-size: 11px;
         }
-
 
         .clear-filters:hover {
-
-            color: #fff;
-
+            color: white;
         }
-
-
-        /* ================================
-           OPPORTUNITY GRID
-        ================================= */
 
         .opportunity-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(
-                    2,
-                    minmax(0, 1fr)
-                );
-
-            gap: 18px;
-
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
         }
-
-
-        /* ================================
-           CARD
-        ================================= */
 
         .opportunity-card {
-
-            background: #0b0b0b;
-
-            border: 1px solid #292929;
-
-            border-radius: 16px;
-
-            padding: 26px;
-
-            min-width: 0;
-
+            background: #0c0c0c;
+            border: 1px solid #252525;
+            border-radius: 14px;
+            padding: 25px;
         }
-
 
         .opportunity-top {
-
             display: flex;
-
-            align-items: center;
-
-            gap: 17px;
-
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
         }
-
 
         .opportunity-image {
-
-            width: 64px;
-
-            height: 64px;
-
-            flex: 0 0 64px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background: #fff;
-
-            color: #000;
-
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
             border-radius: 12px;
-
-            font-size: 23px;
-
+            background: white;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
             font-weight: 700;
-
         }
-
 
         .opportunity-title {
-
-            margin: 0 0 7px;
-
-            color: #fff;
-
-            font-size: 21px;
-
-            line-height: 1.2;
-
+            font-size: 18px;
+            letter-spacing: -.6px;
+            margin: 2px 0 6px;
         }
-
 
         .opportunity-business {
-
             color: #777;
-
-            font-size: 13px;
-
+            font-size: 11px;
         }
-
 
         .opportunity-description {
-
-            color: #8d8d8d;
-
-            font-size: 13px;
-
-            line-height: 1.6;
-
-            margin: 25px 0 18px;
-
+            color: #888;
+            font-size: 12px;
+            line-height: 1.65;
+            margin-bottom: 18px;
         }
-
 
         .opportunity-tags {
-
             display: flex;
-
             flex-wrap: wrap;
-
-            gap: 8px;
-
+            gap: 7px;
+            margin-bottom: 22px;
         }
-
 
         .opportunity-tag {
-
-            border: 1px solid #353535;
-
-            border-radius: 20px;
-
-            padding: 7px 11px;
-
-            color: #ddd;
-
-            font-size: 11px;
-
+            border: 1px solid #303030;
+            border-radius: 999px;
+            padding: 7px 10px;
+            color: #aaa;
+            font-size: 10px;
         }
-
 
         .opportunity-details {
-
             display: grid;
-
             grid-template-columns: 1fr 1fr;
-
-            gap: 20px;
-
-            margin-top: 22px;
-
-            padding-top: 20px;
-
-            border-top: 1px solid #292929;
-
+            gap: 16px 30px;
+            border-top: 1px solid #252525;
+            padding-top: 18px;
+            margin-bottom: 22px;
         }
-
 
         .detail-label {
-
             color: #666;
-
-            font-size: 11px;
-
+            font-size: 10px;
             margin-bottom: 6px;
-
         }
-
 
         .detail-value {
-
-            color: #eee;
-
-            font-size: 13px;
-
+            color: #d8d8d8;
+            font-size: 12px;
         }
-
 
         .opportunity-actions {
-
             display: grid;
-
             grid-template-columns: 1fr 1fr;
-
             gap: 10px;
-
-            margin-top: 24px;
-
         }
-
 
         .apply-button,
         .message-button {
-
-            height: 46px;
-
-            border-radius: 9px;
-
+            min-height: 45px;
+            border-radius: 8px;
             font-family: inherit;
-
-            font-size: 13px;
-
+            font-size: 12px;
             font-weight: 600;
-
             cursor: pointer;
-
         }
-
 
         .apply-button {
-
-            background: #fff;
-
-            color: #000;
-
-            border: 1px solid #fff;
-
+            background: white;
+            color: black;
+            border: 1px solid white;
         }
 
+        .apply-button:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+        }
 
         .message-button {
-
             background: transparent;
-
-            color: #fff;
-
+            color: white;
             border: 1px solid #383838;
-
         }
-
-
-        .apply-button:hover {
-
-            background: #ddd;
-
-        }
-
 
         .message-button:hover {
-
             border-color: #666;
-
         }
-
-
-        /* ================================
-           EMPTY STATE
-        ================================= */
 
         .empty-state {
-
             display: none;
-
-            padding: 70px 20px;
-
+            border: 1px dashed #303030;
+            border-radius: 12px;
+            padding: 40px 20px;
             text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
 
-            border: 1px solid #292929;
+        /* MODALS */
 
-            border-radius: 15px;
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            background: rgba(0, 0, 0, .78);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 560px;
+            max-height: 92vh;
+            overflow-y: auto;
+            background: #0b0b0b;
+            border: 1px solid #303030;
+            border-radius: 14px;
+            padding: 25px;
+            box-sizing: border-box;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .modal-header h2 {
+            font-size: 22px;
+            letter-spacing: -1px;
+            margin: 0;
+        }
+
+        .modal-header p {
             color: #777;
-
-            font-size: 14px;
-
+            font-size: 11px;
+            margin: 6px 0 0;
         }
 
+        .close-modal {
+            border: 0;
+            background: transparent;
+            color: #777;
+            cursor: pointer;
+            font-size: 20px;
+            line-height: 1;
+        }
 
-        /* ================================
-           MOBILE HEADER
-        ================================= */
+        .close-modal:hover {
+            color: white;
+        }
 
-        .mobile-header {
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
 
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            color: #cfcfcf;
+            font-size: 11px;
+            margin-bottom: 7px;
+        }
+
+        .required-mark {
+            color: #999;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            box-sizing: border-box;
+            background: #111;
+            border: 1px solid #303030;
+            border-radius: 8px;
+            color: white;
+            padding: 12px;
+            outline: none;
+            font-family: inherit;
+            font-size: 12px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #666;
+        }
+
+        .form-group textarea {
+            min-height: 105px;
+            resize: vertical;
+        }
+
+        .helper-text {
+            color: #666;
+            font-size: 10px;
+            margin-top: 6px;
+            line-height: 1.45;
+        }
+
+        .parent-section {
             display: none;
-
+            grid-column: 1 / -1;
+            margin: 2px 0 2px;
+            padding: 15px;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
         }
 
-
-        .mobile-menu {
-
-            display: none;
-
+        .parent-section.show {
+            display: block;
         }
 
-
-        /* ================================
-           TABLET
-        ================================= */
-
-        @media (max-width: 1050px) {
-
-            .browse-page {
-
-                padding-left: 35px;
-
-                padding-right: 35px;
-
-            }
-
-
-            .filters-container {
-
-                flex-wrap: wrap;
-
-            }
-
-
-            .filter-input {
-
-                flex: 1 1 100%;
-
-            }
-
-
-            .filter-select {
-
-                flex: 1;
-
-                min-width: 140px;
-
-            }
-
+        .parent-title {
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 5px;
         }
 
+        .parent-note {
+            color: #777;
+            font-size: 10px;
+            margin-bottom: 13px;
+            line-height: 1.45;
+        }
 
-        /* ================================
-           MOBILE
-        ================================= */
+        .parent-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
 
-        @media (max-width: 800px) {
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+        }
 
-            .sidebar {
+        .modal-cancel,
+        .modal-submit {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
-                display: none;
+        .modal-cancel {
+            background: transparent;
+            color: white;
+            border: 1px solid #383838;
+        }
 
+        .modal-submit {
+            background: white;
+            color: black;
+            border: 1px solid white;
+        }
+
+        .modal-submit:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        .message-textarea {
+            min-height: 150px !important;
+        }
+
+        @media (max-width: 1000px) {
+            .filter-bar {
+                grid-template-columns: 1fr 1fr;
             }
-
-
-            .main {
-
-                margin-left: 0;
-
-            }
-
-
-            .mobile-header {
-
-                display: flex;
-
-                align-items: center;
-
-                justify-content: space-between;
-
-                padding: 17px 20px;
-
-                background: #050505;
-
-                border-bottom: 1px solid #252525;
-
-            }
-
-
-            .mobile-brand {
-
-                color: #fff;
-
-                font-size: 21px;
-
-                font-weight: 700;
-
-                letter-spacing: -1px;
-
-            }
-
-
-            .menu-button {
-
-                border: 1px solid #333;
-
-                background: transparent;
-
-                color: #fff;
-
-                border-radius: 7px;
-
-                padding: 7px 10px;
-
-                font-size: 18px;
-
-                cursor: pointer;
-
-            }
-
-
-            .mobile-menu.show {
-
-                display: flex;
-
-                flex-direction: column;
-
-                background: #080808;
-
-                border-bottom: 1px solid #252525;
-
-            }
-
-
-            .mobile-menu a {
-
-                color: #ccc;
-
-                text-decoration: none;
-
-                padding: 14px 20px;
-
-                border-bottom: 1px solid #1e1e1e;
-
-                font-size: 13px;
-
-            }
-
-
-            .mobile-menu a:hover {
-
-                color: #fff;
-
-                background: #111;
-
-            }
-
-
-            .browse-page {
-
-                padding: 35px 18px 55px;
-
-            }
-
-
-            .browse-title {
-
-                letter-spacing: -2.5px;
-
-            }
-
-
-            .filters-container {
-
-                padding: 9px;
-
-                gap: 8px;
-
-            }
-
-
-            .filter-input,
-            .filter-select {
-
-                width: 100%;
-
-                flex: 1 1 100%;
-
-            }
-
 
             .opportunity-grid {
-
                 grid-template-columns: 1fr;
-
             }
-
         }
 
-
-        /* ================================
-           SMALL MOBILE
-        ================================= */
-
-        @media (max-width: 480px) {
-
-            .opportunity-card {
-
-                padding: 20px;
-
+        @media (max-width: 700px) {
+            .browse-page {
+                padding: 35px 18px 55px;
             }
 
-
-            .opportunity-title {
-
-                font-size: 18px;
-
+            .browse-header h1 {
+                font-size: 46px;
+                letter-spacing: -2px;
             }
 
-
-            .opportunity-image {
-
-                width: 55px;
-
-                height: 55px;
-
-                flex-basis: 55px;
-
+            .filter-bar {
+                grid-template-columns: 1fr;
             }
 
-
-            .opportunity-details {
-
-                gap: 16px;
-
+            .form-grid {
+                grid-template-columns: 1fr;
             }
 
+            .form-group.full,
+            .parent-section {
+                grid-column: auto;
+            }
 
+            .parent-fields {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .opportunity-details,
             .opportunity-actions {
-
                 grid-template-columns: 1fr;
-
             }
 
+            .modal-overlay {
+                padding: 0;
+            }
+
+            .modal-box {
+                max-height: 100vh;
+                height: 100%;
+                border-radius: 0;
+                padding: 22px;
+            }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
-    <!-- ================================
-         DESKTOP SIDEBAR
-    ================================= -->
+    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
         <div class="brand">
-
-            <div class="brand-name">
-                Yearnly
-            </div>
-
+            <div class="brand-name">Yearnly</div>
         </div>
-
 
         <nav class="nav-section">
 
-            <a
-                href="index.html"
-                class="nav-link"
-            >
+            <a href="index.html" class="nav-link">
                 <span class="nav-icon">⌂</span>
                 Home
             </a>
 
-
-            <a
-                href="dashboard.html"
-                class="nav-link"
-            >
+            <a href="student-dashboard.html" class="nav-link">
                 <span class="nav-icon">▦</span>
                 Dashboard
             </a>
 
-
-            <a
-                href="browse.html"
-                class="nav-link active"
-            >
+            <a href="browse.html" class="nav-link active">
                 <span class="nav-icon">⌕</span>
                 Browse Opportunities
             </a>
 
-
-            <a
-                href="students.html"
-                class="nav-link"
-            >
+            <a href="students.html" class="nav-link">
                 <span class="nav-icon">♙</span>
                 For Students
             </a>
 
-
-            <a
-                href="business.html"
-                class="nav-link"
-            >
+            <a href="business.html" class="nav-link">
                 <span class="nav-icon">▣</span>
                 For Businesses
             </a>
 
         </nav>
 
-
         <div class="nav-divider"></div>
-
 
         <nav class="nav-section">
 
-            <a
-                href="about.html"
-                class="nav-link"
-            >
+            <a href="about.html" class="nav-link">
                 <span class="nav-icon">ⓘ</span>
                 About Us
             </a>
 
-
-            <a
-                href="contact.html"
-                class="nav-link"
-            >
+            <a href="contact.html" class="nav-link">
                 <span class="nav-icon">✉</span>
                 Contact
             </a>
 
         </nav>
-
 
         <div class="account-area">
 
@@ -842,23 +542,21 @@
                 onclick="window.location.href='account.html'"
             >
 
-                <div class="avatar">
-                    VM
+                <div class="avatar" id="navAvatar">
+                    Y
                 </div>
-
 
                 <div class="account-info">
 
-                    <span class="account-name">
-                        Vartika Manjhani
+                    <span class="account-name" id="navAccountName">
+                        Student
                     </span>
 
-                    <span class="account-email">
-                        yearnly.in@gmail.com
+                    <span class="account-email" id="navAccountEmail">
+                        Loading...
                     </span>
 
                 </div>
-
 
                 <span class="account-arrow">
                     ⌃
@@ -871,9 +569,7 @@
     </aside>
 
 
-    <!-- ================================
-         MOBILE HEADER
-    ================================= -->
+    <!-- MOBILE HEADER -->
 
     <header class="mobile-header">
 
@@ -881,10 +577,9 @@
             Yearnly
         </div>
 
-
         <button
-            type="button"
             class="menu-button"
+            type="button"
             onclick="toggleMobileMenu()"
         >
             ☰
@@ -892,50 +587,33 @@
 
     </header>
 
+    <div class="mobile-menu" id="mobileMenu">
 
-    <!-- ================================
-         MOBILE MENU
-    ================================= -->
+        <a href="index.html">Home</a>
 
-    <div
-        class="mobile-menu"
-        id="mobileMenu"
-    >
-
-        <a href="index.html">
-            Home
-        </a>
-
-
-        <a href="dashboard.html">
+        <a href="student-dashboard.html">
             Dashboard
         </a>
-
 
         <a href="browse.html">
             Browse Opportunities
         </a>
 
-
         <a href="students.html">
             For Students
         </a>
-
 
         <a href="business.html">
             For Businesses
         </a>
 
-
         <a href="about.html">
             About Us
         </a>
 
-
         <a href="contact.html">
             Contact
         </a>
-
 
         <a href="account.html">
             Account Settings
@@ -944,56 +622,49 @@
     </div>
 
 
-    <!-- ================================
-         MAIN
-    ================================= -->
+    <!-- MAIN -->
 
     <main class="main">
 
         <div class="browse-page">
 
+            <header class="browse-header">
 
-            <div class="browse-eyebrow">
-                YEARNLY
-            </div>
+                <div class="browse-eyebrow">
+                    YEARNLY
+                </div>
 
+                <h1>
+                    Browse Opportunities
+                </h1>
 
-            <h1 class="browse-title">
-                Browse Opportunities
-            </h1>
+                <p>
+                    Find verified jobs, internships, freelance work,
+                    volunteer roles and other opportunities made for students.
+                </p>
 
-
-            <p class="browse-subtitle">
-                Find jobs, internships, freelance work and other
-                opportunities that fit you.
-            </p>
+            </header>
 
 
             <!-- FILTERS -->
 
-            <div class="filters-container">
-
-
-                <input
-                    type="search"
-                    id="searchInput"
-                    class="filter-input"
-                    placeholder="Search opportunities..."
-                >
-
+            <div class="filter-bar">
 
                 <input
                     type="text"
-                    id="cityFilter"
-                    class="filter-input"
+                    id="searchInput"
+                    placeholder="Search opportunities..."
+                    autocomplete="off"
+                >
+
+                <input
+                    type="text"
+                    id="locationInput"
                     placeholder="Search by city..."
+                    autocomplete="off"
                 >
 
-
-                <select
-                    id="typeFilter"
-                    class="filter-select"
-                >
+                <select id="typeFilter">
 
                     <option value="">
                         All opportunity types
@@ -1015,68 +686,20 @@
                         Volunteer
                     </option>
 
-                    <option value="Campus Ambassador">
-                        Campus Ambassador
+                    <option value="Campus ambassador">
+                        Campus ambassador
+                    </option>
+
+                    <option value="Full-time">
+                        Full-time
                     </option>
 
                 </select>
 
-
-                <select
-                    id="categoryFilter"
-                    class="filter-select"
-                >
-
-                    <option value="">
-                        All categories
-                    </option>
-
-                    <option value="Marketing">
-                        Marketing
-                    </option>
-
-                    <option value="Design">
-                        Design
-                    </option>
-
-                    <option value="Technology">
-                        Technology
-                    </option>
-
-                    <option value="Writing">
-                        Writing
-                    </option>
-
-                    <option value="Business">
-                        Business
-                    </option>
-
-                    <option value="Education">
-                        Education
-                    </option>
-
-                    <option value="Events">
-                        Events
-                    </option>
-
-                    <option value="Other">
-                        Other
-                    </option>
-
-                </select>
-
-
-                <select
-                    id="modeFilter"
-                    class="filter-select"
-                >
+                <select id="modeFilter">
 
                     <option value="">
                         All work modes
-                    </option>
-
-                    <option value="On-site">
-                        On-site
                     </option>
 
                     <option value="Remote">
@@ -1087,19 +710,23 @@
                         Hybrid
                     </option>
 
+                    <option value="On-site">
+                        On-site
+                    </option>
+
                 </select>
 
             </div>
 
 
-            <!-- RESULTS HEADER -->
+            <div class="browse-meta">
 
-            <div class="results-header">
-
-                <span id="resultsCount">
-                    Loading opportunities...
-                </span>
-
+                <div
+                    class="results-count"
+                    id="resultsCount"
+                >
+                    0 opportunities
+                </div>
 
                 <button
                     type="button"
@@ -1112,96 +739,411 @@
             </div>
 
 
-            <!-- OPPORTUNITIES -->
+            <section>
 
-            <div
-                class="opportunity-grid"
-                id="opportunityGrid"
-            >
-            </div>
+                <div
+                    class="opportunity-grid"
+                    id="opportunityGrid"
+                ></div>
 
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                >
+                    No opportunities match your search.
+                </div>
 
-            <!-- EMPTY -->
-
-            <div
-                class="empty-state"
-                id="emptyState"
-            >
-                No opportunities found.
-            </div>
-
+            </section>
 
         </div>
 
     </main>
 
 
-    <!-- ================================
-         FIREBASE SCRIPT
-    ================================= -->
+    <!-- APPLICATION MODAL -->
+
+    <div
+        class="modal-overlay"
+        id="applicationModal"
+    >
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Apply for Opportunity
+                    </h2>
+
+                    <p id="modalOpportunityName">
+                        Opportunity
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="close-modal"
+                    onclick="closeApplicationModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="applicationForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="applicationName">
+                            Full Name <span class="required-mark">*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="applicationName"
+                            placeholder="Your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="applicationEmail">
+                            Email <span class="required-mark">*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="applicationEmail"
+                            placeholder="you@example.com"
+                            required
+                            readonly
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="applicationPhone">
+                            Phone Number <span class="required-mark">*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="applicationPhone"
+                            placeholder="Enter your phone number"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="applicationAge">
+                            Age <span class="required-mark">*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="applicationAge"
+                            min="13"
+                            max="100"
+                            placeholder="Enter your age"
+                            required
+                        >
+
+                        <div class="helper-text">
+                            Age is required for every application.
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="parent-section"
+                        id="parentSection"
+                    >
+
+                        <div class="parent-title">
+                            Parent / Guardian Details
+                        </div>
+
+                        <div class="parent-note">
+                            Applicants under 18 must provide a parent or
+                            guardian name and phone number.
+                        </div>
+
+                        <div class="parent-fields">
+
+                            <div class="form-group" style="margin-bottom:0;">
+
+                                <label for="parentName">
+                                    Parent / Guardian Name *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="parentName"
+                                    placeholder="Parent or guardian name"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group" style="margin-bottom:0;">
+
+                                <label for="parentPhone">
+                                    Parent / Guardian Phone *
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="parentPhone"
+                                    placeholder="Parent or guardian number"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="applicationEducation">
+                            Education / Current Course *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="applicationEducation"
+                            placeholder="Example: B.Com 1st year, Class 12, B.Tech CSE"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="applicationSkills">
+                            Skills *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="applicationSkills"
+                            placeholder="Example: Canva, Excel, social media, Python"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="applicationExperience">
+                            Experience
+                        </label>
+
+                        <textarea
+                            id="applicationExperience"
+                            placeholder="Tell the business about relevant experience, projects, clubs or achievements."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="applicationPortfolio">
+                            Portfolio / LinkedIn
+                        </label>
+
+                        <input
+                            type="url"
+                            id="applicationPortfolio"
+                            placeholder="https://..."
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="applicationMessage">
+                            Why are you interested in this opportunity? *
+                        </label>
+
+                        <textarea
+                            id="applicationMessage"
+                            placeholder="Tell the business a little about yourself and why you'd be a good fit..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="modal-cancel"
+                        onclick="closeApplicationModal()"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="modal-submit"
+                        id="submitApplicationButton"
+                    >
+                        Submit Application
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- MESSAGE MODAL -->
+
+    <div
+        class="modal-overlay"
+        id="messageModal"
+    >
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Message Business
+                    </h2>
+
+                    <p id="modalMessageBusiness">
+                        Business
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="close-modal"
+                    onclick="closeMessageModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="messageForm">
+
+                <div class="form-group">
+
+                    <label for="messageText">
+                        Message <span class="required-mark">*</span>
+                    </label>
+
+                    <textarea
+                        id="messageText"
+                        class="message-textarea"
+                        placeholder="Write your message to the business..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="helper-text">
+                    Your message will be associated with this opportunity
+                    and your Yearnly account.
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="modal-cancel"
+                        onclick="closeMessageModal()"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="modal-submit"
+                        id="sendMessageButton"
+                    >
+                        Send Message
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- FIREBASE -->
 
     <script type="module">
 
         import {
+            auth,
             database
         } from "./js/firebase-init.js";
 
 
         import {
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+        import {
             ref,
+            get,
+            push,
+            set,
             onValue
         } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
 
 
-        const searchInput =
-            document.getElementById(
-                "searchInput"
-            );
+        let currentUser = null;
 
+        let currentUserData = {};
 
-        const cityFilter =
-            document.getElementById(
-                "cityFilter"
-            );
+        let selectedOpportunity = null;
 
-
-        const typeFilter =
-            document.getElementById(
-                "typeFilter"
-            );
-
-
-        const categoryFilter =
-            document.getElementById(
-                "categoryFilter"
-            );
-
-
-        const modeFilter =
-            document.getElementById(
-                "modeFilter"
-            );
-
-
-        const opportunityGrid =
-            document.getElementById(
-                "opportunityGrid"
-            );
-
-
-        const resultsCount =
-            document.getElementById(
-                "resultsCount"
-            );
-
-
-        const emptyState =
-            document.getElementById(
-                "emptyState"
-            );
-
+        let selectedMessageOpportunity = null;
 
         let opportunities = [];
+
+        let applications = [];
 
 
         /* ================================
@@ -1212,9 +1154,7 @@
             function() {
 
                 document
-                    .getElementById(
-                        "mobileMenu"
-                    )
+                    .getElementById("mobileMenu")
                     .classList
                     .toggle("show");
 
@@ -1222,306 +1162,459 @@
 
 
         /* ================================
-           FIREBASE DATA
+           AUTHENTICATION
         ================================= */
 
-        const opportunitiesRef =
-            ref(
-                database,
-                "opportunities"
-            );
+        onAuthStateChanged(
+            auth,
+            async function(user) {
 
+                if (!user) {
 
-        onValue(
-            opportunitiesRef,
-            function(snapshot) {
+                    window.location.href =
+                        "login.html";
 
-                const data =
-                    snapshot.val();
-
-
-                opportunities = [];
-
-
-                if (data) {
-
-                    Object.keys(data)
-                        .forEach(
-                            function(id) {
-
-                                opportunities.push({
-
-                                    id: id,
-
-                                    ...data[id]
-
-                                });
-
-                            }
-                        );
+                    return;
 
                 }
 
 
-                renderOpportunities();
-
-            },
-            function(error) {
-
-                console.error(
-                    "Firebase error:",
-                    error
-                );
+                currentUser =
+                    user;
 
 
-                opportunityGrid.innerHTML =
-                    "";
+                await loadUserProfile();
 
+                loadOpportunities();
 
-                resultsCount.textContent =
-                    "Unable to load opportunities";
-
-
-                emptyState.textContent =
-                    "Something went wrong while loading opportunities.";
-
-
-                emptyState.style.display =
-                    "block";
+                loadApplications();
 
             }
         );
 
 
         /* ================================
-           OPEN / DEADLINE CHECK
+           USER PROFILE
         ================================= */
 
-        function isOpportunityOpen(
-            opportunity
-        ) {
+        async function loadUserProfile() {
 
-            const status =
-                (
-                    opportunity.status ||
-                    ""
-                )
-                    .toLowerCase();
+            try {
 
-
-            if (
-                status !== "open"
-            ) {
-
-                return false;
-
-            }
-
-
-            if (
-                opportunity.deadline
-            ) {
-
-                const today =
-                    new Date();
-
-
-                today.setHours(
-                    0,
-                    0,
-                    0,
-                    0
-                );
-
-
-                const deadline =
-                    new Date(
-                        opportunity.deadline +
-                        "T23:59:59"
+                const userRef =
+                    ref(
+                        database,
+                        "users/" +
+                        currentUser.uid
                     );
 
 
-                if (
-                    deadline < today
-                ) {
+                const snapshot =
+                    await get(userRef);
 
-                    return false;
+
+                if (snapshot.exists()) {
+
+                    currentUserData =
+                        snapshot.val();
+
+                } else {
+
+                    currentUserData =
+                        {};
 
                 }
+
+
+                const name =
+                    currentUserData.name ||
+                    currentUser.displayName ||
+                    "Student";
+
+
+                document
+                    .getElementById("navAccountName")
+                    .textContent =
+                    name;
+
+
+                document
+                    .getElementById("navAccountEmail")
+                    .textContent =
+                    currentUser.email ||
+                    currentUserData.email ||
+                    "—";
+
+
+                document
+                    .getElementById("navAvatar")
+                    .textContent =
+                    getInitials(name);
+
+
+            } catch (error) {
+
+                console.error(
+                    "Profile loading error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        function getInitials(name) {
+
+            const cleanName =
+                String(name || "Student")
+                    .trim();
+
+
+            if (!cleanName) {
+
+                return "S";
 
             }
 
 
-            return true;
+            const parts =
+                cleanName
+                    .split(/\s+/);
+
+
+            if (parts.length === 1) {
+
+                return parts[0]
+                    .charAt(0)
+                    .toUpperCase();
+
+            }
+
+
+            return (
+                parts[0].charAt(0) +
+                parts[parts.length - 1].charAt(0)
+            ).toUpperCase();
 
         }
 
 
         /* ================================
-           RENDER
+           OPPORTUNITIES
         ================================= */
 
-        function renderOpportunities() {
+        function loadOpportunities() {
 
-            opportunityGrid.innerHTML =
-                "";
-
-
-            const search =
-                searchInput
-                    .value
-                    .toLowerCase()
-                    .trim();
+            const opportunitiesRef =
+                ref(
+                    database,
+                    "opportunities"
+                );
 
 
-            const city =
-                cityFilter
-                    .value
-                    .toLowerCase()
-                    .trim();
+            onValue(
+                opportunitiesRef,
+                function(snapshot) {
+
+                    const data =
+                        snapshot.val();
 
 
-            const type =
-                typeFilter.value;
+                    opportunities = [];
 
 
-            const category =
-                categoryFilter.value;
+                    if (data) {
 
+                        Object.keys(data)
+                            .forEach(
+                                function(id) {
 
-            const mode =
-                modeFilter.value;
+                                    opportunities.push({
 
+                                        id: id,
 
-            let visible = 0;
+                                        ...data[id]
 
+                                    });
 
-            opportunities.forEach(
-                function(opportunity) {
-
-                    if (
-                        !isOpportunityOpen(
-                            opportunity
-                        )
-                    ) {
-
-                        return;
+                                }
+                            );
 
                     }
 
 
-                    const title =
-                        (
-                            opportunity.title ||
-                            ""
-                        )
-                            .toLowerCase();
+                    renderOpportunities();
+
+                },
+                function(error) {
+
+                    console.error(
+                        "Opportunity loading error:",
+                        error
+                    );
 
 
-                    const business =
-                        (
-                            opportunity.companyName ||
-                            ""
-                        )
-                            .toLowerCase();
+                    opportunities = [];
 
-
-                    const cardCity =
-                        (
-                            opportunity.city ||
-                            ""
-                        )
-                            .toLowerCase();
-
-
-                    const cardType =
-                        opportunity.type ||
-                        "";
-
-
-                    const cardCategory =
-                        opportunity.category ||
-                        "";
-
-
-                    const cardMode =
-                        opportunity.workMode ||
-                        "";
-
-
-                    const matchesSearch =
-                        !search ||
-                        title.includes(search) ||
-                        business.includes(search) ||
-                        cardCategory
-                            .toLowerCase()
-                            .includes(search);
-
-
-                    const matchesCity =
-                        !city ||
-                        cardCity.includes(city);
-
-
-                    const matchesType =
-                        !type ||
-                        cardType === type;
-
-
-                    const matchesCategory =
-                        !category ||
-                        cardCategory === category;
-
-
-                    const matchesMode =
-                        !mode ||
-                        cardMode === mode;
-
-
-                    if (
-                        matchesSearch &&
-                        matchesCity &&
-                        matchesType &&
-                        matchesCategory &&
-                        matchesMode
-                    ) {
-
-                        createOpportunityCard(
-                            opportunity
-                        );
-
-                        visible++;
-
-                    }
+                    renderOpportunities();
 
                 }
             );
 
+        }
 
-            resultsCount.textContent =
-                visible +
+
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+
+        }
+
+
+        function normalize(value) {
+
+            return String(
+                value ??
+                ""
+            )
+                .trim();
+
+        }
+
+
+        function getOpportunityData(
+            opportunity
+        ) {
+
+            return {
+
+                title:
+                    opportunity.title ||
+                    opportunity.opportunityTitle ||
+                    "Untitled opportunity",
+
+                company:
+                    opportunity.companyName ||
+                    opportunity.businessName ||
+                    opportunity.company ||
+                    "Business",
+
+                businessId:
+                    opportunity.businessId ||
+                    opportunity.businessUID ||
+                    opportunity.ownerId ||
+                    opportunity.createdBy ||
+                    opportunity.userId ||
+                    "",
+
+                description:
+                    opportunity.description ||
+                    opportunity.about ||
+                    "No description provided.",
+
+                type:
+                    opportunity.type ||
+                    opportunity.opportunityType ||
+                    "Opportunity",
+
+                category:
+                    opportunity.category ||
+                    "Other",
+
+                mode:
+                    opportunity.workMode ||
+                    opportunity.mode ||
+                    "Not specified",
+
+                city:
+                    opportunity.location ||
+                    opportunity.city ||
+                    "Not specified",
+
+                pay:
+                    opportunity.pay ||
+                    opportunity.salary ||
+                    "Not specified",
+
+                duration:
+                    opportunity.duration ||
+                    "Not specified",
+
+                deadline:
+                    opportunity.deadline ||
+                    "Not specified"
+
+            };
+
+        }
+
+
+        function matchesFilters(
+            opportunity
+        ) {
+
+            const data =
+                getOpportunityData(
+                    opportunity
+                );
+
+
+            const search =
+                normalize(
+                    document
+                        .getElementById(
+                            "searchInput"
+                        )
+                        .value
+                )
+                    .toLowerCase();
+
+
+            const location =
+                normalize(
+                    document
+                        .getElementById(
+                            "locationInput"
+                        )
+                        .value
+                )
+                    .toLowerCase();
+
+
+            const type =
+                document
+                    .getElementById(
+                        "typeFilter"
+                    )
+                    .value;
+
+
+            const mode =
+                document
+                    .getElementById(
+                        "modeFilter"
+                    )
+                    .value;
+
+
+            const searchText =
                 (
-                    visible === 1
+                    data.title +
+                    " " +
+                    data.company +
+                    " " +
+                    data.description +
+                    " " +
+                    data.category
+                )
+                    .toLowerCase();
+
+
+            return (
+
+                (
+                    !search ||
+                    searchText.includes(search)
+                )
+
+                &&
+
+                (
+                    !location ||
+                    data.city
+                        .toLowerCase()
+                        .includes(location)
+                )
+
+                &&
+
+                (
+                    !type ||
+                    data.type === type
+                )
+
+                &&
+
+                (
+                    !mode ||
+                    data.mode === mode
+                )
+
+            );
+
+        }
+
+
+        function renderOpportunities() {
+
+            const grid =
+                document.getElementById(
+                    "opportunityGrid"
+                );
+
+
+            const emptyState =
+                document.getElementById(
+                    "emptyState"
+                );
+
+
+            grid.innerHTML = "";
+
+
+            const filtered =
+                opportunities.filter(
+                    matchesFilters
+                );
+
+
+            document
+                .getElementById(
+                    "resultsCount"
+                )
+                .textContent =
+                filtered.length +
+                (
+                    filtered.length === 1
                         ? " opportunity"
                         : " opportunities"
                 );
 
 
             emptyState.style.display =
-                visible === 0
+                filtered.length === 0
                     ? "block"
                     : "none";
+
+
+            filtered.forEach(
+                function(opportunity) {
+
+                    createOpportunityCard(
+                        opportunity
+                    );
+
+                }
+            );
 
         }
 
 
-        /* ================================
-           CREATE CARD
-        ================================= */
-
         function createOpportunityCard(
             opportunity
         ) {
+
+            const data =
+                getOpportunityData(
+                    opportunity
+                );
+
 
             const card =
                 document.createElement(
@@ -1533,83 +1626,30 @@
                 "opportunity-card";
 
 
-            const companyName =
-                opportunity.companyName ||
-                "Business";
-
-
-            const title =
-                opportunity.title ||
-                "Opportunity";
-
-
-            const city =
-                opportunity.city ||
-                "Not specified";
-
-
-            const pay =
-                opportunity.pay ||
-                "Not specified";
-
-
-            const duration =
-                opportunity.duration ||
-                "Not specified";
-
-
-            const deadline =
-                opportunity.deadline
-                    ? formatDate(
-                        opportunity.deadline
-                    )
-                    : "Not specified";
-
-
-            const type =
-                opportunity.type ||
-                "Opportunity";
-
-
-            const category =
-                opportunity.category ||
-                "Other";
-
-
-            const mode =
-                opportunity.workMode ||
-                "Not specified";
-
-
-            const description =
-                opportunity.description ||
-                "No description provided.";
-
-
-            const initial =
-                companyName
-                    .charAt(0)
-                    .toUpperCase();
-
-
             card.innerHTML = `
 
                 <div class="opportunity-top">
 
                     <div class="opportunity-image">
-                        ${escapeHTML(initial)}
+                        ${escapeHTML(
+                            data.company
+                                .charAt(0)
+                                .toUpperCase()
+                        )}
                     </div>
-
 
                     <div>
 
-                        <h2 class="opportunity-title">
-                            ${escapeHTML(title)}
-                        </h2>
-
+                        <h3 class="opportunity-title">
+                            ${escapeHTML(
+                                data.title
+                            )}
+                        </h3>
 
                         <div class="opportunity-business">
-                            ${escapeHTML(companyName)}
+                            ${escapeHTML(
+                                data.company
+                            )}
                         </div>
 
                     </div>
@@ -1618,24 +1658,30 @@
 
 
                 <p class="opportunity-description">
-                    ${escapeHTML(description)}
+                    ${escapeHTML(
+                        data.description
+                    )}
                 </p>
 
 
                 <div class="opportunity-tags">
 
                     <span class="opportunity-tag">
-                        ${escapeHTML(type)}
+                        ${escapeHTML(
+                            data.type
+                        )}
                     </span>
 
-
                     <span class="opportunity-tag">
-                        ${escapeHTML(category)}
+                        ${escapeHTML(
+                            data.category
+                        )}
                     </span>
 
-
                     <span class="opportunity-tag">
-                        ${escapeHTML(mode)}
+                        ${escapeHTML(
+                            data.mode
+                        )}
                     </span>
 
                 </div>
@@ -1649,9 +1695,10 @@
                             Location
                         </div>
 
-
                         <div class="detail-value">
-                            ${escapeHTML(city)}
+                            ${escapeHTML(
+                                data.city
+                            )}
                         </div>
 
                     </div>
@@ -1663,9 +1710,10 @@
                             Pay
                         </div>
 
-
                         <div class="detail-value">
-                            ${escapeHTML(pay)}
+                            ${escapeHTML(
+                                data.pay
+                            )}
                         </div>
 
                     </div>
@@ -1677,9 +1725,10 @@
                             Duration
                         </div>
 
-
-                        <div class="detail-label">
-                            ${escapeHTML(duration)}
+                        <div class="detail-value">
+                            ${escapeHTML(
+                                data.duration
+                            )}
                         </div>
 
                     </div>
@@ -1691,9 +1740,10 @@
                             Deadline
                         </div>
 
-
                         <div class="detail-value">
-                            ${escapeHTML(deadline)}
+                            ${escapeHTML(
+                                data.deadline
+                            )}
                         </div>
 
                     </div>
@@ -1706,7 +1756,6 @@
                     <button
                         type="button"
                         class="apply-button"
-                        data-opportunity-id="${escapeHTML(opportunity.id)}"
                     >
                         Apply
                     </button>
@@ -1715,7 +1764,6 @@
                     <button
                         type="button"
                         class="message-button"
-                        data-opportunity-id="${escapeHTML(opportunity.id)}"
                     >
                         Message
                     </button>
@@ -1741,8 +1789,8 @@
                 "click",
                 function() {
 
-                    applyOpportunity(
-                        opportunity.id
+                    openApplicationModal(
+                        opportunity
                     );
 
                 }
@@ -1753,53 +1801,788 @@
                 "click",
                 function() {
 
-                    messageBusiness(
-                        opportunity.id
+                    openMessageModal(
+                        opportunity
                     );
 
                 }
             );
 
 
-            opportunityGrid.appendChild(
-                card
+            checkIfAlreadyApplied(
+                opportunity.id,
+                applyButton
             );
+
+
+            document
+                .getElementById(
+                    "opportunityGrid"
+                )
+                .appendChild(card);
 
         }
 
 
         /* ================================
-           DATE
+           DUPLICATE APPLICATION CHECK
         ================================= */
 
-        function formatDate(
-            dateString
+        async function checkIfAlreadyApplied(
+            opportunityId,
+            button
         ) {
 
-            const date =
-                new Date(
-                    dateString +
-                    "T00:00:00"
-                );
-
-
-            if (
-                Number.isNaN(
-                    date.getTime()
-                )
-            ) {
-
-                return dateString;
-
+            if (!currentUser) {
+                return;
             }
 
 
-            return date.toLocaleDateString(
-                "en-IN",
-                {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric"
+            try {
+
+                const applicationsRef =
+                    ref(
+                        database,
+                        "applications"
+                    );
+
+
+                const snapshot =
+                    await get(
+                        applicationsRef
+                    );
+
+
+                if (!snapshot.exists()) {
+                    return;
+                }
+
+
+                const data =
+                    snapshot.val();
+
+
+                const alreadyApplied =
+                    Object.values(data)
+                        .some(
+                            function(application) {
+
+                                return (
+                                    application.studentId ===
+                                    currentUser.uid
+                                    &&
+                                    application.opportunityId ===
+                                    opportunityId
+                                );
+
+                            }
+                        );
+
+
+                if (alreadyApplied) {
+
+                    button.disabled =
+                        true;
+
+                    button.textContent =
+                        "Applied";
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Application check error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* ================================
+           APPLICATION MODAL
+        ================================= */
+
+        function openApplicationModal(
+            opportunity
+        ) {
+
+            selectedOpportunity =
+                opportunity;
+
+
+            const data =
+                getOpportunityData(
+                    opportunity
+                );
+
+
+            document
+                .getElementById(
+                    "modalOpportunityName"
+                )
+                .textContent =
+                data.title +
+                " — " +
+                data.company;
+
+
+            document
+                .getElementById(
+                    "applicationName"
+                )
+                .value =
+                currentUserData.name ||
+                currentUser.displayName ||
+                "";
+
+
+            document
+                .getElementById(
+                    "applicationEmail"
+                )
+                .value =
+                currentUser.email ||
+                currentUserData.email ||
+                "";
+
+
+            document
+                .getElementById(
+                    "applicationPhone"
+                )
+                .value =
+                currentUserData.phone ||
+                currentUserData.phoneNumber ||
+                "";
+
+
+            document
+                .getElementById(
+                    "applicationAge"
+                )
+                .value =
+                currentUserData.age ||
+                "";
+
+
+            document
+                .getElementById(
+                    "applicationEducation"
+                )
+                .value =
+                currentUserData.education ||
+                currentUserData.course ||
+                "";
+
+
+            document
+                .getElementById(
+                    "applicationSkills"
+                )
+                .value =
+                currentUserData.skills ||
+                "";
+
+
+            document
+                .getElementById(
+                    "applicationExperience"
+                )
+                .value =
+                currentUserData.experience ||
+                "";
+
+
+            document
+                .getElementById(
+                    "applicationPortfolio"
+                )
+                .value =
+                currentUserData.portfolio ||
+                currentUserData.linkedin ||
+                "";
+
+
+            document
+                .getElementById(
+                    "applicationMessage"
+                )
+                .value =
+                "";
+
+
+            document
+                .getElementById(
+                    "parentName"
+                )
+                .value =
+                currentUserData.parentName ||
+                currentUserData.guardianName ||
+                "";
+
+
+            document
+                .getElementById(
+                    "parentPhone"
+                )
+                .value =
+                currentUserData.parentPhone ||
+                currentUserData.guardianPhone ||
+                "";
+
+
+            updateParentRequirement();
+
+
+            document
+                .getElementById(
+                    "applicationModal"
+                )
+                .classList
+                .add("show");
+
+        }
+
+
+        window.closeApplicationModal =
+            function() {
+
+                selectedOpportunity =
+                    null;
+
+
+                document
+                    .getElementById(
+                        "applicationModal"
+                    )
+                    .classList
+                    .remove("show");
+
+            };
+
+
+        function updateParentRequirement() {
+
+            const ageField =
+                document
+                    .getElementById(
+                        "applicationAge"
+                    );
+
+
+            const parentSection =
+                document
+                    .getElementById(
+                        "parentSection"
+                    );
+
+
+            const parentName =
+                document
+                    .getElementById(
+                        "parentName"
+                    );
+
+
+            const parentPhone =
+                document
+                    .getElementById(
+                        "parentPhone"
+                    );
+
+
+            const age =
+                Number(
+                    ageField.value
+                );
+
+
+            const under18 =
+                Number.isFinite(age) &&
+                age > 0 &&
+                age < 18;
+
+
+            parentSection
+                .classList
+                .toggle(
+                    "show",
+                    under18
+                );
+
+
+            parentName.required =
+                under18;
+
+
+            parentPhone.required =
+                under18;
+
+
+            if (!under18) {
+
+                parentName.value =
+                    "";
+
+                parentPhone.value =
+                    "";
+
+            }
+
+        }
+
+
+        document
+            .getElementById(
+                "applicationAge"
+            )
+            .addEventListener(
+                "input",
+                updateParentRequirement
+            );
+
+
+        /* ================================
+           SUBMIT APPLICATION
+        ================================= */
+
+        document
+            .getElementById(
+                "applicationForm"
+            )
+            .addEventListener(
+                "submit",
+                async function(event) {
+
+                    event.preventDefault();
+
+
+                    if (!currentUser) {
+
+                        alert(
+                            "Please log in first."
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (!selectedOpportunity) {
+                        return;
+                    }
+
+
+                    updateParentRequirement();
+
+
+                    const name =
+                        document
+                            .getElementById(
+                                "applicationName"
+                            )
+                            .value
+                            .trim();
+
+
+                    const email =
+                        document
+                            .getElementById(
+                                "applicationEmail"
+                            )
+                            .value
+                            .trim();
+
+
+                    const phone =
+                        document
+                            .getElementById(
+                                "applicationPhone"
+                            )
+                            .value
+                            .trim();
+
+
+                    const age =
+                        Number(
+                            document
+                                .getElementById(
+                                    "applicationAge"
+                                )
+                                .value
+                        );
+
+
+                    const education =
+                        document
+                            .getElementById(
+                                "applicationEducation"
+                            )
+                            .value
+                            .trim();
+
+
+                    const skills =
+                        document
+                            .getElementById(
+                                "applicationSkills"
+                            )
+                            .value
+                            .trim();
+
+
+                    const experience =
+                        document
+                            .getElementById(
+                                "applicationExperience"
+                            )
+                            .value
+                            .trim();
+
+
+                    const portfolio =
+                        document
+                            .getElementById(
+                                "applicationPortfolio"
+                            )
+                            .value
+                            .trim();
+
+
+                    const message =
+                        document
+                            .getElementById(
+                                "applicationMessage"
+                            )
+                            .value
+                            .trim();
+
+
+                    const parentName =
+                        document
+                            .getElementById(
+                                "parentName"
+                            )
+                            .value
+                            .trim();
+
+
+                    const parentPhone =
+                        document
+                            .getElementById(
+                                "parentPhone"
+                            )
+                            .value
+                            .trim();
+
+
+                    if (
+                        !name ||
+                        !email ||
+                        !phone ||
+                        !Number.isFinite(age) ||
+                        age < 13 ||
+                        !education ||
+                        !skills ||
+                        !message
+                    ) {
+
+                        alert(
+                            "Please complete all required fields."
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (
+                        age < 18 &&
+                        (
+                            !parentName ||
+                            !parentPhone
+                        )
+                    ) {
+
+                        alert(
+                            "Applicants under 18 must provide a parent or guardian name and phone number."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const submitButton =
+                        document
+                            .getElementById(
+                                "submitApplicationButton"
+                            );
+
+
+                    submitButton.disabled =
+                        true;
+
+                    submitButton.textContent =
+                        "Submitting...";
+
+
+                    try {
+
+                        const applicationsRef =
+                            ref(
+                                database,
+                                "applications"
+                            );
+
+
+                        const snapshot =
+                            await get(
+                                applicationsRef
+                            );
+
+
+                        if (snapshot.exists()) {
+
+                            const data =
+                                snapshot.val();
+
+
+                            const duplicate =
+                                Object.values(data)
+                                    .some(
+                                        function(
+                                            application
+                                        ) {
+
+                                            return (
+                                                application.studentId ===
+                                                currentUser.uid
+                                                &&
+                                                application.opportunityId ===
+                                                selectedOpportunity.id
+                                            );
+
+                                        }
+                                    );
+
+
+                            if (duplicate) {
+
+                                alert(
+                                    "You have already applied for this opportunity."
+                                );
+
+
+                                closeApplicationModal();
+
+                                submitButton.disabled =
+                                    false;
+
+                                submitButton.textContent =
+                                    "Submit Application";
+
+                                return;
+
+                            }
+
+                        }
+
+
+                        const newApplicationRef =
+                            push(
+                                applicationsRef
+                            );
+
+
+                        const data =
+                            getOpportunityData(
+                                selectedOpportunity
+                            );
+
+
+                        await set(
+                            newApplicationRef,
+                            {
+
+                                opportunityId:
+                                    selectedOpportunity.id,
+
+                                opportunityTitle:
+                                    data.title,
+
+                                businessId:
+                                    data.businessId,
+
+                                businessName:
+                                    data.company,
+
+                                studentId:
+                                    currentUser.uid,
+
+                                studentName:
+                                    name,
+
+                                studentEmail:
+                                    email,
+
+                                phone:
+                                    phone,
+
+                                age:
+                                    age,
+
+                                parentName:
+                                    age < 18
+                                        ? parentName
+                                        : "",
+
+                                parentPhone:
+                                    age < 18
+                                        ? parentPhone
+                                        : "",
+
+                                education:
+                                    education,
+
+                                skills:
+                                    skills,
+
+                                experience:
+                                    experience,
+
+                                portfolio:
+                                    portfolio,
+
+                                message:
+                                    message,
+
+                                status:
+                                    "Pending",
+
+                                appliedAt:
+                                    new Date()
+                                        .toISOString()
+
+                            }
+                        );
+
+
+                        alert(
+                            "Application submitted successfully!"
+                        );
+
+
+                        closeApplicationModal();
+
+
+                        submitButton.disabled =
+                            false;
+
+                        submitButton.textContent =
+                            "Submit Application";
+
+
+                        loadApplications();
+
+                        renderOpportunities();
+
+
+                    } catch (error) {
+
+                        console.error(
+                            "Application submission error:",
+                            error
+                        );
+
+
+                        alert(
+                            "Unable to submit your application. Please try again."
+                        );
+
+
+                        submitButton.disabled =
+                            false;
+
+                        submitButton.textContent =
+                            "Submit Application";
+
+                    }
+
+                }
+            );
+
+
+        /* ================================
+           APPLICATIONS
+        ================================= */
+
+        function loadApplications() {
+
+            if (!currentUser) {
+                return;
+            }
+
+
+            const applicationsRef =
+                ref(
+                    database,
+                    "applications"
+                );
+
+
+            onValue(
+                applicationsRef,
+                function(snapshot) {
+
+                    const data =
+                        snapshot.val();
+
+
+                    applications = [];
+
+
+                    if (data) {
+
+                        Object.keys(data)
+                            .forEach(
+                                function(id) {
+
+                                    const application =
+                                        data[id];
+
+
+                                    if (
+                                        application.studentId ===
+                                        currentUser.uid
+                                    ) {
+
+                                        applications.push({
+
+                                            id: id,
+
+                                            ...application
+
+                                        });
+
+                                    }
+
+                                }
+                            );
+
+                    }
+
+                },
+                function(error) {
+
+                    console.error(
+                        "Application loading error:",
+                        error
+                    );
+
                 }
             );
 
@@ -1807,94 +2590,352 @@
 
 
         /* ================================
-           HTML ESCAPE
+           MESSAGE MODAL
         ================================= */
 
-        function escapeHTML(
-            value
+        function openMessageModal(
+            opportunity
         ) {
 
-            return String(value)
+            selectedMessageOpportunity =
+                opportunity;
 
-                .replace(
-                    /&/g,
-                    "&amp;"
-                )
 
-                .replace(
-                    /</g,
-                    "&lt;"
-                )
-
-                .replace(
-                    />/g,
-                    "&gt;"
-                )
-
-                .replace(
-                    /"/g,
-                    "&quot;"
-                )
-
-                .replace(
-                    /'/g,
-                    "&#039;"
+            const data =
+                getOpportunityData(
+                    opportunity
                 );
 
+
+            document
+                .getElementById(
+                    "modalMessageBusiness"
+                )
+                .textContent =
+                data.company +
+                " — " +
+                data.title;
+
+
+            document
+                .getElementById(
+                    "messageText"
+                )
+                .value =
+                "";
+
+
+            document
+                .getElementById(
+                    "messageModal"
+                )
+                .classList
+                .add("show");
+
+
+            setTimeout(
+                function() {
+
+                    document
+                        .getElementById(
+                            "messageText"
+                        )
+                        .focus();
+
+                },
+                50
+            );
+
         }
+
+
+        window.closeMessageModal =
+            function() {
+
+                selectedMessageOpportunity =
+                    null;
+
+
+                document
+                    .getElementById(
+                        "messageModal"
+                    )
+                    .classList
+                    .remove("show");
+
+            };
+
+
+        /* ================================
+           SEND MESSAGE
+        ================================= */
+
+        document
+            .getElementById(
+                "messageForm"
+            )
+            .addEventListener(
+                "submit",
+                async function(event) {
+
+                    event.preventDefault();
+
+
+                    if (!currentUser) {
+
+                        alert(
+                            "Please log in first."
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (
+                        !selectedMessageOpportunity
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const text =
+                        document
+                            .getElementById(
+                                "messageText"
+                            )
+                            .value
+                            .trim();
+
+
+                    if (!text) {
+
+                        alert(
+                            "Please enter a message."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const sendButton =
+                        document
+                            .getElementById(
+                                "sendMessageButton"
+                            );
+
+
+                    sendButton.disabled =
+                        true;
+
+                    sendButton.textContent =
+                        "Sending...";
+
+
+                    try {
+
+                        const data =
+                            getOpportunityData(
+                                selectedMessageOpportunity
+                            );
+
+
+                        const conversationKey =
+                            [
+                                currentUser.uid,
+                                data.businessId ||
+                                selectedMessageOpportunity.id
+                            ]
+                                .map(
+                                    function(value) {
+
+                                        return String(
+                                            value
+                                        )
+                                            .replace(
+                                                /[^a-zA-Z0-9_-]/g,
+                                                ""
+                                            );
+
+                                    }
+                                )
+                                .join("_");
+
+
+                        const messagesRef =
+                            ref(
+                                database,
+                                "messages/" +
+                                conversationKey
+                            );
+
+
+                        const newMessageRef =
+                            push(
+                                messagesRef
+                            );
+
+
+                        await set(
+                            newMessageRef,
+                            {
+
+                                senderId:
+                                    currentUser.uid,
+
+                                senderName:
+                                    currentUserData.name ||
+                                    currentUser.displayName ||
+                                    "Student",
+
+                                senderEmail:
+                                    currentUser.email ||
+                                    "",
+
+                                receiverId:
+                                    data.businessId,
+
+                                businessName:
+                                    data.company,
+
+                                opportunityId:
+                                    selectedMessageOpportunity.id,
+
+                                opportunityTitle:
+                                    data.title,
+
+                                text:
+                                    text,
+
+                                sentAt:
+                                    new Date()
+                                        .toISOString()
+
+                            }
+                        );
+
+
+                        alert(
+                            "Message sent successfully!"
+                        );
+
+
+                        closeMessageModal();
+
+
+                        sendButton.disabled =
+                            false;
+
+                        sendButton.textContent =
+                            "Send Message";
+
+
+                    } catch (error) {
+
+                        console.error(
+                            "Message sending error:",
+                            error
+                        );
+
+
+                        alert(
+                            "Unable to send the message. Please try again."
+                        );
+
+
+                        sendButton.disabled =
+                            false;
+
+                        sendButton.textContent =
+                            "Send Message";
+
+                    }
+
+                }
+            );
 
 
         /* ================================
            FILTERS
         ================================= */
 
-        searchInput.addEventListener(
-            "input",
-            renderOpportunities
-        );
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .addEventListener(
+                "input",
+                renderOpportunities
+            );
 
 
-        cityFilter.addEventListener(
-            "input",
-            renderOpportunities
-        );
+        document
+            .getElementById(
+                "locationInput"
+            )
+            .addEventListener(
+                "input",
+                renderOpportunities
+            );
 
 
-        typeFilter.addEventListener(
-            "change",
-            renderOpportunities
-        );
+        document
+            .getElementById(
+                "typeFilter"
+            )
+            .addEventListener(
+                "change",
+                renderOpportunities
+            );
 
 
-        categoryFilter.addEventListener(
-            "change",
-            renderOpportunities
-        );
-
-
-        modeFilter.addEventListener(
-            "change",
-            renderOpportunities
-        );
+        document
+            .getElementById(
+                "modeFilter"
+            )
+            .addEventListener(
+                "change",
+                renderOpportunities
+            );
 
 
         window.clearFilters =
             function() {
 
-                searchInput.value =
+                document
+                    .getElementById(
+                        "searchInput"
+                    )
+                    .value =
                     "";
 
-                cityFilter.value =
+
+                document
+                    .getElementById(
+                        "locationInput"
+                    )
+                    .value =
                     "";
 
-                typeFilter.value =
+
+                document
+                    .getElementById(
+                        "typeFilter"
+                    )
+                    .value =
                     "";
 
-                categoryFilter.value =
+
+                document
+                    .getElementById(
+                        "modeFilter"
+                    )
+                    .value =
                     "";
 
-                modeFilter.value =
-                    "";
 
                 renderOpportunities();
 
@@ -1902,36 +2943,51 @@
 
 
         /* ================================
-           APPLY
+           MODAL CLICK-OUTSIDE
         ================================= */
 
-        function applyOpportunity(
-            opportunityId
-        ) {
+        document
+            .getElementById(
+                "applicationModal"
+            )
+            .addEventListener(
+                "click",
+                function(event) {
 
-            alert(
-                "Application system is coming next."
+                    if (
+                        event.target ===
+                        this
+                    ) {
+
+                        closeApplicationModal();
+
+                    }
+
+                }
             );
 
-        }
 
+        document
+            .getElementById(
+                "messageModal"
+            )
+            .addEventListener(
+                "click",
+                function(event) {
 
-        /* ================================
-           MESSAGE
-        ================================= */
+                    if (
+                        event.target ===
+                        this
+                    ) {
 
-        function messageBusiness(
-            opportunityId
-        ) {
+                        closeMessageModal();
 
-            alert(
-                "Messaging system is coming soon."
+                    }
+
+                }
             );
-
-        }
 
     </script>
-
 
 </body>
 
