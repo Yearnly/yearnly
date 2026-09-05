@@ -680,10 +680,9 @@ body {
         flex-direction: column;
     }
 /* Hide mobile menu on desktop only */
+}
 @media (min-width: 721px) {
     .mobile-menu {
         display: none !important;
     }
 }
-}
- 
